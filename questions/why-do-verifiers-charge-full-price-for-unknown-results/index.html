@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why does my email verifier charge full price for “unknown” and catch-all results? — EmailCheck</title>
+<meta name="description" content="Because most verifiers bill per submitted address, not per answered question. An “unknown” or catch-all result still cost them a lookup, so it costs you a…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/why-do-verifiers-charge-full-price-for-unknown-results/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="Why does my email verifier charge full price for “unknown” and catch-all results?">
+<meta property="og:description" content="Because most verifiers bill per submitted address, not per answered question. An “unknown” or catch-all result still cost them a lookup, so it costs you a…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/why-do-verifiers-charge-full-price-for-unknown-results/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Why does my email verifier charge full price for “unknown” and catch-all results?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because most verifiers bill per submitted address, not per answered question. An “unknown” or catch-all result still cost them a lookup, so it costs you a full credit — even though you learned nothing decisive. When choosing a tool, check two things before paying: whether its policy on unknown/catch-all results is stated up front, and whether you at least get a graded risk signal instead of a shrug."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / Why does my email verifier charge full price for “unknown” and catch-all results?</p>
+  <h1><span class="le">Why does my email verifier charge full price for “unknown” and catch-all results?</span><span class="lz">为什么我的邮箱验证工具对「unknown」和 catch-all 结果也要全额收费？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Because most verifiers bill per submitted address, not per answered question. An “unknown” or catch-all result still cost them a lookup, so it costs you a full credit — even though you learned nothing decisive. When choosing a tool, check two things before paying: whether its policy on unknown/catch-all results is stated up front, and whether you at least get a graded risk signal instead of a shrug.</p>
+    <p class="lz">因为多数验证工具按「提交的地址数」计费，不按「回答了的问题数」计费。「unknown」或 catch-all 结果对它来说也做了一次查询，所以照样扣你一整个额度——哪怕你什么决定性的信息都没得到。选型时先看两样：它对 unknown/catch-all 的口径有没有事先写明；以及测不准时，你至少能不能拿到一个分级风险信号，而不是一个耸肩标签。</p>
+  </div>
+
+  <h2><span class="le">The complaint, in users' own words</span><span class="lz">用户原话里的抱怨</span></h2>
+  <div class="le"><p>This is the single loudest pricing complaint in the category. In our competitor review research (aggregating 1,404 G2 reviews of ZeroBounce, the category's best-known vendor), price was mentioned 159 times, and a recurring cluster is paying in full for results that are not answers: users report that “a huge chunk of our contacts came back as catch all”, and that “catch-all emails cost 2 credits” — full price, sometimes double, for an address the tool could not resolve.</p>
+<p>The frustration is rational. A result that says “unknown” has near-zero decision value: you still don't know whether to mail the address. Billing it like a verdict makes the effective price per usable answer much higher than the headline rate.</p></div>
+  <div class="lz"><p>这是这个品类里最响的一条价格抱怨。在我们的竞品差评调研里（聚合品类最知名厂商 ZeroBounce 在 G2 上的 1,404 条评论），「价格贵」被提及 159 次，其中反复出现的一簇是为非答案全额付费：用户说「我们一大块联系人查回来都是 catch all」，还有人说「catch-all 邮箱要扣 2 个额度」——测不准的地址，全价、甚至双倍。</p>
+<p>这种不满是合理的。一个写着「unknown」的结果，决策价值接近于零：你还是不知道该不该给这个地址发信。把它按裁决收费，等于把「每个可用答案」的实际价格抬得比标价高得多。</p></div>
+  <h2><span class="le">Why it happens</span><span class="lz">为什么会这样</span></h2>
+  <div class="le"><p>Three mechanics stack up. First, the billing unit is the submission: the meter starts when your address arrives, whatever comes back. Second, catch-all domains genuinely cannot be resolved further without sending mail — the “unknown” is honest, but it is still metered. Third, on some plans an unresolved result consumes more than one credit, which users only discover on the invoice.</p>
+<p>None of that is a reason to accept it silently. The question to ask a vendor is not “why do you charge?” but “what do I get back for an unresolved address, and is that written down before I pay?”</p></div>
+  <div class="lz"><p>三层机制叠在一起。第一，计费单位是「提交」：地址一到就开始计米，回来什么都一样。第二，catch-all 域名不真发信确实无从再确认——「unknown」本身诚实，但照样计费。第三，有些套餐里一个未决结果会扣不止一个额度，用户往往是在账单上才发现。</p>
+<p>这些都不是默默接受的理由。要问厂商的不是「你为什么收费」，而是「测不准的地址我能拿回什么、这话在付费前有没有写下来」。</p></div>
+  <h2><span class="le">What EmailCheck returns instead</span><span class="lz">EmailCheck 给的是什么</span></h2>
+  <div class="le"><p>EmailCheck also charges per call — that part is the same. What differs is what an unresolved address returns: a graded <code>catchAllRisk</code> signal (low / possible / unknown, inferred from MX and provider patterns and labelled as a signal, not a probed conclusion), plus the rest of the domain evidence — MX presence, domain age, disposable and typo flags — so the result is still usable for segmentation. Try the box on this page with <code>anyone@github.com</code>: the live API returns catch-all risk “possible” for that domain, alongside a full score breakdown.</p></div>
+  <div class="lz"><p>EmailCheck 也是按次收费——这一点相同。不同在测不准时返回什么：一个分级的 <code>catchAllRisk</code> 信号（low / possible / unknown，由 MX 与服务商模式推断，并明说这是信号、不是探测结论），外加其余域名证据——有无 MX、域名年龄、一次性与拼写标记——让结果仍然能用来分仓。用本页的框试 <code>anyone@github.com</code>：生产 API 对这个域名返回的 catch-all 风险是「possible」，并附完整的分数拆解。</p></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="anyone@github.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
+    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../can-a-catch-all-email-address-be-verified/">Can a catch-all email address actually be verified?</a></li>
+    <li><a href="../how-much-does-it-cost-to-verify-10000-emails/">How much should it cost to verify 10,000 emails?</a></li>
+    <li><a href="../why-are-so-many-b2b-addresses-on-catch-all-domains/">Why are a third of the addresses on my B2B list on catch-all domains?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
