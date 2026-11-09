@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why are a third of the addresses on my B2B list on catch-all domains? — EmailCheck</title>
+<meta name="description" content="Because many companies configure their domain to accept mail for every possible address — it guarantees no legitimate message is ever turned away at the…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/why-are-so-many-b2b-addresses-on-catch-all-domains/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="Why are a third of the addresses on my B2B list on catch-all domains?">
+<meta property="og:description" content="Because many companies configure their domain to accept mail for every possible address — it guarantees no legitimate message is ever turned away at the…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/why-are-so-many-b2b-addresses-on-catch-all-domains/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Why are a third of the addresses on my B2B list on catch-all domains?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because many companies configure their domain to accept mail for every possible address — it guarantees no legitimate message is ever turned away at the server. Public data puts 30–40% of a typical B2B list on catch-all domains. That slice of your list cannot be “verified clean”; the workable approach is to segment it and rank it by risk signals instead of treating it like the rest of the list."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / Why are a third of the addresses on my B2B list on catch-all domains?</p>
+  <h1><span class="le">Why are a third of the addresses on my B2B list on catch-all domains?</span><span class="lz">为什么我 B2B 名单里三分之一的地址都在 catch-all 域名上？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Because many companies configure their domain to accept mail for every possible address — it guarantees no legitimate message is ever turned away at the server. Public data puts 30–40% of a typical B2B list on catch-all domains. That slice of your list cannot be “verified clean”; the workable approach is to segment it and rank it by risk signals instead of treating it like the rest of the list.</p>
+    <p class="lz">因为很多公司把自己的域名配置成：任何地址都收信——这样就保证任何一封正经邮件都不会在服务器门口被拒。公开数据里，典型 B2B 名单有 30–40% 的地址在 catch-all 域名上。名单的这一片没法「验干净」；可行的办法是把它分出来、用风险信号排序，而不是和名单其余部分一视同仁。</p>
+  </div>
+
+  <h2><span class="le">Why companies set their domains up this way</span><span class="lz">公司为什么这样配自己的域名</span></h2>
+  <div class="le"><p>Catch-all is a rational default for a business. Employees join and leave, people guess at addresses (firstname@, firstinitial-lastname@), and a rejected message can mean a lost lead that nobody ever hears about. Accepting everything and filtering afterwards trades a spam problem the company can manage for a silence problem it cannot. Small and mid-size companies — the bulk of most B2B lists — choose this most often, which is why the share is so high.</p></div>
+  <div class="lz"><p>对企业来说，catch-all 是理性默认。员工来来去去，外人会猜地址格式（firstname@、首字母-lastname@），一封被拒的邮件可能意味着一条谁都不知道的线索就丢了。全收、事后再过滤，等于用一个可管理的垃圾邮件问题，换掉一个管不了的沉默问题。中小公司——多数 B2B 名单的主体——最常这样选，所以占比才这么高。</p></div>
+  <h2><span class="le">What it means for your list</span><span class="lz">这对你的名单意味着什么</span></h2>
+  <div class="le"><ul>
+<li><strong>There is a hard ceiling on verification.</strong> On a catch-all domain, no domain-level (or SMTP-probing) check can confirm a mailbox. Any tool that reports a clean verdict for that third of your list is scoring, not verifying.</li>
+<li><strong>Don't delete them.</strong> A third of a B2B list contains real customers at real companies. Deleting on “unverifiable” throws away pipeline.</li>
+<li><strong>Don't blend them either.</strong> Mail catch-all addresses as their own segment, in smaller batches, with bounce monitoring, so a bad pocket cannot damage the sender reputation your verified segment relies on.</li>
+<li><strong>Rank by the signals you have.</strong> MX health, domain age, typo and disposable flags all still work on catch-all domains — EmailCheck returns them per address, with <code>catchAllRisk</code> marking the segment, and the batch endpoint's summary lets you see the segment's size before you send.</li>
+</ul></div>
+  <div class="lz"><ul>
+<li><strong>验证有硬天花板。</strong>在 catch-all 域名上，域名级（乃至 SMTP 探测）检查都无法确认邮箱。任何对这三分之一名单报告「干净」裁决的工具，都是在打分，不是在验证。</li>
+<li><strong>不要删掉它们。</strong>B2B 名单的三分之一里是真公司里的真客户。因「不可验证」删掉，等于扔掉管线。</li>
+<li><strong>也不要混着发。</strong>把 catch-all 地址当作独立分区分开发、小批量、盯退信，让坏口袋伤不到你已验证分区依赖的发信声誉。</li>
+<li><strong>用你有的信号排序。</strong>MX 健康度、域名年龄、拼写与一次性标记在 catch-all 域名上照样有效——EmailCheck 逐条返回，并用 <code>catchAllRisk</code> 标出这个分区；批量端点的 summary 让你在发送前就看到这个分区的大小。</li>
+</ul></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="anyone@github.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
+    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../can-a-catch-all-email-address-be-verified/">Can a catch-all email address actually be verified?</a></li>
+    <li><a href="../why-do-verifiers-charge-full-price-for-unknown-results/">Why does my email verifier charge full price for “unknown” and catch-all results?</a></li>
+    <li><a href="../verify-a-list-of-emails-in-bulk/">How do I verify a list of emails in bulk without calling the API one by one?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
