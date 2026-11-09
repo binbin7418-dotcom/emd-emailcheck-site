@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does an email verification API check whether the actual mailbox exists? — EmailCheck</title>
+<meta name="description" content="EmailCheck does not — and it is worth knowing exactly what it does instead. It checks the domain: MX routing, domain age from registration records,…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/does-email-verification-check-if-a-mailbox-exists/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="Does an email verification API check whether the actual mailbox exists?">
+<meta property="og:description" content="EmailCheck does not — and it is worth knowing exactly what it does instead. It checks the domain: MX routing, domain age from registration records,…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/does-email-verification-check-if-a-mailbox-exists/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Does an email verification API check whether the actual mailbox exists?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "EmailCheck does not — and it is worth knowing exactly what it does instead. It checks the domain: MX routing, domain age from registration records, disposable / role / free-provider signals, and likely typos with a correction. Mailbox-level probing over SMTP is rejected or greylisted by major providers, which is why any API “guaranteeing” that a mailbox exists is overselling what the protocol allows."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / Does an email verification API check whether the actual mailbox exists?</p>
+  <h1><span class="le">Does an email verification API check whether the actual mailbox exists?</span><span class="lz">邮箱验证 API 会检查具体邮箱到底存不存在吗？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">EmailCheck does not — and it is worth knowing exactly what it does instead. It checks the domain: MX routing, domain age from registration records, disposable / role / free-provider signals, and likely typos with a correction. Mailbox-level probing over SMTP is rejected or greylisted by major providers, which is why any API “guaranteeing” that a mailbox exists is overselling what the protocol allows.</p>
+    <p class="lz">EmailCheck 不查——而且值得你弄清它到底查什么。它查域名：MX 路由、来自注册记录的域名年龄、一次性/角色/免费服务商信号、疑似拼写错误及纠正建议。走 SMTP 的邮箱级探测会被主流服务商拒绝或灰名单处理，所以任何「保证邮箱存在」的 API，都是在超出协议允许的范围过度承诺。</p>
+  </div>
+
+  <h2><span class="le">What “mailbox exists” would actually require</span><span class="lz">「邮箱存在」到底需要什么</span></h2>
+  <div class="le"><p>To ask a mail server whether one specific mailbox exists, a verifier has to open an SMTP conversation and start a delivery (an RCPT TO probe), then stop before sending. Two decades of spam abuse have trained providers to defeat exactly this: servers greylist unknown senders, tarpit probes, return deliberately vague answers, or accept everything (catch-all) and sort it out later. The result is that a “mailbox check” is often a guess wearing a lab coat — and on catch-all domains it is provably meaningless, since the server accepts every address by design.</p>
+<p>That is why EmailCheck's position is printed in every response rather than buried in a FAQ: domain-level only, no SMTP probing, a valid result does not confirm the mailbox exists.</p></div>
+  <div class="lz"><p>想问一台邮件服务器某个具体邮箱存不存在，验证方得打开一次 SMTP 会话、发起投递（RCPT TO 探测），再在真发送前停住。二十年的垃圾邮件攻防已经把服务商训练得专门防这一手：灰名单陌生发件人、给探测连接降速、返回刻意含糊的答案，或者干脆全收（catch-all）事后再说。结果是，「邮箱检查」常常是穿着实验服的猜测——在 catch-all 域名上更是可证地无意义，因为那台服务器按设计接受一切地址。</p>
+<p>所以 EmailCheck 的立场印在每个响应里，而不是埋在某个 FAQ 里：只做域名级、不做 SMTP 探测、valid 结果不确认邮箱存在。</p></div>
+  <h2><span class="le">What domain-level checks catch instead</span><span class="lz">域名级检查能抓住什么</span></h2>
+  <div class="le"><p>Most addresses that hurt you fail at domain level long before mailbox existence matters:</p>
+<ul>
+<li><strong>Typos</strong> — gmial.com, hotmial.com: syntactically fine, and the reason confirmation mail vanishes. EmailCheck returns <code>typoLikely</code> plus a <code>suggestion</code>.</li>
+<li><strong>Dead or parked domains</strong> — no MX records, or a domain that no longer routes mail.</li>
+<li><strong>Disposable domains</strong> — throwaway inboxes used to pass a signup gate, flagged per address.</li>
+<li><strong>Role accounts</strong> — postmaster@, admin@ and friends: real, but rarely the audience you meant to mail.</li>
+<li><strong>Brand-new domains</strong> — <code>domainAgeDays</code> from RDAP registration records (null when there is no record — never estimated), a useful fraud and quality signal.</li>
+</ul></div>
+  <div class="lz"><p>真正会坑到你的地址，绝大多数在域名层就露馅了，根本轮不到邮箱存在与否：</p>
+<ul>
+<li><strong>拼写错误</strong>——gmial.com、hotmial.com：格式完全合法，确认邮件却石沉大海。EmailCheck 返回 <code>typoLikely</code> 和 <code>suggestion</code>。</li>
+<li><strong>死域名/停放域名</strong>——没有 MX 记录，或域名已经不收信。</li>
+<li><strong>一次性域名</strong>——用来过注册门槛的临时收件箱，逐条标记。</li>
+<li><strong>角色账号</strong>——postmaster@、admin@ 之类：是真的，但很少是你想发信的对象。</li>
+<li><strong>刚注册的域名</strong>——<code>domainAgeDays</code> 来自 RDAP 注册记录（无记录返 null，从不估算），是好用的欺诈与质量信号。</li>
+</ul></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="test@gmail.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
+    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../how-accurate-are-email-verification-apis/">How accurate are email verification APIs, really?</a></li>
+    <li><a href="../catch-email-typos-like-gmial-com-at-signup/">How do I catch email typos like gmial.com at signup?</a></li>
+    <li><a href="../can-a-catch-all-email-address-be-verified/">Can a catch-all email address actually be verified?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
