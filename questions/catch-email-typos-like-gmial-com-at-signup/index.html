@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How do I catch email typos like gmial.com at signup? — EmailCheck</title>
+<meta name="description" content="Check the domain, not just the format. When an address's domain looks like a misspelling of a known provider, EmailCheck returns typoLikely: true and a…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/catch-email-typos-like-gmial-com-at-signup/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="How do I catch email typos like gmial.com at signup?">
+<meta property="og:description" content="Check the domain, not just the format. When an address's domain looks like a misspelling of a known provider, EmailCheck returns typoLikely: true and a…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/catch-email-typos-like-gmial-com-at-signup/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How do I catch email typos like gmial.com at signup?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Check the domain, not just the format. When an address's domain looks like a misspelling of a known provider, EmailCheck returns typoLikely: true and a suggestion — gmial.com becomes gmail.com. Put that check in your signup form and ask “did you mean …?” before the account is created: recovering a mistyped address at signup is far cheaper than a bounced confirmation email and a lost user."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How do I catch email typos like gmial.com at signup?</p>
+  <h1><span class="le">How do I catch email typos like gmial.com at signup?</span><span class="lz">怎么在注册环节抓住 gmial.com 这类邮箱拼写错误？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Check the domain, not just the format. When an address's domain looks like a misspelling of a known provider, EmailCheck returns typoLikely: true and a suggestion — gmial.com becomes gmail.com. Put that check in your signup form and ask “did you mean …?” before the account is created: recovering a mistyped address at signup is far cheaper than a bounced confirmation email and a lost user.</p>
+    <p class="lz">查域名，不只是查格式。当地址的域名看起来像某个已知服务商的拼写错误时，EmailCheck 返回 typoLikely: true 和一个 suggestion——gmial.com 变回 gmail.com。把这个检查放进注册表单，在账号创建前问一句「你是不是指……？」：在注册环节救回一个拼错的地址，比事后一封退信的确认邮件加一个流失的用户便宜得多。</p>
+  </div>
+
+  <h2><span class="le">Why typos sail through format checks</span><span class="lz">为什么拼写错误能穿过格式检查</span></h2>
+  <div class="le"><p><code>test@gmial.com</code> is a perfectly well-formed email address: valid syntax, and the domain itself exists. What is broken is invisible to a regex — the user meant Gmail. Run it in the box on this page and look at the live result: score 40, verdict invalid (the typo domain has no MX records), with <code>suggestion: test@gmail.com</code> attached. Two facts did the work: the domain is one edit away from a major provider, and it cannot actually receive mail.</p>
+<p>The cost of missing this at signup is paid later and in silence: the confirmation email goes nowhere, the user never activates, and support eventually hears “your emails never arrive” — if the user bothers at all.</p></div>
+  <div class="lz"><p><code>test@gmial.com</code> 是一个格式完全合法的邮箱地址：语法没错，域名本身也存在。坏掉的地方正则看不见——用户想写的是 Gmail。用本页的框跑它，看生产结果：40 分、裁决 invalid（这个拼错域名没有 MX 记录），并附 <code>suggestion: test@gmail.com</code>。起作用的是两个事实：该域名与主流服务商只差一次编辑距离；且它实际上收不了信。</p>
+<p>在注册环节漏掉它的代价是事后默默付的：确认邮件无处可去，用户永远不激活，客服最终听到「你们的邮件从来没到过」——如果用户还愿意说的话。</p></div>
+  <h2><span class="le">The form pattern that fixes it</span><span class="lz">能修好它的表单模式</span></h2>
+  <div class="le"><ol>
+<li>On submit (or on blur of the email field), call <code>GET /validate?email=...</code> — it is one fast, local-computation check.</li>
+<li>If <code>typoLikely</code> is true, show the suggestion inline: “Did you mean test@gmail.com?” with one-tap accept. <strong>Never rewrite the address silently</strong> — the suggestion can occasionally be wrong, and the user owns their address.</li>
+<li>If the verdict is invalid for other reasons (no MX, disposable domain), say so specifically rather than with a generic “invalid email” — the response tells you which check failed.</li>
+<li>Log the correction rate. Teams are routinely surprised how much of their “bad email” problem is this one pattern.</li>
+</ol></div>
+  <div class="lz"><ol>
+<li>在提交时（或邮箱字段失焦时）调 <code>GET /validate?email=...</code>——一次快速的本地计算检查。</li>
+<li>如果 <code>typoLikely</code> 为真，内联显示建议：「你是不是指 test@gmail.com？」并给一键接受。<strong>永远不要静默改写地址</strong>——建议偶尔也会错，地址是用户的。</li>
+<li>如果裁决因其他原因 invalid（无 MX、一次性域名），把具体原因说出来，而不是笼统一句「邮箱无效」——响应里写了是哪项检查没过。</li>
+<li>记录纠正率。团队通常会惊讶：他们的「坏邮箱」问题有多大比例就是这一个模式。</li>
+</ol></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="test@gmial.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
+    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../what-does-a-risky-email-verdict-mean/">What does a “risky” verdict mean — should I still send to risky addresses?</a></li>
+    <li><a href="../does-email-verification-check-if-a-mailbox-exists/">Does an email verification API check whether the actual mailbox exists?</a></li>
+    <li><a href="../verify-a-list-of-emails-in-bulk/">How do I verify a list of emails in bulk without calling the API one by one?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
