@@ -1,0 +1,57 @@
+# EmailCheck
+
+EmailCheck is an email verification API. It checks an email address at domain level:
+syntax, domain existence, MX routing, disposable-domain and role-account signals,
+likely typos with a correction suggestion (e.g. gmial.com -> gmail.com), domain age
+in days from RDAP registration records (null when no record exists, never estimated),
+and a catch-all risk signal (low / possible / unknown) inferred from MX and provider
+patterns and labelled as a signal, not a probed conclusion.
+
+Every result carries a 0-100 score and a verdict: valid (score 80 or above with MX
+present), risky (50-79, or a likely typo), invalid. Every response carries
+scope: "domain-level" and a note stating exactly what was checked.
+
+What EmailCheck does NOT do: it does not probe whether an individual mailbox exists
+(no SMTP probing), and a valid result does not confirm a mailbox exists.
+
+## API
+
+Base URL: https://emailcheck-api.pages.dev
+
+- GET /validate?email=... — validate one address
+- POST /validate — same check, JSON body {"email": "..."}
+- POST /validate/batch — JSON body {"emails": ["...", ...]}, up to 100 addresses;
+  per-address results in submission order plus a summary
+  {total, valid, risky, invalid, disposable, typoLikely} with counts and percentages.
+  Batch errors are named JSON: MISSING_EMAIL, EMPTY_BATCH, BATCH_TOO_LARGE, INVALID_JSON.
+  A bad entry marks only itself invalid; it never fails the batch.
+
+## Pricing (subscriptions run on the marketplaces)
+
+RapidAPI (https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api):
+- BASIC: free, 100 calls per month
+- PRO: $9/month, 10,000 calls per month
+- ULTRA: $29/month, 50,000 calls per month
+
+api.market: Free Trial 7 days with 100 calls; Pro $9/month; Ultra $29/month;
+overage $0.002 per extra request.
+
+Checkout totals are shown by the platform for the buyer's region and may include
+local taxes. A Zyla listing ("Email List Validation API") has been submitted and
+is under review.
+
+## Pages on this site
+
+- / — free single-check tool, scope statement, endpoint docs, pricing, FAQ
+- /questions/best-email-verification-api/
+- /questions/why-do-verifiers-charge-full-price-for-unknown-results/
+- /questions/can-a-catch-all-email-address-be-verified/
+- /questions/how-accurate-are-email-verification-apis/
+- /questions/how-much-does-it-cost-to-verify-10000-emails/
+- /questions/does-email-verification-check-if-a-mailbox-exists/
+- /questions/verify-a-list-of-emails-in-bulk/
+- /questions/what-does-a-risky-email-verdict-mean/
+- /questions/catch-email-typos-like-gmial-com-at-signup/
+- /questions/why-are-so-many-b2b-addresses-on-catch-all-domains/
+
+Contact: binbin7418@gmail.com
