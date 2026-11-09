@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How do I verify a list of emails in bulk without calling the API one by one? — EmailCheck</title>
+<meta name="description" content="Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/verify-a-list-of-emails-in-bulk/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="How do I verify a list of emails in bulk without calling the API one by one?">
+<meta property="og:description" content="Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/verify-a-list-of-emails-in-bulk/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How do I verify a list of emails in bulk without calling the API one by one?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a summary of counts and percentages (valid / risky / invalid / disposable / likely typos). A bad entry marks only itself — it never fails the batch. This is not a theoretical feature: our first paying subscriber runs every one of his checks through the batch endpoint."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How do I verify a list of emails in bulk without calling the API one by one?</p>
+  <h1><span class="le">How do I verify a list of emails in bulk without calling the API one by one?</span><span class="lz">怎么批量验证一份邮箱名单，不用一个一个调 API？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a summary of counts and percentages (valid / risky / invalid / disposable / likely typos). A bad entry marks only itself — it never fails the batch. This is not a theoretical feature: our first paying subscriber runs every one of his checks through the batch endpoint.</p>
+    <p class="lz">用批量端点：一次把最多 100 个地址 POST 到 /validate/batch，每条都带自己的裁决、分数与逐项检查返回，另附计数与百分比汇总（valid / risky / invalid / 一次性 / 疑似拼错）。坏条目只标自己——不连坐整批。这不是纸面功能：我们的第一个付费订阅者，全部检查都走这个端点。</p>
+  </div>
+
+  <h2><span class="le">How the batch call works</span><span class="lz">批量调用怎么工作</span></h2>
+  <div class="le"><p>Send a JSON body — <code>{"emails": ["...", "..."]}</code> — to <code>POST https://emailcheck-api.pages.dev/validate/batch</code>. The response keeps submission order and gives each address the same full result shape as a single check, followed by a summary: total, valid, risky, invalid, disposable and typoLikely counts, with percentages. For lists bigger than 100, page through in chunks of 100; each chunk is independent.</p>
+<p>Errors are named JSON, so a pipeline can react instead of guessing: <code>MISSING_EMAIL</code> (an entry with no address), <code>EMPTY_BATCH</code>, <code>BATCH_TOO_LARGE</code> (over 100), <code>INVALID_JSON</code>. A malformed address inside the batch is not an error at all — it comes back as that row's invalid verdict, and the rest of the batch is unaffected.</p></div>
+  <div class="lz"><p>把 JSON body——<code>{"emails": ["...", "..."]}</code>——POST 到 <code>POST https://emailcheck-api.pages.dev/validate/batch</code>。响应保持提交顺序，每条返回与单查完全相同的完整结果，最后附 summary：total、valid、risky、invalid、disposable、typoLikely 的计数与百分比。名单超过 100 条就按每 100 条分片，每片互相独立。</p>
+<p>错误是具名 JSON，管线可以对症处理、不用猜：<code>MISSING_EMAIL</code>（条目没有地址）、<code>EMPTY_BATCH</code>、<code>BATCH_TOO_LARGE</code>（超过 100）、<code>INVALID_JSON</code>。批次里某个地址格式错误根本不算错误——它就是那一行的 invalid 裁决，批次其余部分不受影响。</p></div>
+  <h2><span class="le">When single calls are still the right tool</span><span class="lz">什么时候单查才是对的工具</span></h2>
+  <div class="le"><p>Batch is for lists that already exist: CRM imports, pre-send hygiene, scheduled cleaning jobs. At the moment an address is being typed — a signup form, a checkout — you want the single check instead, so a typo suggestion can be shown to the person who can fix it with one tap. The two endpoints return the same fields, so the parsing code you write for one works for the other.</p></div>
+  <div class="lz"><p>批量适合已经存在的名单：CRM 导入、发送前清洗、定时卫生任务。而在地址正被输入的那一刻——注册表单、结账页——要用单查，这样拼写建议能直接弹给那个能一键改对的人。两个端点返回的字段一致，为一个写的解析代码，另一个也能用。</p></div>
+
+
+  <section class="tool" aria-label="Try the batch endpoint">
+    <h2><span class="le">Try the batch endpoint</span><span class="lz">试一下批量端点</span></h2>
+    <p class="small muted le">One address per line (up to 100). This posts to the production <code>POST /validate/batch</code>.</p>
+    <p class="small muted lz">一行一个地址（最多 100 条）。直接调生产 <code>POST /validate/batch</code>。</p>
+    <form id="ecb-form">
+      <textarea id="ecb-input">alice@gmail.com
+bob@gmial.com
+someone@mailinator.com</textarea>
+      <button class="btn" id="ecb-btn" type="submit"><span class="le">Validate the list</span><span class="lz">验证这批名单</span></button>
+    </form>
+    <p class="err" id="ecb-error" role="alert"></p>
+    <div class="result" id="ecb-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
+    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../how-much-does-it-cost-to-verify-10000-emails/">How much should it cost to verify 10,000 emails?</a></li>
+    <li><a href="../catch-email-typos-like-gmial-com-at-signup/">How do I catch email typos like gmial.com at signup?</a></li>
+    <li><a href="../why-are-so-many-b2b-addresses-on-catch-all-domains/">Why are a third of the addresses on my B2B list on catch-all domains?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
