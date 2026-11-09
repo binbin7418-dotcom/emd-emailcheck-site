@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does a “risky” verdict mean — should I still send to risky addresses? — EmailCheck</title>
+<meta name="description" content="“Risky” means the address scored 50–79, or its domain looks like a typo of a known provider. It does not mean “will bounce” — it means “don't treat this…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/what-does-a-risky-email-verdict-mean/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="What does a “risky” verdict mean — should I still send to risky addresses?">
+<meta property="og:description" content="“Risky” means the address scored 50–79, or its domain looks like a typo of a known provider. It does not mean “will bounce” — it means “don't treat this…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/what-does-a-risky-email-verdict-mean/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What does a “risky” verdict mean — should I still send to risky addresses?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "“Risky” means the address scored 50–79, or its domain looks like a typo of a known provider. It does not mean “will bounce” — it means “don't treat this like a clean address”. Fix the typo if the response carries a suggestion; if you mail risky addresses at all, send to them separately, in small batches, and watch the bounces before ever mixing them into your main list."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / What does a “risky” verdict mean — should I still send to risky addresses?</p>
+  <h1><span class="le">What does a “risky” verdict mean — should I still send to risky addresses?</span><span class="lz">「Risky」裁决是什么意思——有风险的地址还要不要发？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">“Risky” means the address scored 50–79, or its domain looks like a typo of a known provider. It does not mean “will bounce” — it means “don't treat this like a clean address”. Fix the typo if the response carries a suggestion; if you mail risky addresses at all, send to them separately, in small batches, and watch the bounces before ever mixing them into your main list.</p>
+    <p class="lz">「Risky」意味着这个地址得分在 50–79，或者它的域名看起来是某个已知服务商的拼写错误。它不等于「一定退信」——它等于「别把这当成干净地址」。响应带 suggestion 就先改对拼写；如果你决定给 risky 地址发信，分开发、小批量发、盯住退信，永远别把它们混进主名单一起发。</p>
+  </div>
+
+  <h2><span class="le">What pushes an address into “risky”</span><span class="lz">什么会把地址推到「risky」</span></h2>
+  <div class="le"><p>The score starts at 100 and loses points for concrete, named reasons — you can see them in the <code>checks</code> object of every response:</p>
+<ul>
+<li><strong>Disposable domain.</strong> Try the box on this page with <code>someone@mailinator.com</code>: the live API scores it 50 — risky — purely because the domain is a throwaway inbox service.</li>
+<li><strong>Likely typo.</strong> A misspelled provider domain (gmial.com) is flagged with a correction; the person is probably real, the address is not.</li>
+<li><strong>Catch-all risk.</strong> The domain accepts everything, so the address cannot be confirmed either way.</li>
+<li><strong>Role account / missing signals.</strong> Role addresses and domains with thin registration or routing data lose points without being outright invalid.</li>
+</ul>
+<p>Risky is deliberately a “handle with care” bucket, not a polite word for invalid: invalid means the address failed basic checks (bad syntax, no MX, a score under 50).</p></div>
+  <div class="lz"><p>分数从 100 起，因为具体、具名的原因扣分——每个响应的 <code>checks</code> 里都能看到：</p>
+<ul>
+<li><strong>一次性域名。</strong>用本页的框试 <code>someone@mailinator.com</code>：生产 API 给它 50 分——risky——纯粹因为该域名是临时收件箱服务。</li>
+<li><strong>疑似拼写错误。</strong>拼错的服务商域名（gmial.com）会被标记并给纠正建议；人多半是真的，地址是假的。</li>
+<li><strong>Catch-all 风险。</strong>该域名全收，地址无法往任何一边确认。</li>
+<li><strong>角色账号/信号稀薄。</strong>角色地址、注册或路由数据单薄的域名会扣分，但不至于直接判无效。</li>
+</ul>
+<p>Risky 是刻意设的「小心处理」桶，不是 invalid 的委婉说法：invalid 意味着地址没过基本检查（格式错、无 MX、分数低于 50）。</p></div>
+  <h2><span class="le">A practical playbook for risky addresses</span><span class="lz">Risky 地址的实用处理法</span></h2>
+  <div class="le"><ol>
+<li><strong>Apply the suggestion first.</strong> If <code>typoLikely</code> is true and a <code>suggestion</code> is present, that address is one corrected character away from being clean — fix it in your data, or better, at the source (see the typo page linked below).</li>
+<li><strong>Segment, don't blend.</strong> Keep risky addresses in their own segment so a bounce spike can never touch the reputation your main list depends on.</li>
+<li><strong>Test small, then decide by evidence.</strong> Send to a small slice, read the actual bounces and engagement, and promote or suppress based on what happened — not on the label alone.</li>
+<li><strong>Suppress on first hard bounce.</strong> A risky address that hard-bounces has told you everything; remove it permanently.</li>
+</ol></div>
+  <div class="lz"><ol>
+<li><strong>先用纠正建议。</strong>如果 <code>typoLikely</code> 为真且有 <code>suggestion</code>，这个地址只差改对一个字符就干净了——在数据里改掉，或者更好，在源头改（见下方拼写页）。</li>
+<li><strong>分仓，别混。</strong>把 risky 地址放进独立分区，退信尖峰永远碰不到主名单依赖的声誉。</li>
+<li><strong>小批试投、按证据决定。</strong>先发一小片，读真实退信与互动，再决定升舱还是压掉——不要只看标签。</li>
+<li><strong>第一次硬退就永久压掉。</strong>Risky 地址硬退了，该说的都说了，永久移除。</li>
+</ol></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="someone@mailinator.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
+    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../catch-email-typos-like-gmial-com-at-signup/">How do I catch email typos like gmial.com at signup?</a></li>
+    <li><a href="../can-a-catch-all-email-address-be-verified/">Can a catch-all email address actually be verified?</a></li>
+    <li><a href="../how-accurate-are-email-verification-apis/">How accurate are email verification APIs, really?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
