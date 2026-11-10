@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Can a catch-all email address actually be verified? — EmailCheck</title>
-<meta name="description" content="No — not fully. A catch-all domain accepts mail for every address, so nothing short of actually sending a message (and watching what happens) can confirm an…">
+<title>Catch All Email Checker — Check If a Domain Accepts All Mail — EmailCheck</title>
+<meta name="description" content="Catch All Email Checker: enter an address and read its domain-level result — catch-all risk signal, MX, score and verdict. A catch-all domain accepts mail for every address, so no checker can confirm one mailbox on it; this tool returns the risk signal instead of pretending otherwise.">
 <link rel="canonical" href="https://email.newkwlab.com/questions/can-a-catch-all-email-address-be-verified/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EmailCheck">
-<meta property="og:title" content="Can a catch-all email address actually be verified?">
-<meta property="og:description" content="No — not fully. A catch-all domain accepts mail for every address, so nothing short of actually sending a message (and watching what happens) can confirm an…">
+<meta property="og:title" content="Catch All Email Checker — Check If a Domain Accepts All Mail">
+<meta property="og:description" content="Enter an address and read its domain-level result — catch-all risk signal, MX, score and verdict. A catch-all domain accepts mail for every address, so no checker can confirm one mailbox on it; this tool returns the risk signal instead of pretending otherwise.">
 <meta property="og:url" content="https://email.newkwlab.com/questions/can-a-catch-all-email-address-be-verified/">
 <link rel="stylesheet" href="../../assets/style.css">
 <script type="application/ld+json">
@@ -46,8 +46,26 @@
 </header>
 
 <main>
-  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / Can a catch-all email address actually be verified?</p>
-  <h1><span class="le">Can a catch-all email address actually be verified?</span><span class="lz">Catch-all 邮箱地址真的能被验证吗？</span></h1>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / Catch All Email Checker</p>
+  <h1><span class="le">Catch All Email Checker — Check If a Domain Accepts All Mail</span><span class="lz">Catch-all 邮箱检查器——查域名是否全收邮件</span></h1>
+
+  <section class="tool" aria-label="Catch All Email Checker">
+    <h2><span class="le">Check an address for catch-all risk</span><span class="lz">查一个地址的 catch-all 风险</span></h2>
+    <p class="small muted le">Live call to the production API. Enter any address and read the catch-all risk line in the result — a domain-level signal, not a mailbox probe.</p>
+    <p class="small muted lz">实时调生产 API。输入任意地址，看结果里的 catch-all 风险一行——是域名层信号，不是邮箱探测。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="anyone@github.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <div class="chips">
+      <button class="chip" type="button" data-sample="anyone@github.com">anyone@github.com <span class="le">(catch-all risk)</span><span class="lz">（catch-all 风险）</span></button>
+      <button class="chip" type="button" data-sample="test@gmail.com">test@gmail.com</button>
+      <button class="chip" type="button" data-sample="test@gmial.com">test@gmial.com <span class="le">(typo)</span><span class="lz">（拼错）</span></button>
+      <button class="chip" type="button" data-sample="someone@mailinator.com">someone@mailinator.com <span class="le">(disposable)</span><span class="lz">（一次性）</span></button>
+    </div>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
 
   <div class="answer">
     <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
@@ -67,18 +85,6 @@
   <div class="le"><p>Keep them, but keep them apart. Segment catch-all addresses out of your main list, rank them by the risk signals you do have (domain age, MX health, whether the address pattern matches a real person's name format), and mail them in small batches with bounce monitoring. The mistake is binary thinking — deleting a third of a B2B list throws away real customers, and mailing it blind risks your sender reputation.</p></div>
   <div class="lz"><p>留着，但分开。把 catch-all 地址从主名单里分出来，用你手里有的风险信号排序（域名年龄、MX 健康度、地址格式像不像真人姓名格式），小批量发送并盯退信。二元思维才是错误：删掉 B2B 名单的三分之一等于扔掉真实客户，闭眼群发则拿发信声誉冒险。</p></div>
 
-
-  <section class="tool" aria-label="Try EmailCheck">
-    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
-    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
-    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
-    <form id="ec-form">
-      <input type="email" id="ec-email" value="anyone@github.com" autocomplete="off" required>
-      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
-    </form>
-    <p class="err" id="ec-error" role="alert"></p>
-    <div class="result" id="ec-result" aria-live="polite"></div>
-  </section>
 
   <div class="boundary">
     <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
