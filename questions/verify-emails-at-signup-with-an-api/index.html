@@ -1,1 +1,116 @@
-<!-- placeholder -->
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How do I verify emails at signup with an API? — EmailCheck</title>
+<meta name="description" content="Call a validation endpoint once, when the form is submitted, and act on the verdict in three bands. Block the hard-invalid: bad syntax, dead domains, no MX…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/verify-emails-at-signup-with-an-api/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="How do I verify emails at signup with an API?">
+<meta property="og:description" content="Call a validation endpoint once, when the form is submitted, and act on the verdict in three bands. Block the hard-invalid: bad syntax, dead domains, no MX…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/verify-emails-at-signup-with-an-api/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How do I verify emails at signup with an API?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Call a validation endpoint once, when the form is submitted, and act on the verdict in three bands. Block the hard-invalid: bad syntax, dead domains, no MX records — those accounts can never receive a confirmation email anyway. Warn, don't block, on the fixable: a likely typo (the API returns a suggestion like gmail.com for gmial.com) and disposable addresses, where your policy decides. Let everything else through, including catch-all domains, flagged with the risk signal for later segmentation. With EmailCheck that is one GET or POST to /validate per signup; the free tier covers 100 checks a month for wiring and testing."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How do I verify emails at signup with an API?</p>
+  <h1><span class="le">How do I verify emails at signup with an API?</span><span class="lz">怎么在注册环节用 API 验证邮箱？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Call a validation endpoint once, when the form is submitted, and act on the verdict in three bands. Block the hard-invalid: bad syntax, dead domains, no MX records — those accounts can never receive a confirmation email anyway. Warn, don't block, on the fixable: a likely typo (the API returns a suggestion like gmail.com for gmial.com) and disposable addresses, where your policy decides. Let everything else through, including catch-all domains, flagged with the risk signal for later segmentation. With EmailCheck that is one GET or POST to /validate per signup; the free tier covers 100 checks a month for wiring and testing.</p>
+    <p class="lz">在表单提交时调一次验证接口，按三档处理裁决。硬无效直接拦：格式错误、死域名、没有 MX——这类账号本来也收不到确认邮件。可修的只警告、不拦截：大概率拼写错误（接口会返回建议，如 gmial.com → gmail.com）和一次性地址，后者拦不拦由你的产品政策定。其余全部放行，包括 catch-all 域名，只带上风险信号供事后分区。用 EmailCheck 就是每次注册对 /validate 发一个 GET 或 POST；免费档每月 100 次，够接线和测试。</p>
+  </div>
+
+  <h2><span class="le">The three bands: block, warn, allow</span><span class="lz">三档处理：拦、警告、放行</span></h2>
+  <div class="le"><p>Most signup-verification bugs come from treating the verdict as binary. A validation result has at least three bands, and each deserves a different UX:</p>
+<ul>
+<li><strong>Block — hard invalid.</strong> Syntax errors, domains that do not exist, domains with no mail server. There is no account-recovery or confirmation path for these addresses; accepting them creates a dead account and a guaranteed bounce. Show a plain error and let the user correct the field.</li>
+<li><strong>Warn — fixable or policy cases.</strong> A typo suggestion (“Did you mean gmail.com?”) converts a lost signup into a good one with a single click — never silently autocorrect, always confirm with the user. Disposable addresses are a policy call: a free-trial product may block them, a newsletter may merely flag them.</li>
+<li><strong>Allow — everything else, flagged.</strong> Valid domains, role accounts (support@, admin@) if your product allows them, and catch-all domains with their <code>catchAllRisk</code> signal stored on the account for later segmentation — not silently treated as proven.</li>
+</ul></div>
+  <div class="lz"><p>注册验证的大多数 bug 来自把裁决当二值。一次验证结果至少有三档，每档配不同的交互：</p>
+<ul>
+<li><strong>拦——硬无效。</strong>格式错误、域名不存在、域名没有邮件服务器。这类地址没有找回账号和确认邮件的任何路径；收下来就是一个死账号加一次必定的退信。给出明确报错，让用户改字段。</li>
+<li><strong>警告——可修或看政策。</strong>拼写建议（「你是不是想填 gmail.com？」）一次点击就能把流失的注册救回来——绝不静默自动纠正，永远让用户确认。一次性地址看政策：免费试用产品可以拦，订阅通讯可以只标记。</li>
+<li><strong>放行——其余全部，带标记。</strong>有效域名、你的产品允许的角色账号（support@、admin@），以及 catch-all 域名——把它的 <code>catchAllRisk</code> 信号存到账号上供事后分区，不要静默当作已证实。</li>
+</ul></div>
+  <h2><span class="le">Where to put the call (and where not to)</span><span class="lz">调用放哪儿（以及不放哪儿）</span></h2>
+  <div class="le"><p>Call on <strong>submit</strong>, not on every keystroke: one check per attempted signup is enough, keeps you inside free-tier limits while testing, and avoids hammering the API from half-typed addresses. Debounce-and-check on blur is acceptable for the typo suggestion alone, but the blocking decision belongs at submit, with the full address final.</p>
+<p>Fail open, deliberately: if the validation call times out or errors, let the signup through and log it for a later batch re-check. A verification outage must never become your outage — but “fail open” should be a written policy with a re-check queue, not an accident you discover from bounce reports. And never block on mailbox existence: no API can check it at domain level (see the linked page on what verification actually checks), so do not design a step that pretends to.</p></div>
+  <div class="lz"><p>在<strong>提交时</strong>调，不要每次按键都调：每次尝试注册查一次就够，测试期也压得住免费档额度，还不会拿打了一半的地址去轰接口。只为拼写建议在失焦时查一次也可以，但拦截决策必须放在提交时、用最终完整地址。</p>
+<p>要有意地「失败放行」：验证调用超时或报错时，让注册通过，并把地址记进事后批量复查队列。验证服务故障绝不能变成你的故障——但「失败放行」应该是写下来的政策加复查队列，而不是等退信报告来了才发现的事故。另外，绝不要拿邮箱存在性做拦截点：域名级检查查不了这个（见链接页对验证到底查什么的说明），不要设计一个假装能查的环节。</p></div>
+  <h2><span class="le">Wiring it with EmailCheck</span><span class="lz">用 EmailCheck 接线</span></h2>
+  <div class="le"><p>The single-check endpoint is <code>GET /validate?email=…</code> (POST works too) on the EmailCheck API, listed on RapidAPI with a free BASIC tier of 100 checks a month — enough to wire the integration and test every band. Each response carries the fields the three-band logic needs: <code>valid</code> and <code>verdict</code>, per-check flags (syntax, domain, MX, disposable, role account), a <code>suggestion</code> when a typo looks likely, the graded score, and <code>catchAllRisk</code> for the allow-with-flag band. It also states <code>scope: "domain-level"</code> in every response, so what you are deciding on is never ambiguous.</p>
+<p>Try the box on this page with <code>newuser@gmial.com</code>: the live API flags the typo and suggests gmail.com — the warn band, working end to end. When your existing user base needs the same treatment in bulk, the batch endpoint takes up to 100 addresses per call (see the linked bulk page).</p></div>
+  <div class="lz"><p>单查端点是 EmailCheck API 的 <code>GET /validate?email=…</code>（POST 也可以），在 RapidAPI 上架，免费 BASIC 档每月 100 次——够把集成接完、三档都测一遍。每个响应都带三档逻辑需要的字段：<code>valid</code> 与 <code>verdict</code>、逐项标记（格式、域名、MX、一次性、角色账号）、拼写大概率出错时的 <code>suggestion</code>、分级分数，以及给「放行带标记」档用的 <code>catchAllRisk</code>。每个响应还写明 <code>scope: "domain-level"</code>，你依据什么做决定永远不含糊。</p>
+<p>用本页的框试 <code>newuser@gmial.com</code>：生产 API 会标出拼写错误并建议 gmail.com——警告档，端到端跑通。你现有的存量用户需要同样处理时，批量端点一次可查 100 条（见链接的批量页）。</p></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="newuser@gmial.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
+    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../catch-email-typos-like-gmial-com-at-signup/">How do I catch email typos like gmial.com at signup?</a></li>
+    <li><a href="../best-email-verification-api/">What is the best email verification API?</a></li>
+    <li><a href="../verify-a-list-of-emails-in-bulk/">How do I verify a list of emails in bulk without calling the API one by one?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
