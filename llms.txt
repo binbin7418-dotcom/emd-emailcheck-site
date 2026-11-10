@@ -54,5 +54,6 @@ is under review.
 - /questions/catch-email-typos-like-gmial-com-at-signup/
 - /questions/why-are-so-many-b2b-addresses-on-catch-all-domains/
 - /questions/why-do-emails-bounce/
+- /questions/verify-emails-at-signup-with-an-api/
 
 Contact: binbin7418@gmail.com
