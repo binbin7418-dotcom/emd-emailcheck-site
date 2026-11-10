@@ -53,5 +53,6 @@ is under review.
 - /questions/what-does-a-risky-email-verdict-mean/
 - /questions/catch-email-typos-like-gmial-com-at-signup/
 - /questions/why-are-so-many-b2b-addresses-on-catch-all-domains/
+- /questions/why-do-emails-bounce/
 
 Contact: binbin7418@gmail.com
