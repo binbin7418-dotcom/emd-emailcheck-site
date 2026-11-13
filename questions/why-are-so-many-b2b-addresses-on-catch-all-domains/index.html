@@ -61,13 +61,13 @@
   <div class="lz"><p>对企业来说，catch-all 是理性默认。员工来来去去，外人会猜地址格式（firstname@、首字母-lastname@），一封被拒的邮件可能意味着一条谁都不知道的线索就丢了。全收、事后再过滤，等于用一个可管理的垃圾邮件问题，换掉一个管不了的沉默问题。中小公司——多数 B2B 名单的主体——最常这样选，所以占比才这么高。</p></div>
   <h2><span class="le">What it means for your list</span><span class="lz">这对你的名单意味着什么</span></h2>
   <div class="le"><ul>
-<li><strong>There is a hard ceiling on verification.</strong> On a catch-all domain, no domain-level (or SMTP-probing) check can confirm a mailbox. Any tool that reports a clean verdict for that third of your list is scoring, not verifying.</li>
+<li><strong>Catch-all domains call for a signal, not a stamp.</strong> EmailCheck scores that third of your list with a catch-all risk signal, so you can segment it and decide per segment instead of treating every address as confirmed.</li>
 <li><strong>Don't delete them.</strong> A third of a B2B list contains real customers at real companies. Deleting on “unverifiable” throws away pipeline.</li>
 <li><strong>Don't blend them either.</strong> Mail catch-all addresses as their own segment, in smaller batches, with bounce monitoring, so a bad pocket cannot damage the sender reputation your verified segment relies on.</li>
 <li><strong>Rank by the signals you have.</strong> MX health, domain age, typo and disposable flags all still work on catch-all domains — EmailCheck returns them per address, with <code>catchAllRisk</code> marking the segment, and the batch endpoint's summary lets you see the segment's size before you send.</li>
 </ul></div>
   <div class="lz"><ul>
-<li><strong>验证有硬天花板。</strong>在 catch-all 域名上，域名级（乃至 SMTP 探测）检查都无法确认邮箱。任何对这三分之一名单报告「干净」裁决的工具，都是在打分，不是在验证。</li>
+<li><strong>Catch-all 域名要的是信号，不是印章。</strong>EmailCheck 给这三分之一名单打上 catch-all 风险信号，你可以分段处理、逐段决定，而不是把每个地址都当成已确认。</li>
 <li><strong>不要删掉它们。</strong>B2B 名单的三分之一里是真公司里的真客户。因「不可验证」删掉，等于扔掉管线。</li>
 <li><strong>也不要混着发。</strong>把 catch-all 地址当作独立分区分开发、小批量、盯退信，让坏口袋伤不到你已验证分区依赖的发信声誉。</li>
 <li><strong>用你有的信号排序。</strong>MX 健康度、域名年龄、拼写与一次性标记在 catch-all 域名上照样有效——EmailCheck 逐条返回，并用 <code>catchAllRisk</code> 标出这个分区；批量端点的 summary 让你在发送前就看到这个分区的大小。</li>
@@ -87,8 +87,8 @@
   </section>
 
   <div class="boundary">
-    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
-    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
   </div>
 
   <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
@@ -101,7 +101,7 @@
 
 <footer>
   <div class="foot-in">
-    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
     <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
   </div>
 </footer>
