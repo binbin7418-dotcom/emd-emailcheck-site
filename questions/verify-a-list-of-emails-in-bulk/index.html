@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How do I verify a list of emails in bulk without calling the API one by one? — EmailCheck</title>
+<title>How do I verify a list of emails in bulk? — EmailCheck</title>
 <meta name="description" content="Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a…">
 <link rel="canonical" href="https://email.newkwlab.com/questions/verify-a-list-of-emails-in-bulk/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EmailCheck">
-<meta property="og:title" content="How do I verify a list of emails in bulk without calling the API one by one?">
+<meta property="og:title" content="How do I verify a list of emails in bulk?">
 <meta property="og:description" content="Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a…">
 <meta property="og:url" content="https://email.newkwlab.com/questions/verify-a-list-of-emails-in-bulk/">
 <link rel="stylesheet" href="../../assets/style.css">
@@ -19,10 +19,10 @@
  "mainEntity": [
   {
    "@type": "Question",
-   "name": "How do I verify a list of emails in bulk without calling the API one by one?",
+   "name": "How do I verify a list of emails in bulk?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a summary of counts and percentages (valid / risky / invalid / disposable / likely typos). A bad entry marks only itself — it never fails the batch. This is not a theoretical feature: our first paying subscriber runs every one of his checks through the batch endpoint."
+    "text": "Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a summary of counts and percentages (valid / risky / invalid / disposable / likely typos). A bad entry marks only itself — it never fails the batch. This is not a theoretical feature: our first paying subscriber runs every one of his checks through the batch endpoint. In a browser instead? The Bulk Email Checker page runs the same endpoint — paste a list, get verdicts, no sign-up."
    }
   }
  ]
@@ -46,13 +46,13 @@
 </header>
 
 <main>
-  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How do I verify a list of emails in bulk without calling the API one by one?</p>
-  <h1><span class="le">How do I verify a list of emails in bulk without calling the API one by one?</span><span class="lz">怎么批量验证一份邮箱名单，不用一个一个调 API？</span></h1>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How do I verify a list of emails in bulk?</p>
+  <h1><span class="le">How do I verify a list of emails in bulk?</span><span class="lz">怎么批量验证一份邮箱名单？</span></h1>
 
   <div class="answer">
     <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
-    <p class="le">Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a summary of counts and percentages (valid / risky / invalid / disposable / likely typos). A bad entry marks only itself — it never fails the batch. This is not a theoretical feature: our first paying subscriber runs every one of his checks through the batch endpoint.</p>
-    <p class="lz">用批量端点：一次把最多 100 个地址 POST 到 /validate/batch，每条都带自己的裁决、分数与逐项检查返回，另附计数与百分比汇总（valid / risky / invalid / 一次性 / 疑似拼错）。坏条目只标自己——不连坐整批。这不是纸面功能：我们的第一个付费订阅者，全部检查都走这个端点。</p>
+    <p class="le">Use the batch endpoint: POST up to 100 addresses to /validate/batch in one call, and get every address back with its own verdict, score and checks, plus a summary of counts and percentages (valid / risky / invalid / disposable / likely typos). A bad entry marks only itself — it never fails the batch. This is not a theoretical feature: our first paying subscriber runs every one of his checks through the batch endpoint. In a browser instead? The <a href="../../bulk-email-checker/">Bulk Email Checker</a> page runs the same endpoint — paste a list, get verdicts, no sign-up.</p>
+    <p class="lz">用批量端点：一次把最多 100 个地址 POST 到 /validate/batch，每条都带自己的裁决、分数与逐项检查返回，另附计数与百分比汇总（valid / risky / invalid / 一次性 / 疑似拼错）。坏条目只标自己——不连坐整批。这不是纸面功能：我们的第一个付费订阅者，全部检查都走这个端点。想在浏览器里直接用？<a href="../../bulk-email-checker/">Bulk Email Checker</a> 页跑的就是同一个端点——粘贴名单、拿裁决、不用注册。</p>
   </div>
 
   <h2><span class="le">How the batch call works</span><span class="lz">批量调用怎么工作</span></h2>
@@ -78,6 +78,9 @@ someone@mailinator.com</textarea>
     <p class="err" id="ecb-error" role="alert"></p>
     <div class="result" id="ecb-result" aria-live="polite"></div>
   </section>
+
+  <p class="le">Doing this regularly? The <a href="../../bulk-email-checker/">Bulk Email Checker</a> page adds file upload, a reason for every row and a CSV download on top of the same endpoint.</p>
+  <p class="lz">经常要验名单？<a href="../../bulk-email-checker/">Bulk Email Checker</a> 页在同一个端点之上多了文件上传、逐行原因和 CSV 下载。</p>
 
   <div class="boundary">
     <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
