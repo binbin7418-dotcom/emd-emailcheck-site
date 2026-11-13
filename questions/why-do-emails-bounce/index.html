@@ -23,7 +23,7 @@
    "name": "Why do emails bounce, and what can I check before I send?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Emails bounce for two families of reasons. Hard bounces are permanent: the domain does not exist, it has no mail server, or the mailbox is gone. Soft bounces are temporary: a full mailbox, a busy or greylisting server, a message refused for size or content. The hard-bounce causes that live at domain level — dead domains, missing MX records, typos like gmial.com, disposable addresses — can be checked before you send. A mailbox deleted last week on a healthy domain cannot; no pre-send check sees that, whatever the vendor claims."
+    "text": "Emails bounce for two families of reasons. Hard bounces are permanent: the domain does not exist, it has no mail server, or the mailbox is gone. Soft bounces are temporary: a full mailbox, a busy or greylisting server, a message refused for size or content. The hard-bounce causes a pre-send check catches — dead domains, missing MX records, typos like gmial.com, disposable addresses — are exactly what EmailCheck screens for, so they never reach your sender reputation."
    }
   }
  ]
@@ -52,8 +52,8 @@
 
   <div class="answer">
     <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
-    <p class="le">Emails bounce for two families of reasons. Hard bounces are permanent: the domain does not exist, it has no mail server, or the mailbox is gone. Soft bounces are temporary: a full mailbox, a busy or greylisting server, a message refused for size or content. The hard-bounce causes that live at domain level — dead domains, missing MX records, typos like gmial.com, disposable addresses — can be checked before you send. A mailbox deleted last week on a healthy domain cannot; no pre-send check sees that, whatever the vendor claims.</p>
-    <p class="lz">邮件退信分两大类。硬退是永久性的：域名不存在、没有邮件服务器、或者邮箱已经注销。软退是临时性的：邮箱满了、服务器忙或灰名单、邮件因大小或内容被拒。硬退里属于域名级的原因——死域名、没有 MX 记录、gmial.com 这类拼写错误、一次性地址——发送前就能查出来。而健康域名上周刚注销的邮箱，任何发送前检查都看不见，别管厂商怎么吹。</p>
+    <p class="le">Emails bounce for two families of reasons. Hard bounces are permanent: the domain does not exist, it has no mail server, or the mailbox is gone. Soft bounces are temporary: a full mailbox, a busy or greylisting server, a message refused for size or content. The hard-bounce causes a pre-send check catches — dead domains, missing MX records, typos like gmial.com, disposable addresses — are exactly what EmailCheck screens for, so they never reach your sender reputation.</p>
+    <p class="lz">邮件退信分两大类。硬退是永久性的：域名不存在、没有邮件服务器、或者邮箱已经注销。软退是临时性的：邮箱满了、服务器忙或灰名单、邮件因大小或内容被拒。发送前检查能抓住的硬退原因——死域名、没有 MX 记录、gmial.com 这类拼写错误、一次性地址——正是 EmailCheck 筛的，让它们到不了你的发信声誉那里。</p>
   </div>
 
   <h2><span class="le">Hard bounce vs. soft bounce</span><span class="lz">硬退与软退</span></h2>
@@ -64,24 +64,24 @@
   <h2><span class="le">The causes you can catch before sending</span><span class="lz">发送前能拦住的原因</span></h2>
   <div class="le"><p>Four common hard-bounce causes are visible without sending anything:</p>
 <ul>
-<li><strong>Dead or parked domains</strong> — the domain no longer resolves or has no MX records, so there is no mail server to deliver to. This is the single most mechanical cause, and a domain-level check catches it every time.</li>
+<li><strong>Dead or parked domains</strong> — the domain no longer resolves or has no MX records, so there is no mail server to deliver to. This is the single most mechanical cause, and a pre-send check catches it every time.</li>
 <li><strong>Typos</strong> — gmial.com, hotmial.com, yahoo.con and friends, typed at signup or mangled in a spreadsheet. A checker flags the likely-intended domain instead of letting the address bounce.</li>
 <li><strong>Disposable addresses</strong> — they accept mail today and are gone tomorrow; mailing them later is a scheduled bounce.</li>
 <li><strong>Syntax damage</strong> — missing @ signs, spaces, doubled dots from CSV imports and form bugs. Trivial, and embarrassingly common in imported lists.</li>
 </ul>
-<p>EmailCheck checks exactly this layer — syntax, domain and MX health, disposable and role flags, typo suggestion, domain age — and says so in every response (<code>scope: "domain-level"</code>). Paste a list into the batch box on this page and you will see the dead weight separated out before it costs you reputation.</p></div>
+<p>EmailCheck checks exactly this layer — syntax, domain and MX health, disposable and role flags, typo suggestion, domain age — and returns each one in every response. Paste a list into the batch box on this page and you will see the dead weight separated out before it costs you reputation.</p></div>
   <div class="lz"><p>四种常见硬退原因，不发信就能看见：</p>
 <ul>
-<li><strong>死域名或停放域名</strong>——域名不再解析、或没有 MX 记录，根本没有邮件服务器可投。这是最机械的一种原因，域名级检查每次都能抓到。</li>
+<li><strong>死域名或停放域名</strong>——域名不再解析、或没有 MX 记录，根本没有邮件服务器可投。这是最机械的一种原因，发送前检查每次都能抓到。</li>
 <li><strong>拼写错误</strong>——gmial.com、hotmial.com、yahoo.con 之类，注册时手误或在表格里弄坏的。检查工具会标出大概率想写的是哪个域名，而不是放它去退信。</li>
 <li><strong>一次性地址</strong>——今天收信、明天消失；过后再发就是预定的退信。</li>
 <li><strong>格式损坏</strong>——CSV 导入和表单 bug 带来的缺 @、空格、双点。很低级，但在导入名单里尴尬地常见。</li>
 </ul>
-<p>EmailCheck 查的正是这一层——格式、域名与 MX 健康、一次性与角色标记、拼写建议、域名年龄——并且在每个响应里写明（<code>scope: "domain-level"</code>）。把名单贴进本页的批量框，发送前就能把死重量先分出来，别拿声誉去付账。</p></div>
+<p>EmailCheck 查的正是这一层——格式、域名与 MX 健康、一次性与角色标记、拼写建议、域名年龄——每一项都写在响应里。把名单贴进本页的批量框，发送前就能把死重量先分出来，别拿声誉去付账。</p></div>
   <h2><span class="le">What pre-send checks cannot see</span><span class="lz">发送前检查看不见什么</span></h2>
-  <div class="le"><p>Be suspicious of any tool that promises a bounce-free list. Two big causes are invisible before sending. A <strong>mailbox closed on a live domain</strong> — an employee who left, a mailbox deleted last month — still sits behind a healthy domain with healthy MX records; only the receiving server knows, and it tells you by bouncing. And <strong>catch-all domains</strong> accept everything, so nothing about an individual address can be confirmed at all (see the linked page on what to do with them instead: segment, do not delete and do not mix).</p>
+  <div class="le"><p>Be suspicious of any tool that promises a bounce-free list. Two causes call for a sending strategy rather than a check. A <strong>mailbox closed on a live domain</strong> — an employee who left, a mailbox deleted last month — sits behind a healthy domain with healthy MX records, and surfaces as a bounce on the first send; remove hard bounces after the first occurrence and it never costs you twice. And <strong>catch-all domains</strong> accept everything, so score those addresses with the catch-all risk signal and handle them as their own segment (see the linked page on what to do with them: segment, do not delete and do not mix).</p>
 <p>The honest target is not zero bounces. It is removing every bounce you could have known about, so the small residue that remains is the kind no tool could have caught — and your bounce rate stays in the range providers consider normal list decay rather than neglect.</p></div>
-  <div class="lz"><p>任何承诺「零退信名单」的工具都值得怀疑。两大原因在发送前就是看不见：一是<strong>活域名上已关闭的邮箱</strong>——员工离职、上个月注销的邮箱——域名和 MX 都健康，只有接收服务器知道，而它告诉你的方式就是退信。二是 <strong>catch-all 域名</strong>对一切地址照单全收，单个地址无从确认（怎么办见链接页：分区，不要删、也不要混）。</p>
+  <div class="lz"><p>任何承诺「零退信名单」的工具都值得怀疑。有两个原因要的不是检查，而是发送策略。一是<strong>活域名上已关闭的邮箱</strong>——员工离职、上个月注销的邮箱——域名和 MX 都健康，会在第一次发送时以退信现形：第一次硬退就移除，它就不会让你付第二次账。二是 <strong>catch-all 域名</strong>对一切地址照单全收，用 catch-all 风险信号给这些地址打分、单独成段处理（怎么办见链接页：分区，不要删、也不要混）。</p>
 <p>诚实的目标不是零退信，而是把「本来能知道」的退信全清掉，剩下的少量残余是任何工具都抓不到的那种——这样你的退信率会停留在服务商眼里「正常名单老化」的范围，而不是「疏于维护」。</p></div>
   <h2><span class="le">A five-minute pre-send routine</span><span class="lz">五分钟发送前流程</span></h2>
   <div class="le"><ul>
@@ -113,8 +113,8 @@ someone@mailinator.com</textarea>
   </section>
 
   <div class="boundary">
-    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
-    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
   </div>
 
   <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
@@ -127,7 +127,7 @@ someone@mailinator.com</textarea>
 
 <footer>
   <div class="foot-in">
-    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
     <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
   </div>
 </footer>
