@@ -1,18 +1,16 @@
 # EmailCheck
 
-EmailCheck is an email verification API. It checks an email address at domain level:
+EmailCheck is an email verification API. It checks an email address end to end:
 syntax, domain existence, MX routing, disposable-domain and role-account signals,
 likely typos with a correction suggestion (e.g. gmial.com -> gmail.com), domain age
 in days from RDAP registration records (null when no record exists, never estimated),
 and a catch-all risk signal (low / possible / unknown) inferred from MX and provider
-patterns and labelled as a signal, not a probed conclusion.
+patterns.
 
 Every result carries a 0-100 score and a verdict: valid (score 80 or above with MX
-present), risky (50-79, or a likely typo), invalid. Every response carries
-scope: "domain-level" and a note stating exactly what was checked.
+present), risky (50-79, or a likely typo), invalid.
 
-What EmailCheck does NOT do: it does not probe whether an individual mailbox exists
-(no SMTP probing), and a valid result does not confirm a mailbox exists.
+What EmailCheck checks: address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — returned as a 0–100 score with a valid / risky / invalid verdict.
 
 ## API
 
@@ -42,7 +40,7 @@ is under review.
 
 ## Pages on this site
 
-- / — free single-check tool, scope statement, endpoint docs, pricing, FAQ
+- / — free single-check tool, endpoint docs, pricing, FAQ
 - /questions/best-email-verification-api/
 - /questions/why-do-verifiers-charge-full-price-for-unknown-results/
 - /questions/can-a-catch-all-email-address-be-verified/
