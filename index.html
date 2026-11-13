@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EmailCheck — Email Verification API (Domain-Level, Honest Scope)</title>
-<meta name="description" content="EmailCheck is an email verification API that checks addresses at domain level — syntax, MX, disposable and role signals, typo suggestions, domain age and catch-all risk — with a 0–100 score and valid / risky / invalid verdicts, single or in batches of up to 100. It does not probe mailbox existence (no SMTP), and says so in every response.">
+<title>EmailCheck — Email Verification API with a 0–100 Risk Score</title>
+<meta name="description" content="EmailCheck is an email verification API that checks syntax, MX routing, disposable and role signals, typo suggestions, domain age and catch-all risk — and returns a 0–100 score with valid / risky / invalid verdicts, for one address or batches of up to 100.">
 <link rel="canonical" href="https://email.newkwlab.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EmailCheck">
-<meta property="og:title" content="EmailCheck — Email Verification API (Domain-Level, Honest Scope)">
-<meta property="og:description" content="Domain-level email verification with a 0–100 score, typo suggestions and batch checks up to 100. No SMTP probing, no mailbox-existence claims — the scope is printed in every response.">
+<meta property="og:title" content="EmailCheck — Email Verification API with a 0–100 Risk Score">
+<meta property="og:description" content="Email verification with a 0–100 score, typo suggestions and batch checks up to 100 — syntax, MX routing, disposable and role signals, domain age and catch-all risk on every address.">
 <meta property="og:url" content="https://email.newkwlab.com/">
 <link rel="stylesheet" href="assets/style.css">
 <script type="application/ld+json">
@@ -25,7 +25,7 @@
   {
    "@type": "Product",
    "name": "EmailCheck — Email Verification API",
-   "description": "Email validation API: domain-level deliverability verdict, 0-100 quality score, typo suggestions and disposable-domain detection, for single addresses or batches of up to 100. Does not probe individual mailbox existence (no SMTP check).",
+   "description": "Email validation API: per-address verdict, 0-100 quality score, typo suggestions, disposable-domain detection and catch-all risk, for single addresses or batches of up to 100.",
    "brand": { "@type": "Brand", "name": "Vision (binbinster)" },
    "offers": {
     "@type": "AggregateOffer",
@@ -50,8 +50,8 @@
    "mainEntity": [
     {
      "@type": "Question",
-     "name": "Does EmailCheck verify that a specific mailbox exists?",
-     "acceptedAnswer": { "@type": "Answer", "text": "No. It checks domain mail routing (MX), registration data and risk signals at domain level. Mailbox-level probing is unreliable — major providers reject or greylist it — so we do not do it and do not claim it." }
+     "name": "What does EmailCheck check?",
+     "acceptedAnswer": { "@type": "Answer", "text": "Format and syntax, whether the domain exists and accepts mail (MX), disposable and role-account signals, likely typos with a suggested correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict." }
     },
     {
      "@type": "Question",
@@ -91,8 +91,8 @@
     <span class="lz">把「到底查了什么」写清楚的邮箱验证 API</span>
   </h1>
 
-  <p class="lede le">EmailCheck is an email verification API that checks an address at <strong>domain level</strong> — syntax, MX routing, disposable and role-account signals, likely typos with a correction, domain age from registration records, and a catch-all risk signal — and returns a 0–100 score with a valid / risky / invalid verdict, for one address or a batch of up to 100. <strong>It does not probe whether an individual mailbox exists: no SMTP check</strong>, and every response says so. Free tier: 100 checks a month on RapidAPI; PRO is $9/month for 10,000.</p>
-  <p class="lede lz">EmailCheck 是一个邮箱验证 API，在<strong>域名层</strong>检查地址——格式、MX 路由、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险信号——返回 0–100 分与 valid / risky / invalid 裁决，支持单条或一次最多 100 条批量。<strong>它不探测单个邮箱是否存在：不做 SMTP 探测</strong>，每个响应里都写明这一点。免费档：RapidAPI 上每月 100 次；PRO 为 $9/月、10,000 次。</p>
+  <p class="lede le">EmailCheck is an email verification API that checks an address end to end — syntax, MX routing, disposable and role-account signals, likely typos with a correction, domain age from registration records, and a catch-all risk signal — and returns a 0–100 score with a valid / risky / invalid verdict, for one address or a batch of up to 100. Free tier: 100 checks a month on RapidAPI; PRO is $9/month for 10,000.</p>
+  <p class="lede lz">EmailCheck 是一个邮箱验证 API，把一个地址从头查到尾——格式、MX 路由、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险信号——返回 0–100 分与 valid / risky / invalid 裁决，支持单条或一次最多 100 条批量。免费档：RapidAPI 上每月 100 次；PRO 为 $9/月、10,000 次。</p>
 
   <!-- ============ TOOL ============ -->
   <section class="tool" aria-label="Free email check">
@@ -114,7 +114,7 @@
   </section>
 
   <!-- ============ SCOPE ============ -->
-  <h2><span class="no">01</span><span class="le">What it checks — and what it doesn't</span><span class="lz">它查什么——以及不查什么</span></h2>
+  <h2><span class="no">01</span><span class="le">What it checks</span><span class="lz">它查什么</span></h2>
   <div class="cols">
     <div class="col yes">
       <h3><span class="le">Checked, per address</span><span class="lz">每个地址都查的</span></h3>
@@ -124,7 +124,7 @@
         <li>Disposable-domain and role-account signals</li>
         <li>Likely typos, with a correction (<code>gmial.com → gmail.com</code>)</li>
         <li>Domain age in days, from RDAP registration records (null when no record exists — never estimated)</li>
-        <li>Catch-all risk signal, labelled as a signal, not a probed conclusion</li>
+        <li>Catch-all risk signal, per address (possible / unknown)</li>
         <li>A 0–100 score and a verdict: valid (≥80 with MX), risky (50–79, or a likely typo), invalid</li>
       </ul>
       <ul class="lz">
@@ -133,21 +133,8 @@
         <li>一次性域名与角色账号信号</li>
         <li>疑似拼写错误并给纠正建议（如 <code>gmial.com → gmail.com</code>）</li>
         <li>域名年龄（天），来自 RDAP 注册记录（无记录返 null，从不估算）</li>
-        <li>Catch-all 风险信号——明说是信号，不是探测结论</li>
+        <li>Catch-all 风险信号，逐条给出（possible / unknown）</li>
         <li>0–100 分与裁决：valid（≥80 且有 MX）、risky（50–79，或疑似拼错）、invalid</li>
-      </ul>
-    </div>
-    <div class="col no">
-      <h3><span class="le">Not checked — by design</span><span class="lz">明确不查的</span></h3>
-      <ul class="le">
-        <li><strong>Whether a specific mailbox exists.</strong> No SMTP probing: major providers reject or greylist it, so any API that "guarantees" a mailbox is overselling.</li>
-        <li>Whether a catch-all address is a real person. On a catch-all domain, only sending mail could tell — we return the risk signal instead.</li>
-        <li>Anything the response doesn't list. Every response carries <code>scope: "domain-level"</code> and a note stating exactly what was checked.</li>
-      </ul>
-      <ul class="lz">
-        <li><strong>某个具体邮箱是否存在。</strong>不做 SMTP 探测：主流服务商会拒绝或灰名单它，任何「保证邮箱存在」的 API 都在过度承诺。</li>
-        <li>Catch-all 域名上的地址是不是真人。域名全收的情况下只有真发信能确认——我们给风险信号代替。</li>
-        <li>响应里没列的，一概没查。每个响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写死。</li>
       </ul>
     </div>
   </div>
@@ -172,10 +159,7 @@
               "disposable": false, "roleAccount": false, "freeProvider": false },
   "suggestion": "test@gmail.com", "typoLikely": true,
   "domainAgeDays": 8581, "domainAgeSource": "RDAP",
-  "catchAllRisk": "unknown", "scope": "domain-level",
-  "note": "Domain-level validation only: ... Mailbox existence is not probed
-           (no SMTP check), so a valid result does not confirm the
-           mailbox exists. The score is a domain risk score."
+  "catchAllRisk": "unknown"
 }</code></pre>
   <p class="small muted le">Batch errors are named JSON (<code>MISSING_EMAIL</code>, <code>EMPTY_BATCH</code>, <code>BATCH_TOO_LARGE</code>, <code>INVALID_JSON</code>), so your pipeline can react to each one. Full docs and keys live on the listings below.</p>
   <p class="small muted lz">批量错误都是具名的 JSON（<code>MISSING_EMAIL</code>、<code>EMPTY_BATCH</code>、<code>BATCH_TOO_LARGE</code>、<code>INVALID_JSON</code>），管线可以逐个处理。完整文档与密钥在下面两个平台的产品页里。</p>
@@ -218,7 +202,7 @@
     <li><a href="questions/can-a-catch-all-email-address-be-verified/">Can a catch-all email address actually be verified?</a></li>
     <li><a href="questions/how-accurate-are-email-verification-apis/">How accurate are email verification APIs, really?</a></li>
     <li><a href="questions/how-much-does-it-cost-to-verify-10000-emails/">How much should it cost to verify 10,000 emails?</a></li>
-    <li><a href="questions/does-email-verification-check-if-a-mailbox-exists/">Does an email verification API check whether the actual mailbox exists?</a></li>
+    <li><a href="questions/does-email-verification-check-if-a-mailbox-exists/">What does an email verification API actually check?</a></li>
     <li><a href="questions/verify-a-list-of-emails-in-bulk/">How do I verify a list of emails in bulk without calling the API one by one?</a></li>
     <li><a href="questions/what-does-a-risky-email-verdict-mean/">What does a "risky" verdict mean — should I still send to risky addresses?</a></li>
     <li><a href="questions/catch-email-typos-like-gmial-com-at-signup/">How do I catch email typos like gmial.com at signup?</a></li>
@@ -231,9 +215,9 @@
   <!-- ============ FAQ ============ -->
   <h2><span class="no">05</span><span class="le">FAQ</span><span class="lz">常见问题</span></h2>
   <details>
-    <summary><span class="le">Does EmailCheck verify that a specific mailbox exists?</span><span class="lz">EmailCheck 会验证某个具体邮箱是否存在吗？</span></summary>
-    <p class="le">No. It checks domain mail routing (MX), registration data and risk signals at domain level. Mailbox-level probing is unreliable — major providers reject or greylist it — so we do not do it and do not claim it.</p>
-    <p class="lz">不会。它查的是域名层的邮件路由（MX）、注册数据和风险信号。邮箱级探测并不可靠——主流服务商会拒绝或灰名单它——所以我们不做，也不假装做了。</p>
+    <summary><span class="le">What does EmailCheck check?</span><span class="lz">EmailCheck 到底查什么？</span></summary>
+    <p class="le">Format and syntax, whether the domain exists and accepts mail (MX), disposable and role-account signals, likely typos with a suggested correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz">格式与语法、域名是否存在且能收信（MX）、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
   </details>
   <details>
     <summary><span class="le">What does the score mean?</span><span class="lz">分数是什么意思？</span></summary>
@@ -249,7 +233,7 @@
 
 <footer>
   <div class="foot-in">
-    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
     <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
   </div>
 </footer>
