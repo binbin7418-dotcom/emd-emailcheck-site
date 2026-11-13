@@ -65,13 +65,13 @@
   <div class="le"><ul>
 <li><strong>The check list.</strong> Syntax, domain, MX, disposable, role accounts, typos, domain age — are they enumerated, and does each result show them individually?</li>
 <li><strong>Evidence per result.</strong> A score with its working shown (which checks passed, which failed, what was suggested) can be audited; a bare verdict cannot.</li>
-<li><strong>Stated scope.</strong> Does the vendor say, in the response itself, that mailbox existence is not probed? EmailCheck puts <code>scope: "domain-level"</code> and a plain note in every response.</li>
+<li><strong>Graded output.</strong> Does the vendor return a score and the signals behind it, so accuracy is something you can measure per signal? EmailCheck returns a 0–100 score with the fired signals named in every response.</li>
 <li><strong>Behaviour on the hard cases.</strong> Run the same awkward addresses — a typo domain, a disposable domain, a catch-all domain — through any tool you are evaluating and compare what comes back. This page's check box is a good place to start.</li>
 </ul></div>
   <div class="lz"><ul>
 <li><strong>检查清单。</strong>格式、域名、MX、一次性、角色账号、拼写、域名年龄——有没有逐项列明，每个结果里有没有逐项展示？</li>
 <li><strong>每个结果的证据。</strong>带过程的分数（哪些检查过了、哪些没过、建议是什么）可以审计；光秃秃的裁决不行。</li>
-<li><strong>写明的范围。</strong>厂商有没有在响应本身里写清「不探邮箱存在」？EmailCheck 每个响应都带 <code>scope: "domain-level"</code> 和大白话说明。</li>
+<li><strong>分级输出。</strong>厂商有没有返回分数和背后的信号，让准确率能按信号逐项量？EmailCheck 每个响应都给 0–100 分，并写明触发了哪些信号。</li>
 <li><strong>难例上的表现。</strong>拿同一批别扭地址——拼错域名、一次性域名、catch-all 域名——跑任何你在评估的工具，比一比返回什么。本页的检查框就是个好起点。</li>
 </ul></div>
 
@@ -89,21 +89,21 @@
   </section>
 
   <div class="boundary">
-    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
-    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
   </div>
 
   <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
   <ul class="qlist">
     <li><a href="../best-email-verification-api/">What is the best email verification API?</a></li>
     <li><a href="../can-a-catch-all-email-address-be-verified/">Can a catch-all email address actually be verified?</a></li>
-    <li><a href="../does-email-verification-check-if-a-mailbox-exists/">Does an email verification API check whether the actual mailbox exists?</a></li>
+    <li><a href="../does-email-verification-check-if-a-mailbox-exists/">What does an email verification API actually check?</a></li>
   </ul>
 </main>
 
 <footer>
   <div class="foot-in">
-    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
     <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
   </div>
 </footer>
