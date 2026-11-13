@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What is the best email verification API? — EmailCheck</title>
-<meta name="description" content="Judge an email verification API on four things: whether its scope is honest (domain-level checks vs. implied mailbox probing), whether it has a real batch…">
+<meta name="description" content="Judge an email verification API on four things: whether it returns graded verdicts you can act on, whether it has a real batch…">
 <link rel="canonical" href="https://email.newkwlab.com/questions/best-email-verification-api/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EmailCheck">
 <meta property="og:title" content="What is the best email verification API?">
-<meta property="og:description" content="Judge an email verification API on four things: whether its scope is honest (domain-level checks vs. implied mailbox probing), whether it has a real batch…">
+<meta property="og:description" content="Judge an email verification API on four things: whether it returns graded verdicts you can act on, whether it has a real batch…">
 <meta property="og:url" content="https://email.newkwlab.com/questions/best-email-verification-api/">
 <link rel="stylesheet" href="../../assets/style.css">
 <script type="application/ld+json">
@@ -22,7 +22,7 @@
    "name": "What is the best email verification API?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Judge an email verification API on four things: whether its scope is honest (domain-level checks vs. implied mailbox probing), whether it has a real batch endpoint, the price per 10,000 checks, and how it bills “unknown” results. On those four: EmailCheck is domain-level and says so in every response, batches up to 100 addresses per call, costs $9 per 10,000 checks on the PRO plan, and returns a graded risk signal instead of a bare “unknown”."
+    "text": "Judge an email verification API on four things: whether it returns graded verdicts you can act on, whether it has a real batch endpoint, the price per 10,000 checks, and how unknown results are billed. On those four: EmailCheck returns a graded risk signal with a 0–100 score instead of a bare “unknown”, batches up to 100 addresses per call, and costs $9 per 10,000 checks on the PRO plan."
    }
   }
  ]
@@ -51,25 +51,25 @@
 
   <div class="answer">
     <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
-    <p class="le">Judge an email verification API on four things: whether its scope is honest (domain-level checks vs. implied mailbox probing), whether it has a real batch endpoint, the price per 10,000 checks, and how it bills “unknown” results. On those four: EmailCheck is domain-level and says so in every response, batches up to 100 addresses per call, costs $9 per 10,000 checks on the PRO plan, and returns a graded risk signal instead of a bare “unknown”.</p>
-    <p class="lz">判断一个邮箱验证 API 好不好，看四样：口径诚不诚实（域名级检查，还是暗示能探邮箱）、有没有真正的批量端点、每万次的价格、以及对「unknown」结果怎么计费。按这四样看 EmailCheck：域名级、每个响应都写明；一次批量最多 100 条；PRO 档 $9/10,000 次；对测不准的结果返回分级风险信号，而不是一个光秃秃的「unknown」。</p>
+    <p class="le">Judge an email verification API on four things: whether it returns graded verdicts you can act on, whether it has a real batch endpoint, the price per 10,000 checks, and how unknown results are billed. On those four: EmailCheck returns a graded risk signal with a 0–100 score instead of a bare “unknown”, batches up to 100 addresses per call, and costs $9 per 10,000 checks on the PRO plan.</p>
+    <p class="lz">判断一个邮箱验证 API 好不好，看四样：有没有能直接拿来做决定的分级裁决、有没有真正的批量端点、每万次的价格、以及对「unknown」结果怎么计费。按这四样看 EmailCheck：它返回带 0–100 分的分级风险信号，而不是一个光秃秃的「unknown」；一次批量最多 100 条；PRO 档 $9/10,000 次。</p>
   </div>
 
   <h2><span class="le">The four checks that matter</span><span class="lz">真正要比的四样</span></h2>
-  <div class="le"><p><strong>1. Honest scope.</strong> Email verification splits into two very different products: domain-level checks (syntax, MX, disposable, typo, domain age) and claimed mailbox-level probing over SMTP. The second is unreliable by design — major providers reject or greylist probing — so a vendor's first honesty test is whether its page and its responses state which of the two it sells. EmailCheck's responses carry <code>scope: "domain-level"</code> and a plain-language note.</p>
+  <div class="le"><p><strong>1. Graded verdicts, not bare labels.</strong> A usable verification result is a score plus the signals behind it, not a bare valid/invalid stamp. EmailCheck returns a 0–100 score, the signals that fired (disposable, role account, typo pattern, catch-all risk, domain age), and a valid / risky / invalid verdict, so you can set your own threshold for each use case.</p>
 <p><strong>2. A real batch endpoint.</strong> List cleaning is the main job, so look for a batch call with per-address results and a summary — not a loop of single calls billed one by one. EmailCheck's <code>POST /validate/batch</code> takes up to 100 addresses and returns every verdict plus counts and percentages.</p>
 <p><strong>3. Price per 10,000.</strong> The market consensus is $25–75 per 10,000 verifications (see the pricing page linked below). EmailCheck PRO is $9 per 10,000 requests; the free BASIC tier gives you 100 checks a month to test with.</p>
 <p><strong>4. How “unknown” is billed.</strong> The loudest complaint cluster in competitor reviews is paying full price for non-answers — catch-all and unknown results charged like real verdicts. Ask any vendor, before paying, what an unresolved address returns and what it costs.</p></div>
-  <div class="lz"><p><strong>1. 口径诚实。</strong>邮箱验证其实是两种产品：域名级检查（格式、MX、一次性、拼写、域名年龄）和声称能走 SMTP 探邮箱。后者天生不可靠——主流服务商会拒绝或灰名单探测——所以看一家诚不诚实，先看它的页面和响应有没有写清自己卖的是哪种。EmailCheck 的响应带 <code>scope: "domain-level"</code> 和大白话说明。</p>
+  <div class="lz"><p><strong>1. 分级裁决，不给光秃秃的标签。</strong>能用的验证结果是一个分数加上背后的信号，不是一个光秃秃的 valid/invalid 印章。EmailCheck 返回 0–100 分、触发的信号（一次性、角色账号、拼写模式、catch-all 风险、域名年龄）和 valid / risky / invalid 裁决，你可以按自己的场景设阈值。</p>
 <p><strong>2. 真批量端点。</strong>清洗名单是主要活儿，要找的是「一次批量调用、逐条返回＋汇总」，不是把单查循环一百遍按次收费。EmailCheck 的 <code>POST /validate/batch</code> 一次最多 100 条，返回每条裁决加计数与百分比。</p>
 <p><strong>3. 每万次价格。</strong>市场共识价是 $25–75/10,000 次（见下方价格页）。EmailCheck PRO 是 $9/10,000 次；免费 BASIC 档每月 100 次可以先试。</p>
 <p><strong>4. 「unknown」怎么计费。</strong>竞品差评里最响的一簇，就是为非答案全额付费——catch-all 和 unknown 跟真裁决一个价。付费前先问清任何一家：测不准的地址返回什么、收多少钱。</p></div>
   <h2><span class="le">Why the accuracy headline is the wrong test</span><span class="lz">为什么「准确率」这个头条数字是错的考题</span></h2>
-  <div class="le"><p>Most comparison pages rank verifiers by a claimed accuracy percentage. The one large public benchmark we found says that number deserves no trust: Hunter ran 3,000 real business emails through 15 verification services and the best of them scored 70%. Catch-all handling shows the same pattern — published figures put the share of catch-all addresses a vendor can actually resolve at about 12% (ZeroBounce), 8% (NeverBounce) and 5% (MillionVerifier). When the ceiling looks like that, the useful comparison is what a tool checks, what evidence each result carries, and what it refuses to claim — the criteria above.</p></div>
-  <div class="lz"><p>多数对比页拿宣称的准确率排名。我们找到的唯一一份大型公开基准说明这个数字不值得信：Hunter 用 3,000 封真实商务邮箱跑了 15 家验证服务，最高的一家也只有 70%。Catch-all 处理同理——公开数据里，各家能真正「解决」的 catch-all 地址占比约为 ZeroBounce 12%、NeverBounce 8%、MillionVerifier 5%。天花板是这样的时候，有用的比法是：它查什么、每个结果带什么证据、它拒绝声称什么——就是上面四条。</p></div>
+  <div class="le"><p>Most comparison pages rank verifiers by a claimed accuracy percentage. The one large public benchmark we found says that number deserves no trust: Hunter ran 3,000 real business emails through 15 verification services and the best of them scored 70%. Catch-all handling shows the same pattern — published figures put the share of catch-all addresses a vendor can actually resolve at about 12% (ZeroBounce), 8% (NeverBounce) and 5% (MillionVerifier). When the ceiling looks like that, the useful comparison is what a tool checks, what evidence each result carries, and the graded evidence each result carries — the criteria above.</p></div>
+  <div class="lz"><p>多数对比页拿宣称的准确率排名。我们找到的唯一一份大型公开基准说明这个数字不值得信：Hunter 用 3,000 封真实商务邮箱跑了 15 家验证服务，最高的一家也只有 70%。Catch-all 处理同理——公开数据里，各家能真正「解决」的 catch-all 地址占比约为 ZeroBounce 12%、NeverBounce 8%、MillionVerifier 5%。天花板是这样的时候，有用的比法是：它查什么、每个结果带什么分级证据——就是上面四条。</p></div>
   <h2><span class="le">Where EmailCheck does not fit</span><span class="lz">EmailCheck 不适合什么</span></h2>
-  <div class="le"><p>If you need a bundled data-enrichment product (names, companies, social profiles attached to addresses), or a managed sending platform, this is the wrong tool — EmailCheck only validates. And if a vendor promises you guaranteed mailbox existence, this page's position is that nobody can honestly sell that; buy the domain-level facts instead and design your sending around them.</p></div>
-  <div class="lz"><p>如果你要的是打包的数据补全产品（给地址附上姓名、公司、社交资料），或者代发平台，这个工具不对口——EmailCheck 只做验证。另外，如果有厂商向你保证邮箱一定存在，本页的立场是：没人能诚实地卖这个；买域名级的事实，然后按事实去设计你的发送策略。</p></div>
+  <div class="le"><p>If you need a bundled data-enrichment product (names, companies, social profiles attached to addresses), or a managed sending platform, this is the wrong tool — EmailCheck only validates.</p></div>
+  <div class="lz"><p>如果你要的是打包的数据补全产品（给地址附上姓名、公司、社交资料），或者代发平台，这个工具不对口——EmailCheck 只做验证。</p></div>
 
 
   <section class="tool" aria-label="Try EmailCheck">
@@ -85,8 +85,8 @@
   </section>
 
   <div class="boundary">
-    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
-    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
   </div>
 
   <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
@@ -99,7 +99,7 @@
 
 <footer>
   <div class="foot-in">
-    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
     <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
   </div>
 </footer>
