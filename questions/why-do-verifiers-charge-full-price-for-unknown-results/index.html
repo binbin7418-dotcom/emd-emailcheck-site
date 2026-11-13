@@ -67,8 +67,8 @@
   <div class="lz"><p>三层机制叠在一起。第一，计费单位是「提交」：地址一到就开始计米，回来什么都一样。第二，catch-all 域名不真发信确实无从再确认——「unknown」本身诚实，但照样计费。第三，有些套餐里一个未决结果会扣不止一个额度，用户往往是在账单上才发现。</p>
 <p>这些都不是默默接受的理由。要问厂商的不是「你为什么收费」，而是「测不准的地址我能拿回什么、这话在付费前有没有写下来」。</p></div>
   <h2><span class="le">What EmailCheck returns instead</span><span class="lz">EmailCheck 给的是什么</span></h2>
-  <div class="le"><p>EmailCheck also charges per call — that part is the same. What differs is what an unresolved address returns: a graded <code>catchAllRisk</code> signal (low / possible / unknown, inferred from MX and provider patterns and labelled as a signal, not a probed conclusion), plus the rest of the domain evidence — MX presence, domain age, disposable and typo flags — so the result is still usable for segmentation. Try the box on this page with <code>anyone@github.com</code>: the live API returns catch-all risk “possible” for that domain, alongside a full score breakdown.</p></div>
-  <div class="lz"><p>EmailCheck 也是按次收费——这一点相同。不同在测不准时返回什么：一个分级的 <code>catchAllRisk</code> 信号（low / possible / unknown，由 MX 与服务商模式推断，并明说这是信号、不是探测结论），外加其余域名证据——有无 MX、域名年龄、一次性与拼写标记——让结果仍然能用来分仓。用本页的框试 <code>anyone@github.com</code>：生产 API 对这个域名返回的 catch-all 风险是「possible」，并附完整的分数拆解。</p></div>
+  <div class="le"><p>EmailCheck also charges per call — that part is the same. What differs is what an unresolved address returns: a graded <code>catchAllRisk</code> signal (low / possible / unknown, inferred from MX and provider patterns), plus the rest of the evidence — MX presence, domain age, disposable and typo flags — so the result is still usable for segmentation. Try the box on this page with <code>anyone@github.com</code>: the live API returns catch-all risk “possible” for that domain, alongside a full score breakdown.</p></div>
+  <div class="lz"><p>EmailCheck 也是按次收费——这一点相同。不同在测不准时返回什么：一个分级的 <code>catchAllRisk</code> 信号（low / possible / unknown，由 MX 与服务商模式推断），外加其余证据——有无 MX、域名年龄、一次性与拼写标记——让结果仍然能用来分仓。用本页的框试 <code>anyone@github.com</code>：生产 API 对这个域名返回的 catch-all 风险是「possible」，并附完整的分数拆解。</p></div>
 
 
   <section class="tool" aria-label="Try EmailCheck">
@@ -84,8 +84,8 @@
   </section>
 
   <div class="boundary">
-    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
-    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
   </div>
 
   <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
@@ -98,7 +98,7 @@
 
 <footer>
   <div class="foot-in">
-    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
     <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
   </div>
 </footer>
