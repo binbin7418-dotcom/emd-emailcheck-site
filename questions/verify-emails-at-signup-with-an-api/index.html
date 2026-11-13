@@ -71,13 +71,13 @@
 </ul></div>
   <h2><span class="le">Where to put the call (and where not to)</span><span class="lz">调用放哪儿（以及不放哪儿）</span></h2>
   <div class="le"><p>Call on <strong>submit</strong>, not on every keystroke: one check per attempted signup is enough, keeps you inside free-tier limits while testing, and avoids hammering the API from half-typed addresses. Debounce-and-check on blur is acceptable for the typo suggestion alone, but the blocking decision belongs at submit, with the full address final.</p>
-<p>Fail open, deliberately: if the validation call times out or errors, let the signup through and log it for a later batch re-check. A verification outage must never become your outage — but “fail open” should be a written policy with a re-check queue, not an accident you discover from bounce reports. And never block on mailbox existence: no API can check it at domain level (see the linked page on what verification actually checks), so do not design a step that pretends to.</p></div>
+<p>Fail open, deliberately: if the validation call times out or errors, let the signup through and log it for a later batch re-check. A verification outage must never become your outage — but “fail open” should be a written policy with a re-check queue, not an accident you discover from bounce reports. Block on the verdict and the flags — they are what the three bands are built from.</p></div>
   <div class="lz"><p>在<strong>提交时</strong>调，不要每次按键都调：每次尝试注册查一次就够，测试期也压得住免费档额度，还不会拿打了一半的地址去轰接口。只为拼写建议在失焦时查一次也可以，但拦截决策必须放在提交时、用最终完整地址。</p>
-<p>要有意地「失败放行」：验证调用超时或报错时，让注册通过，并把地址记进事后批量复查队列。验证服务故障绝不能变成你的故障——但「失败放行」应该是写下来的政策加复查队列，而不是等退信报告来了才发现的事故。另外，绝不要拿邮箱存在性做拦截点：域名级检查查不了这个（见链接页对验证到底查什么的说明），不要设计一个假装能查的环节。</p></div>
+<p>要有意地「失败放行」：验证调用超时或报错时，让注册通过，并把地址记进事后批量复查队列。验证服务故障绝不能变成你的故障——但「失败放行」应该是写下来的政策加复查队列，而不是等退信报告来了才发现的事故。拦截点就建在裁决和标记上——三档正是为它们设计的。</p></div>
   <h2><span class="le">Wiring it with EmailCheck</span><span class="lz">用 EmailCheck 接线</span></h2>
-  <div class="le"><p>The single-check endpoint is <code>GET /validate?email=…</code> (POST works too) on the EmailCheck API, listed on RapidAPI with a free BASIC tier of 100 checks a month — enough to wire the integration and test every band. Each response carries the fields the three-band logic needs: <code>valid</code> and <code>verdict</code>, per-check flags (syntax, domain, MX, disposable, role account), a <code>suggestion</code> when a typo looks likely, the graded score, and <code>catchAllRisk</code> for the allow-with-flag band. It also states <code>scope: "domain-level"</code> in every response, so what you are deciding on is never ambiguous.</p>
+  <div class="le"><p>The single-check endpoint is <code>GET /validate?email=…</code> (POST works too) on the EmailCheck API, listed on RapidAPI with a free BASIC tier of 100 checks a month — enough to wire the integration and test every band. Each response carries the fields the three-band logic needs: <code>valid</code> and <code>verdict</code>, per-check flags (syntax, domain, MX, disposable, role account), a <code>suggestion</code> when a typo looks likely, the graded score, and <code>catchAllRisk</code> for the allow-with-flag band. Every response carries the same field set, so what you are deciding on is never ambiguous.</p>
 <p>Try the box on this page with <code>newuser@gmial.com</code>: the live API flags the typo and suggests gmail.com — the warn band, working end to end. When your existing user base needs the same treatment in bulk, the batch endpoint takes up to 100 addresses per call (see the linked bulk page).</p></div>
-  <div class="lz"><p>单查端点是 EmailCheck API 的 <code>GET /validate?email=…</code>（POST 也可以），在 RapidAPI 上架，免费 BASIC 档每月 100 次——够把集成接完、三档都测一遍。每个响应都带三档逻辑需要的字段：<code>valid</code> 与 <code>verdict</code>、逐项标记（格式、域名、MX、一次性、角色账号）、拼写大概率出错时的 <code>suggestion</code>、分级分数，以及给「放行带标记」档用的 <code>catchAllRisk</code>。每个响应还写明 <code>scope: "domain-level"</code>，你依据什么做决定永远不含糊。</p>
+  <div class="lz"><p>单查端点是 EmailCheck API 的 <code>GET /validate?email=…</code>（POST 也可以），在 RapidAPI 上架，免费 BASIC 档每月 100 次——够把集成接完、三档都测一遍。每个响应都带三档逻辑需要的字段：<code>valid</code> 与 <code>verdict</code>、逐项标记（格式、域名、MX、一次性、角色账号）、拼写大概率出错时的 <code>suggestion</code>、分级分数，以及给「放行带标记」档用的 <code>catchAllRisk</code>。每个响应的字段都一致，你依据什么做决定永远不含糊。</p>
 <p>用本页的框试 <code>newuser@gmial.com</code>：生产 API 会标出拼写错误并建议 gmail.com——警告档，端到端跑通。你现有的存量用户需要同样处理时，批量端点一次可查 100 条（见链接的批量页）。</p></div>
 
 
@@ -94,8 +94,8 @@
   </section>
 
   <div class="boundary">
-    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
-    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
   </div>
 
   <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
@@ -108,7 +108,7 @@
 
 <footer>
   <div class="foot-in">
-    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
     <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
   </div>
 </footer>
