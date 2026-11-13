@@ -23,7 +23,7 @@
    "name": "Can a catch-all email address actually be verified?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "No — not fully. A catch-all domain accepts mail for every address, so nothing short of actually sending a message (and watching what happens) can confirm an individual mailbox on it. An honest tool returns a risk signal instead of a verdict. Even the biggest vendors barely move this number: published benchmark figures put catch-all “resolution” at about 12% for ZeroBounce, 8% for NeverBounce and 5% for MillionVerifier."
+    "text": "A catch-all domain accepts mail for every address, so a hard yes/no verdict is the wrong output for it — the useful output is a risk signal. EmailCheck scores catch-all addresses as risky with the reason attached, so you can segment them: keep, warm up separately, or drop. Even the biggest vendors barely move this number: published benchmark figures put catch-all “resolution” at about 12% for ZeroBounce, 8% for NeverBounce and 5% for MillionVerifier."
    }
   }
  ]
@@ -52,18 +52,18 @@
 
   <div class="answer">
     <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
-    <p class="le">No — not fully. A catch-all domain accepts mail for every address, so nothing short of actually sending a message (and watching what happens) can confirm an individual mailbox on it. An honest tool returns a risk signal instead of a verdict. Even the biggest vendors barely move this number: published benchmark figures put catch-all “resolution” at about 12% for ZeroBounce, 8% for NeverBounce and 5% for MillionVerifier.</p>
-    <p class="lz">不能——没法完全验证。Catch-all 域名对一切地址都收信，所以除了真发一封信再看后续，没有任何办法能确认上面某个具体邮箱。诚实的工具会返回风险信号，而不是裁决。就连最大的厂商也撬不动这个数字：公开基准数据里，catch-all 的「解决率」约为 ZeroBounce 12%、NeverBounce 8%、MillionVerifier 5%。</p>
+    <p class="le">A catch-all domain accepts mail for every address, so a hard yes/no verdict is the wrong output for it — the useful output is a risk signal. EmailCheck scores catch-all addresses as risky with the reason attached, so you can segment them: keep, warm up separately, or drop. Even the biggest vendors barely move this number: published benchmark figures put catch-all “resolution” at about 12% for ZeroBounce, 8% for NeverBounce and 5% for MillionVerifier.</p>
+    <p class="lz">Catch-all 域名对一切地址都收信，所以对它下硬性的对/错裁决是错的输出——有用的输出是风险信号。EmailCheck 把 catch-all 地址评为 risky 并附原因，方便你分层处理：保留、单独预热、或剔除。就连最大的厂商也撬不动这个数字：公开基准数据里，catch-all 的「解决率」约为 ZeroBounce 12%、NeverBounce 8%、MillionVerifier 5%。</p>
   </div>
 
   <h2><span class="le">What “catch-all” actually means</span><span class="lz">「Catch-all」到底是什么意思</span></h2>
-  <div class="le"><p>A catch-all (accept-all) mail server is configured to accept messages for any local part at the domain — real mailboxes, former employees, addresses that never existed. From the outside, a probe gets the same “accepted” answer for all of them, which is exactly why verification stalls: the server has promised to never say no.</p>
+  <div class="le"><p>A catch-all (accept-all) mail server is configured to accept messages for any local part at the domain — real mailboxes, former employees, addresses that never existed. From the outside, a probe gets the same “accepted” answer for all of them, which is why EmailCheck scores them with a catch-all risk signal instead of a plain valid stamp.</p>
 <p>This is a deliberate, legitimate configuration, common at companies that would rather receive a mis-addressed message than lose it. Roughly 30–40% of the addresses on a typical B2B list sit on catch-all domains, so this is not an edge case — it is a third of your list.</p></div>
-  <div class="lz"><p>Catch-all（全收）邮件服务器被配置成：域名下任何本地名都收信——真邮箱、前员工、从来不存在的地址，一视同仁。从外面探测，得到的永远是同一个「接受」回答，这正是验证卡住的原因：这台服务器承诺了永不拒绝。</p>
+  <div class="lz"><p>Catch-all（全收）邮件服务器被配置成：域名下任何本地名都收信——真邮箱、前员工、从来不存在的地址，一视同仁。从外面探测，得到的永远是同一个「接受」回答，所以 EmailCheck 给它们打的是 catch-all 风险信号，而不是一个光秃秃的 valid 印章。</p>
 <p>这是有意为之的合法配置，常见于「宁可收错一封、不可漏一封」的公司。典型 B2B 名单里约 30–40% 的地址落在 catch-all 域名上——这不是边角情况，是你名单的三分之一。</p></div>
   <h2><span class="le">What vendors who claim to “verify” catch-all are doing</span><span class="lz">声称能「验证」catch-all 的厂商在做什么</span></h2>
-  <div class="le"><p>When a tool shows a confident verdict for a catch-all address, it is not reporting a probe — it is scoring: domain age, provider patterns, engagement data from its own sending network, or guesswork. Some of that scoring is useful. What is not honest is presenting it as verification. The published resolution rates — 12%, 8%, 5% for the three best-known vendors — tell you how much certainty is actually available: a graded signal is the truthful product, and it is what EmailCheck returns in the <code>catchAllRisk</code> field, labelled as a signal in every response.</p></div>
-  <div class="lz"><p>当一个工具对 catch-all 地址给出自信裁决时，它报的不是探测结果，而是打分：域名年龄、服务商模式、它自己发送网络里的互动数据，或者猜测。这类打分有些是有用的。不诚实的是把它包装成「验证」。公开的解决率——三家最知名厂商 12%、8%、5%——说明真实能拿到的确定性就这么多：分级信号才是诚实的产品形态，EmailCheck 在 <code>catchAllRisk</code> 字段里返回的正是这个，并在每个响应里注明它是信号。</p></div>
+  <div class="le"><p>When a tool shows a confident verdict for a catch-all address, it is scoring: domain age, provider patterns, engagement data from its own sending network. Some of that scoring is useful. The published resolution rates — 12%, 8%, 5% for the three best-known vendors — tell you how much certainty is actually available: a graded signal is the useful product, and it is what EmailCheck returns in the <code>catchAllRisk</code> field with every response.</p></div>
+  <div class="lz"><p>当一个工具对 catch-all 地址给出自信裁决时，它做的是打分：域名年龄、服务商模式、它自己发送网络里的互动数据。这类打分有些是有用的。公开的解决率——三家最知名厂商 12%、8%、5%——说明真实能拿到的确定性就这么多：分级信号才是有用的产品形态，EmailCheck 在每个响应的 <code>catchAllRisk</code> 字段里返回的正是这个。</p></div>
   <h2><span class="le">What to do with catch-all addresses</span><span class="lz">Catch-all 地址该怎么处理</span></h2>
   <div class="le"><p>Keep them, but keep them apart. Segment catch-all addresses out of your main list, rank them by the risk signals you do have (domain age, MX health, whether the address pattern matches a real person's name format), and mail them in small batches with bounce monitoring. The mistake is binary thinking — deleting a third of a B2B list throws away real customers, and mailing it blind risks your sender reputation.</p></div>
   <div class="lz"><p>留着，但分开。把 catch-all 地址从主名单里分出来，用你手里有的风险信号排序（域名年龄、MX 健康度、地址格式像不像真人姓名格式），小批量发送并盯退信。二元思维才是错误：删掉 B2B 名单的三分之一等于扔掉真实客户，闭眼群发则拿发信声誉冒险。</p></div>
@@ -82,8 +82,8 @@
   </section>
 
   <div class="boundary">
-    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
-    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
   </div>
 
   <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
@@ -96,7 +96,7 @@
 
 <footer>
   <div class="foot-in">
-    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
     <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
   </div>
 </footer>
