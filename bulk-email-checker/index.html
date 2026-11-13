@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bulk Email Checker — Verify Email Lists Free | EmailCheck</title>
+<meta name="description" content="Bulk email checker — verify up to 100 addresses per run, free, no sign-up. A verdict, 0–100 score and reason for each; domain-level, no SMTP probing.">
+<link rel="canonical" href="https://email.newkwlab.com/bulk-email-checker/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="Bulk Email Checker — Verify Email Lists Free | EmailCheck">
+<meta property="og:description" content="Bulk email checker — verify up to 100 addresses per run, free, no sign-up. A verdict, 0–100 score and reason for each; domain-level, no SMTP probing.">
+<meta property="og:url" content="https://email.newkwlab.com/bulk-email-checker/">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.bk-table td.v-valid{color:var(--green);font-weight:700}
+.bk-table td.v-risky{color:var(--amber);font-weight:700}
+.bk-table td.v-invalid{color:var(--red);font-weight:700}
+.bk-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px;position:relative}
+.bk-file{font-size:14px}
+.bk-dl{display:none}
+.bk-dl.on{display:inline-block}
+.bk-sample{margin-top:26px}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "EmailCheck Bulk Email Checker",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Web",
+   "url": "https://email.newkwlab.com/bulk-email-checker/",
+   "description": "Bulk email checker: verify up to 100 addresses per run with a per-address verdict, 0-100 score and reasons. Domain-level checks (syntax, MX, disposable, role accounts, typo suggestions, catch-all risk). Does not probe mailbox existence (no SMTP check).",
+   "offers": [
+    { "@type": "Offer", "name": "BASIC", "price": "0", "priceCurrency": "USD", "description": "Free — 100 calls/month on RapidAPI", "url": "https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" },
+    { "@type": "Offer", "name": "PRO", "price": "9", "priceCurrency": "USD", "description": "$9/month — 10,000 calls/month on RapidAPI", "url": "https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" },
+    { "@type": "Offer", "name": "ULTRA", "price": "29", "priceCurrency": "USD", "description": "$29/month — 50,000 calls/month on RapidAPI", "url": "https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "EmailCheck", "item": "https://email.newkwlab.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Bulk Email Checker", "item": "https://email.newkwlab.com/bulk-email-checker/" }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Does this bulk email checker verify that a mailbox exists?",
+     "acceptedAnswer": { "@type": "Answer", "text": "No. EmailCheck works at domain level: syntax, domain and MX health, disposable and role-account signals, likely typos and catch-all risk. It never probes a mailbox over SMTP — major providers reject or greylist that, so tools that promise mailbox certainty are overselling. A valid verdict means the domain is set up to receive mail and no risk signal fired, not that a specific mailbox is real." }
+    },
+    {
+     "@type": "Question",
+     "name": "How many emails can I check at once?",
+     "acceptedAnswer": { "@type": "Answer", "text": "100 per run on this page, and 100 per API call. Paste or upload a longer list and only the first 100 are checked, with a note saying so — split longer lists into chunks of 100. A bad entry never fails the batch; it comes back as that row's invalid verdict." }
+    },
+    {
+     "@type": "Question",
+     "name": "Can a catch-all email address be verified?",
+     "acceptedAnswer": { "@type": "Answer", "text": "Not to mailbox certainty — by anyone. On a catch-all domain the server accepts every address at the door, so only sending real mail could tell. What you get here is a catch-all risk signal per address (possible or unknown), so you can segment those addresses instead of treating them as confirmed. See: can a catch-all email address be verified?" }
+    },
+    {
+     "@type": "Question",
+     "name": "Why do checkers charge for unknown or catch-all results?",
+     "acceptedAnswer": { "@type": "Answer", "text": "Because the checks behind them — DNS, MX, registration records — were still run and cost the same. We follow the same rule and say so up front: an unknown catch-all risk means the signals ran out, not that the work was skipped. See: why do verifiers charge full price for unknown results?" }
+    },
+    {
+     "@type": "Question",
+     "name": "What happens to the list I paste or upload?",
+     "acceptedAnswer": { "@type": "Answer", "text": "The file is read in your browser; only the addresses are sent, over HTTPS, to the EmailCheck API, and the results come back to this page. The page keeps no copy — closing the tab clears the list — and submitted addresses are not added to any mailing list." }
+    },
+    {
+     "@type": "Question",
+     "name": "What does a risky verdict mean — should I still send?",
+     "acceptedAnswer": { "@type": "Answer", "text": "Risky (score 50–79) means the domain routes mail but something is off: a disposable domain, a catch-all risk, or similar signals. Fix what is fixable, segment the rest, and keep risky addresses out of a first send to a cold list. See: what does a risky email verdict mean?" }
+    },
+    {
+     "@type": "Question",
+     "name": "Is this page the same check as the API?",
+     "acceptedAnswer": { "@type": "Answer", "text": "Yes — this page calls the production POST /validate/batch endpoint, the same one API subscribers use. The difference is volume and automation: subscribers get monthly call quotas and a key for their own pipelines, on both the single and batch endpoints." }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../">EmailCheck</a> / <span class="le">Bulk Email Checker</span><span class="lz">批量邮箱校验</span></p>
+  <h1><span class="le">Bulk Email Checker</span><span class="lz">批量邮箱校验</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">This bulk email checker verifies a whole list at once: paste up to 100 addresses — or upload a CSV/TXT file — and get a verdict, a 0–100 score and the reason for every address, free and with no sign-up. Each address is checked at domain level: syntax, MX routing, disposable and role-account signals, likely typos and catch-all risk. It does not probe whether a mailbox exists (no SMTP check), and every result says so.</p>
+    <p class="lz">这个批量邮箱校验工具一次验一整份名单：粘贴最多 100 个地址——或上传 CSV/TXT 文件——每条都返回裁决、0–100 分和命中原因，免费、不用注册。每个地址都在域名层检查：格式、MX 路由、一次性与角色账号信号、疑似拼写错误、catch-all 风险。它不探测邮箱本体是否存在（不做 SMTP 检查），每条结果里都写明这一点。</p>
+  </div>
+
+  <!-- ============ TOOL ============ -->
+  <section class="tool" aria-label="Bulk email checker">
+    <h2><span class="le">Check a list now</span><span class="lz">现在就验一份名单</span></h2>
+    <p class="small muted le">One address per line, up to 100 per run. This posts to the production <code>POST /validate/batch</code> endpoint — the same check the API sells. No sign-up; the free tier on RapidAPI includes 100 calls a month.</p>
+    <p class="small muted lz">一行一个地址，每轮最多 100 条。直接调生产端点 <code>POST /validate/batch</code>——就是 API 本身在卖的检查。不用注册；RapidAPI 免费档含每月 100 次调用。</p>
+    <form id="bk-form">
+      <textarea id="bk-input" aria-label="Email addresses, one per line">support@newkwlab.com
+john.doe@gmial.com
+someone@mailinator.com
+not-an-email
+admin@stripe.com
+ceo@this-domain-does-not-exist-zzz123.com</textarea>
+      <div class="bk-actions">
+        <button class="btn" id="bk-btn" type="submit"><span class="le">Check the list</span><span class="lz">验证这批名单</span></button>
+        <label class="bk-file"><span class="le">or upload a file:</span><span class="lz">或上传文件：</span> <input type="file" id="bk-file" accept=".csv,.txt,text/csv,text/plain"></label>
+        <button class="btn bk-dl" id="bk-download" type="button"><span class="le">Download results (CSV)</span><span class="lz">下载结果（CSV）</span></button>
+      </div>
+    </form>
+    <p class="err" id="bk-error" role="alert"></p>
+    <div class="result" id="bk-result" aria-live="polite"></div>
+
+    <div class="bk-sample">
+      <h3><span class="le">A real run, recorded from the production API</span><span class="lz">一次真实运行（取自生产 API 的实际返回）</span></h3>
+      <p class="small muted le">The six addresses pre-filled above, plus one empty line, exactly as the API returned them on 2026-11-13. Nothing here is a mock-up.</p>
+      <p class="small muted lz">上面预填的六个地址再加一行空行，2026-11-13 从生产 API 实际返回的原样结果。不是演示假数据。</p>
+      <table class="bk-table">
+        <tr><th><span class="le">Address</span><span class="lz">地址</span></th><th><span class="le">Verdict</span><span class="lz">裁决</span></th><th><span class="le">Score</span><span class="lz">分数</span></th><th><span class="le">Why</span><span class="lz">原因</span></th></tr>
+        <tr><td>support@newkwlab.com</td><td class="v-valid">valid</td><td>90</td><td><span class="le">MX found; role account</span><span class="lz">有 MX；角色账号</span></td></tr>
+        <tr><td>john.doe@gmial.com</td><td class="v-invalid">invalid</td><td>40</td><td><span class="le">No MX records; likely typo — did you mean john.doe@gmail.com?</span><span class="lz">无 MX 记录；疑似拼错——你是不是指 john.doe@gmail.com？</span></td></tr>
+        <tr><td>someone@mailinator.com</td><td class="v-risky">risky</td><td>50</td><td><span class="le">Disposable (throwaway) domain; catch-all risk possible</span><span class="lz">一次性域名；catch-all 风险为 possible</span></td></tr>
+        <tr><td>not-an-email</td><td class="v-invalid">invalid</td><td>0</td><td><span class="le">Not a valid address format</span><span class="lz">地址格式不合法</span></td></tr>
+        <tr><td>admin@stripe.com</td><td class="v-valid">valid</td><td>90</td><td><span class="le">MX found; role account</span><span class="lz">有 MX；角色账号</span></td></tr>
+        <tr><td>ceo@this-domain-does-not-exist-zzz123.com</td><td class="v-invalid">invalid</td><td>15</td><td><span class="le">Domain does not exist</span><span class="lz">域名不存在</span></td></tr>
+        <tr><td><span class="le">(empty line)</span><span class="lz">（空行）</span></td><td class="v-invalid">invalid</td><td>0</td><td><span class="le">Not a valid address format</span><span class="lz">地址格式不合法</span></td></tr>
+      </table>
+      <p class="small muted le">Summary of that run: 7 checked — 2 valid, 1 risky, 4 invalid; 1 disposable, 1 likely typo. An empty or malformed line marks only itself invalid; the rest of the batch is unaffected.</p>
+      <p class="small muted lz">这次运行的汇总：共 7 条——valid 2、risky 1、invalid 4；一次性域名 1、疑似拼错 1。空行或烂格式只把自己标成 invalid，不连坐整批。</p>
+    </div>
+  </section>
+
+  <!-- ============ CHECKS ============ -->
+  <h2><span class="no">01</span><span class="le">What gets checked for every address</span><span class="lz">每个地址都查什么</span></h2>
+  <div class="cols">
+    <div class="col yes">
+      <h3><span class="le">Checked</span><span class="lz">查的</span></h3>
+      <ul class="le">
+        <li><strong>Syntax</strong> — is it shaped like an email address at all</li>
+        <li><strong>Domain existence and MX health</strong> — does the domain exist, and does it route mail</li>
+        <li><strong>Disposable domains</strong> — throwaway providers flagged per address</li>
+        <li><strong>Role accounts</strong> — admin@, support@, postmaster@ and similar team addresses</li>
+        <li><strong>Likely typos, with a correction</strong> — gmial.com → gmail.com, returned as a suggestion you can apply</li>
+        <li><strong>Catch-all risk</strong> — a per-address signal (possible / unknown), labelled as a signal, not a probed fact</li>
+        <li><strong>Domain age</strong> — in days, from RDAP registration records; null when no record exists, never estimated</li>
+        <li><strong>Free-provider flag and a 0–100 score</strong> — the score starts at 100 and is reduced for each risk signal above</li>
+      </ul>
+      <ul class="lz">
+        <li><strong>格式</strong>——是不是一个邮箱地址的样子</li>
+        <li><strong>域名存在与 MX 健康</strong>——域名在不在、收不收信</li>
+        <li><strong>一次性域名</strong>——临时邮箱服务商逐条标记</li>
+        <li><strong>角色账号</strong>——admin@、support@、postmaster@ 这类团队地址</li>
+        <li><strong>疑似拼写错误并给纠正</strong>——gmial.com → gmail.com，以 suggestion 返回、可直接采用</li>
+        <li><strong>Catch-all 风险</strong>——逐条信号（possible / unknown），明说是信号不是探测结论</li>
+        <li><strong>域名年龄</strong>——天数，来自 RDAP 注册记录；无记录返 null，从不估算</li>
+        <li><strong>免费服务商标记与 0–100 分</strong>——从 100 起、按上面每个风险信号扣分</li>
+      </ul>
+    </div>
+    <div class="col no">
+      <h3><span class="le">Not checked — the honest boundary</span><span class="lz">不查的——诚实边界</span></h3>
+      <ul class="le">
+        <li><strong>Whether a specific mailbox exists.</strong> No SMTP probing: major providers reject or greylist it, so a "guaranteed mailbox" claim from any checker is overselling.</li>
+        <li>Whether a catch-all address belongs to a real person. Only sending mail could tell; you get the risk signal instead.</li>
+        <li>Anything the response doesn't list. Every response carries <code>scope: "domain-level"</code> and a note stating exactly what was checked.</li>
+      </ul>
+      <ul class="lz">
+        <li><strong>某个具体邮箱是否存在。</strong>不做 SMTP 探测：主流服务商会拒绝或灰名单它，任何校验器「保证邮箱存在」的说法都是过度承诺。</li>
+        <li>Catch-all 地址是不是真人。只有真发信能确认；这里给风险信号代替。</li>
+        <li>响应里没列的，一概没查。每个响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写死。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ READ RESULTS ============ -->
+  <h2><span class="no">02</span><span class="le">How to read the results</span><span class="lz">结果怎么读</span></h2>
+  <table>
+    <tr><th><span class="le">Verdict</span><span class="lz">裁决</span></th><th><span class="le">What it means</span><span class="lz">是什么意思</span></th><th><span class="le">What to do</span><span class="lz">怎么处置</span></th></tr>
+    <tr>
+      <td><b>valid</b> <span class="muted">(80–100)</span></td>
+      <td><span class="le">Domain exists, MX routes mail, no risk signal fired.</span><span class="lz">域名存在、MX 收信、没有风险信号触发。</span></td>
+      <td><span class="le">Send.</span><span class="lz">发。</span></td>
+    </tr>
+    <tr>
+      <td><b>risky</b> <span class="muted">(50–79)</span></td>
+      <td><span class="le">The domain routes mail, but something is off — disposable domain or catch-all risk, for example.</span><span class="lz">域名收信，但有问题——比如一次性域名或 catch-all 风险。</span></td>
+      <td><span class="le">Fix what is fixable, segment the rest, keep them out of a first send. More: <a href="../questions/what-does-a-risky-email-verdict-mean/">what does a risky email verdict mean?</a></span><span class="lz">能修的先修，其余分段，别放进首发送。详见：<a href="../questions/what-does-a-risky-email-verdict-mean/">risky 裁决是什么意思</a>。</span></td>
+    </tr>
+    <tr>
+      <td><b>invalid</b> <span class="muted">(&lt;50)</span></td>
+      <td><span class="le">Broken format, a domain that doesn't exist, no MX, or a likely typo with no working MX behind it.</span><span class="lz">格式坏了、域名不存在、没有 MX，或疑似拼错且背后无可用 MX。</span></td>
+      <td><span class="le">Apply the typo suggestion when one is given; otherwise delete. Sending to these is how lists earn bounces — see <a href="../questions/why-do-emails-bounce/">why emails bounce</a>.</span><span class="lz">有拼写建议就采用，否则删掉。往这些地址发信正是名单退信的来源——见 <a href="../questions/why-do-emails-bounce/">邮件为什么退信</a>。</span></td>
+    </tr>
+  </table>
+  <p class="le"><strong>Catch-all and unknown, separately:</strong> a catch-all domain accepts mail for every address, so no checker can confirm a mailbox there. EmailCheck returns a catch-all risk signal per address instead of pretending. When the signal is <em>unknown</em>, the checks still ran — DNS, MX and registration lookups cost the same either way — which is also why unknown results are billed like any other result on paid plans.</p>
+  <p class="lz"><strong>Catch-all 与 unknown 单独说：</strong>catch-all 域名对所有地址都收信，任何校验器都没法在那里确认邮箱本体。EmailCheck 给的是逐条 catch-all 风险信号，不装作能确认。信号为 <em>unknown</em> 时，检查照样跑了——DNS、MX、注册记录查询的成本一样——这也是付费档里 unknown 结果照常计费的原因。</p>
+
+  <!-- ============ BATCH VS SINGLE ============ -->
+  <h2><span class="no">03</span><span class="le">Bulk checker vs single check</span><span class="lz">批量校验与单查的分工</span></h2>
+  <table>
+    <tr><th></th><th><span class="le">This bulk checker</span><span class="lz">本页批量校验</span></th><th><span class="le">Single check (homepage)</span><span class="lz">单查（首页）</span></th></tr>
+    <tr><td><span class="le">Input</span><span class="lz">输入</span></td><td><span class="le">A list: paste, or a CSV/TXT file</span><span class="lz">一份名单：粘贴，或 CSV/TXT 文件</span></td><td><span class="le">One address at a time</span><span class="lz">一次一个地址</span></td></tr>
+    <tr><td><span class="le">Limit</span><span class="lz">上限</span></td><td><span class="le">100 addresses per run</span><span class="lz">每轮 100 条</span></td><td><span class="le">1 per check</span><span class="lz">每次 1 条</span></td></tr>
+    <tr><td><span class="le">Output</span><span class="lz">输出</span></td><td><span class="le">Per-address rows, summary counts, CSV download</span><span class="lz">逐条结果行、汇总计数、CSV 下载</span></td><td><span class="le">One verdict card with every check shown</span><span class="lz">一张裁决卡，逐项检查全展示</span></td></tr>
+    <tr><td><span class="le">Best for</span><span class="lz">适用场景</span></td><td><span class="le">CRM imports, pre-send list hygiene, scheduled cleaning</span><span class="lz">CRM 导入、发送前名单清洗、定时卫生任务</span></td><td><span class="le">Signup forms and checkout — the moment an address is typed</span><span class="lz">注册表单与结账——地址正被输入的那一刻</span></td></tr>
+  </table>
+  <p class="le">Checking one address right now? Use the <a href="../">check a single email</a> tool on the homepage — same engine, one address, every check displayed.</p>
+  <p class="lz">只想验一个地址？用首页的<a href="../">单个邮箱检查</a>工具——同一个引擎，一次一个，逐项检查全展示。</p>
+
+  <!-- ============ PRICING ============ -->
+  <h2 id="pricing"><span class="no">04</span><span class="le">Pricing</span><span class="lz">价格</span></h2>
+  <p class="le">The checker on this page is free. For pipelines and bigger volumes, the same endpoints run on RapidAPI subscriptions — checkout, keys and billing live there, and the total at checkout is whatever the platform shows for your region:</p>
+  <p class="lz">本页的校验工具免费。管线和更大用量走 RapidAPI 订阅——结账、密钥与计费都在平台侧，结账总价以平台按你所在地区显示的为准：</p>
+  <table>
+    <tr><th><span class="le">Plan</span><span class="lz">档位</span></th><th><span class="le">Price</span><span class="lz">价格</span></th><th><span class="le">Included</span><span class="lz">含调用量</span></th><th><span class="le">What it's for</span><span class="lz">适合谁</span></th></tr>
+    <tr><td>BASIC</td><td><span class="le">Free</span><span class="lz">免费</span></td><td>100 <span class="le">calls/month</span><span class="lz">次/月</span></td><td><span class="le">Trying the API, small lists</span><span class="lz">试用 API、小名单</span></td></tr>
+    <tr><td>PRO</td><td>$9<span class="le">/month</span><span class="lz">/月</span></td><td>10,000 <span class="le">calls/month</span><span class="lz">次/月</span></td><td><span class="le">Regular list hygiene in a pipeline</span><span class="lz">管线里的常规名单清洗</span></td></tr>
+    <tr><td>ULTRA</td><td>$29<span class="le">/month</span><span class="lz">/月</span></td><td>50,000 <span class="le">calls/month</span><span class="lz">次/月</span></td><td><span class="le">High-volume senders and agencies</span><span class="lz">大发送量用户与代理商</span></td></tr>
+  </table>
+  <p class="le">Working out a budget first? See <a href="../questions/how-much-does-it-cost-to-verify-10000-emails/">how much it costs to verify 10,000 emails</a>.</p>
+  <p class="lz">先算预算？看 <a href="../questions/how-much-does-it-cost-to-verify-10000-emails/">验证 10,000 个邮箱要多少钱</a>。</p>
+
+  <!-- ============ API ============ -->
+  <h2><span class="no">05</span><span class="le">For developers: the batch API</span><span class="lz">给开发者：批量 API</span></h2>
+  <p class="le">This page is a front-end to one endpoint. <code>POST /validate/batch</code> takes up to 100 addresses and returns the same full result shape per address as the single check, plus summary counts and percentages — so parsing code written for one endpoint works for the other.</p>
+  <p class="lz">本页就是一个端点的前端。<code>POST /validate/batch</code> 一次最多 100 条，每条返回与单查完全相同的完整结果，另附汇总计数与百分比——为一个端点写的解析代码，另一个也能用。</p>
+  <pre><code>curl -X POST "https://emailcheck-api.pages.dev/validate/batch" \
+  -H "Content-Type: application/json" \
+  -d '{"emails": ["support@newkwlab.com", "john.doe@gmial.com"]}'
+
+{
+  "scope": "domain-level",
+  "results": [
+    { "email": "support@newkwlab.com", "verdict": "valid", "score": 90,
+      "checks": { "syntax": true, "domainExists": true, "mxFound": true,
+                  "disposable": false, "roleAccount": true, "freeProvider": false },
+      "suggestion": null, "typoLikely": false, "catchAllRisk": "unknown" },
+    { "email": "john.doe@gmial.com", "verdict": "invalid", "score": 40,
+      "checks": { "syntax": true, "domainExists": true, "mxFound": false,
+                  "disposable": false, "roleAccount": false, "freeProvider": false },
+      "suggestion": "john.doe@gmail.com", "typoLikely": true, "catchAllRisk": "unknown" }
+  ],
+  "summary": { "total": 2, "valid": { "count": 1, "percent": 50 },
+               "risky": { "count": 0, "percent": 0 },
+               "invalid": { "count": 1, "percent": 50 },
+               "disposable": { "count": 0, "percent": 0 },
+               "typoLikely": { "count": 1, "percent": 50 } }
+}</code></pre>
+  <p class="small muted le">Errors are named JSON — <code>EMPTY_BATCH</code>, <code>BATCH_TOO_LARGE</code> (over 100), <code>INVALID_JSON</code> — so a pipeline can react to each one. Choosing between providers? Our <a href="../questions/best-email-verification-api/">best email verification API</a> guide compares the options, including where EmailCheck is not the right pick.</p>
+  <p class="small muted lz">错误是具名 JSON——<code>EMPTY_BATCH</code>、<code>BATCH_TOO_LARGE</code>（超过 100）、<code>INVALID_JSON</code>——管线可以对症处理。在选型？我们的 <a href="../questions/best-email-verification-api/">best email verification API</a> 指南对比了各家选项，包括 EmailCheck 不适合的场景。</p>
+
+  <!-- ============ UPGRADE ============ -->
+  <h2><span class="no">06</span><span class="le">Need more than the free checker?</span><span class="lz">免费校验不够用？</span></h2>
+  <p class="le">Subscribe on RapidAPI for monthly quotas and a key for your own pipelines — the batch and single endpoints are both included from the free tier up.</p>
+  <p class="lz">在 RapidAPI 订阅，拿到月度额度和给自己管线用的密钥——批量与单查两个端点从免费档起都包含。</p>
+  <p><a class="btn" href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener" style="display:inline-block;text-decoration:none"><span class="le">Subscribe on RapidAPI →</span><span class="lz">去 RapidAPI 订阅 →</span></a></p>
+  <p class="le">Running several of our APIs? The <a href="https://api.newkwlab.com/bundle" rel="noopener">API Bundle — one key for every API</a> covers EmailCheck together with the rest of the NewKwLab suite under a single key and credit balance.</p>
+  <p class="lz">同时在用我们多个 API？<a href="https://api.newkwlab.com/bundle" rel="noopener">API Bundle 一把钥匙</a>把 EmailCheck 和 NewKwLab 其余 API 放在同一个密钥与一份额度下。</p>
+
+  <!-- ============ FAQ ============ -->
+  <h2><span class="no">07</span><span class="le">FAQ</span><span class="lz">常见问题</span></h2>
+  <details>
+    <summary><span class="le">Does this bulk email checker verify that a mailbox exists?</span><span class="lz">这个批量校验会验证邮箱本体存在吗？</span></summary>
+    <p class="le">No. EmailCheck works at domain level: syntax, domain and MX health, disposable and role-account signals, likely typos and catch-all risk. It never probes a mailbox over SMTP — major providers reject or greylist that, so tools that promise mailbox certainty are overselling. A valid verdict means the domain is set up to receive mail and no risk signal fired, not that a specific mailbox is real.</p>
+    <p class="lz">不会。EmailCheck 在域名层工作：格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误、catch-all 风险。它从不通过 SMTP 探测邮箱本体——主流服务商会拒绝或灰名单这种探测，承诺「邮箱确定存在」的工具都在过度销售。valid 裁决表示域名具备收信条件且没有风险信号触发，不表示某个具体邮箱真实存在。</p>
+  </details>
+  <details>
+    <summary><span class="le">How many emails can I check at once?</span><span class="lz">一次能验多少个？</span></summary>
+    <p class="le">100 per run on this page, and 100 per API call. Paste or upload a longer list and only the first 100 are checked, with a note saying so — split longer lists into chunks of 100. A bad entry never fails the batch; it comes back as that row's invalid verdict.</p>
+    <p class="lz">本页每轮 100 条，API 每次调用也是 100 条。粘贴或上传更长的名单时只验前 100 条，并会明示——更长的名单请按每 100 条分片。坏条目不连坐整批，它就是自己那一行的 invalid 裁决。</p>
+  </details>
+  <details>
+    <summary><span class="le">Can a catch-all email address be verified?</span><span class="lz">Catch-all 地址能被验证吗？</span></summary>
+    <p class="le">Not to mailbox certainty — by anyone. On a catch-all domain the server accepts every address at the door, so only sending real mail could tell. What you get here is a catch-all risk signal per address (possible or unknown), so you can segment those addresses instead of treating them as confirmed. See: <a href="../questions/can-a-catch-all-email-address-be-verified/">can a catch-all email address be verified?</a></p>
+    <p class="lz">没法验到邮箱本体层面——谁都做不到。Catch-all 域名的服务器在门口对所有地址都收，只有真发信才能确认。这里给的是逐条 catch-all 风险信号（possible 或 unknown），让你把这些地址分段处理，而不是当作已确认。详见：<a href="../questions/can-a-catch-all-email-address-be-verified/">catch-all 邮箱地址到底能不能验证</a>。</p>
+  </details>
+  <details>
+    <summary><span class="le">Why do checkers charge for unknown or catch-all results?</span><span class="lz">为什么校验器对 unknown 和 catch-all 结果也收费？</span></summary>
+    <p class="le">Because the checks behind them — DNS, MX, registration records — were still run and cost the same. We follow the same rule and say so up front: an unknown catch-all risk means the signals ran out, not that the work was skipped. See: <a href="../questions/why-do-verifiers-charge-full-price-for-unknown-results/">why do verifiers charge full price for unknown results?</a></p>
+    <p class="lz">因为它们背后的检查——DNS、MX、注册记录——照样跑了、成本一样。我们也是这个规矩并且提前说清：catch-all 风险为 unknown 表示信号到头了，不是活儿没干。详见：<a href="../questions/why-do-verifiers-charge-full-price-for-unknown-results/">为什么校验器对 unknown 结果也收全价</a>。</p>
+  </details>
+  <details>
+    <summary><span class="le">What happens to the list I paste or upload?</span><span class="lz">我粘贴或上传的名单会怎样？</span></summary>
+    <p class="le">The file is read in your browser; only the addresses are sent, over HTTPS, to the EmailCheck API, and the results come back to this page. The page keeps no copy — closing the tab clears the list — and submitted addresses are not added to any mailing list.</p>
+    <p class="lz">文件在你的浏览器里读取；只有地址本身经 HTTPS 发到 EmailCheck API，结果回到本页。本页不留副本——关掉标签页名单就清了——提交的地址也不会被加进任何邮寄名单。</p>
+  </details>
+  <details>
+    <summary><span class="le">What does a risky verdict mean — should I still send?</span><span class="lz">Risky 裁决是什么意思——还能发吗？</span></summary>
+    <p class="le">Risky (score 50–79) means the domain routes mail but something is off: a disposable domain, a catch-all risk, or similar signals. Fix what is fixable, segment the rest, and keep risky addresses out of a first send to a cold list. See: <a href="../questions/what-does-a-risky-email-verdict-mean/">what does a risky email verdict mean?</a></p>
+    <p class="lz">Risky（50–79 分）表示域名收信、但有问题：一次性域名、catch-all 风险或类似信号。能修的先修，其余分段，冷名单首发送别带 risky 地址。详见：<a href="../questions/what-does-a-risky-email-verdict-mean/">risky 裁决是什么意思</a>。</p>
+  </details>
+  <details>
+    <summary><span class="le">Is this page the same check as the API?</span><span class="lz">本页和 API 是同一个检查吗？</span></summary>
+    <p class="le">Yes — this page calls the production POST /validate/batch endpoint, the same one API subscribers use. The difference is volume and automation: subscribers get monthly call quotas and a key for their own pipelines, on both the single and batch endpoints.</p>
+    <p class="lz">是——本页调的就是生产端点 POST /validate/batch，和 API 订阅者用的是同一个。区别在量和自动化：订阅者有月度调用额度和给自己管线用的密钥，单查与批量两个端点都包含。</p>
+  </details>
+
+  <!-- ============ RELATED ============ -->
+  <h2><span class="no">08</span><span class="le">Related</span><span class="lz">相关</span></h2>
+  <ul class="qlist">
+    <li><a href="../questions/verify-a-list-of-emails-in-bulk/">How do I verify a list of emails in bulk without calling the API one by one?</a></li>
+    <li><a href="../questions/best-email-verification-api/">What is the best email verification API?</a></li>
+    <li><a href="../questions/zerobounce-alternative/">What is a cheaper ZeroBounce alternative for email verification?</a></li>
+    <li><a href="../">EmailCheck — check a single email free</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../assets/app.js"></script>
+<script>
+(function () {
+  var API = 'https://emailcheck-api.pages.dev';
+  var form = document.getElementById('bk-form');
+  if (!form) return;
+  var input = document.getElementById('bk-input');
+  var fileInput = document.getElementById('bk-file');
+  var btn = document.getElementById('bk-btn');
+  var box = document.getElementById('bk-result');
+  var err = document.getElementById('bk-error');
+  var dl = document.getElementById('bk-download');
+  var lastResults = null;
+
+  function lang() { return document.documentElement.getAttribute('data-lang') === 'zh' ? 'zh' : 'en'; }
+  var T = {
+    en: { checking: 'Checking…', check: 'Check the list', total: 'Total', valid: 'Valid', risky: 'Risky', invalid: 'Invalid',
+      disposable: 'Disposable', typos: 'Likely typos', address: 'Address', verdict: 'Verdict', score: 'Score', why: 'Why',
+      truncated: 'Your list had {n} addresses — only the first 100 were checked (the per-run limit). Split the rest into chunks of 100.',
+      empty: 'Paste at least one address, or upload a CSV/TXT file.',
+      failed: 'The check did not complete. The API may be unreachable from this browser right now — try again in a moment, or run the same check from the RapidAPI listing.',
+      rSyntax: 'Not a valid address format', rDomain: 'Domain does not exist', rMx: 'No MX records',
+      rTypo: 'Likely typo — did you mean {s}?', rDisposable: 'Disposable (throwaway) domain', rRole: 'Role account',
+      rCatchall: 'Catch-all risk possible', rOk: 'MX found; no risk signals' },
+    zh: { checking: '检查中…', check: '验证这批名单', total: '共', valid: '有效', risky: '有风险', invalid: '无效',
+      disposable: '一次性', typos: '疑似拼错', address: '地址', verdict: '裁决', score: '分数', why: '原因',
+      truncated: '你的名单有 {n} 条——只验了前 100 条（每轮上限）。其余请按每 100 条分片。',
+      empty: '请先粘贴至少一个地址，或上传 CSV/TXT 文件。',
+      failed: '这次检查没跑完。当前浏览器可能连不上 API——稍后再试，或去 RapidAPI 产品页里跑同样的检查。',
+      rSyntax: '地址格式不合法', rDomain: '域名不存在', rMx: '无 MX 记录',
+      rTypo: '疑似拼错——你是不是指 {s}？', rDisposable: '一次性域名', rRole: '角色账号',
+      rCatchall: 'catch-all 风险为 possible', rOk: '有 MX；无风险信号' }
+  };
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function reasons(r, t) {
+    var c = r.checks || {}, parts = [];
+    if (c.syntax === false) parts.push(t.rSyntax);
+    if (c.domainExists === false) parts.push(t.rDomain);
+    if (c.mxFound === false && c.domainExists !== false && c.syntax !== false) parts.push(t.rMx);
+    if (r.suggestion) parts.push(t.rTypo.replace('{s}', r.suggestion));
+    if (c.disposable) parts.push(t.rDisposable);
+    if (c.roleAccount) parts.push(t.rRole);
+    if (r.catchAllRisk === 'possible') parts.push(t.rCatchall);
+    if (!parts.length) parts.push(t.rOk);
+    return parts.join('; ');
+  }
+  function parseList(text) {
+    return text.split(/[\s,;]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+  }
+  fileInput.addEventListener('change', function () {
+    var f = fileInput.files && fileInput.files[0];
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var lines = String(reader.result || '').split(/\r?\n/);
+      var out = [];
+      lines.forEach(function (line, i) {
+        var cell = line.split(',')[0].replace(/^"|"$/g, '').trim();
+        if (!cell) return;
+        if (i === 0 && cell.toLowerCase() === 'email') return;
+        out.push(cell);
+      });
+      input.value = out.join('\n');
+    };
+    reader.readAsText(f);
+  });
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var t = T[lang()];
+    var emails = parseList(input.value);
+    err.className = 'err'; box.className = 'result'; dl.className = 'btn bk-dl';
+    if (!emails.length) { err.textContent = t.empty; err.className = 'err on'; return; }
+    var note = '';
+    if (emails.length > 100) { note = t.truncated.replace('{n}', emails.length); emails = emails.slice(0, 100); }
+    btn.disabled = true;
+    fetch(API + '/validate/batch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ emails: emails })
+    })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function (d) {
+        var res = d.results || [];
+        lastResults = res;
+        var s = d.summary || {};
+        function cnt(k) { return s[k] ? s[k].count : res.filter(function (r) { return r.verdict === k; }).length; }
+        var head = '<div class="kv">' +
+          '<div>' + t.total + ': <b>' + res.length + '</b></div>' +
+          '<div>' + t.valid + ': <b>' + cnt('valid') + '</b></div>' +
+          '<div>' + t.risky + ': <b>' + cnt('risky') + '</b></div>' +
+          '<div>' + t.invalid + ': <b>' + cnt('invalid') + '</b></div>' +
+          '<div>' + t.disposable + ': <b>' + (s.disposable ? s.disposable.count : 0) + '</b></div>' +
+          '<div>' + t.typos + ': <b>' + (s.typoLikely ? s.typoLikely.count : 0) + '</b></div></div>';
+        var rows = res.map(function (r) {
+          return '<tr><td>' + esc(r.email) + '</td><td class="v-' + esc(r.verdict) + '">' +
+            esc(r.verdict) + '</td><td>' + esc(r.score) + '</td><td>' + esc(reasons(r, t)) + '</td></tr>';
+        }).join('');
+        box.innerHTML = (note ? '<p class="note">' + esc(note) + '</p>' : '') + head +
+          '<table class="bk-table"><tr><th>' + t.address + '</th><th>' + t.verdict + '</th><th>' +
+          t.score + '</th><th>' + t.why + '</th></tr>' + rows + '</table>' +
+          '<p class="note">' + esc(d.note || '') + '</p>';
+        box.className = 'result on';
+        dl.className = 'btn bk-dl on';
+      })
+      .catch(function () { err.textContent = t.failed; err.className = 'err on'; })
+      .finally(function () { btn.disabled = false; });
+  });
+  dl.addEventListener('click', function () {
+    if (!lastResults) return;
+    var t = T[lang()];
+    var lines = ['email,verdict,score,reasons'];
+    lastResults.forEach(function (r) {
+      lines.push([r.email, r.verdict, r.score, '"' + reasons(r, t).replace(/"/g, '""') + '"'].join(','));
+    });
+    var blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'bulk-email-check-results.csv';
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+  });
+})();
+</script>
+</body>
+</html>
