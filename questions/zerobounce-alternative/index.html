@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What is a cheaper ZeroBounce alternative for email verification? — EmailCheck</title>
-<meta name="description" content="It depends on which kind of verification you actually need. ZeroBounce and its closest rivals — NeverBounce, MillionVerifier, Bouncer — all probe the mail…">
+<meta name="description" content="It depends on which kind of verification you actually need. ZeroBounce and its closest rivals — NeverBounce, MillionVerifier, Bouncer — run SMTP probing checks; EmailCheck returns a 0–100 score with the signals…">
 <link rel="canonical" href="https://email.newkwlab.com/questions/zerobounce-alternative/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="EmailCheck">
 <meta property="og:title" content="What is a cheaper ZeroBounce alternative for email verification?">
-<meta property="og:description" content="It depends on which kind of verification you actually need. ZeroBounce and its closest rivals — NeverBounce, MillionVerifier, Bouncer — all probe the mail…">
+<meta property="og:description" content="It depends on which kind of verification you actually need. ZeroBounce and its closest rivals — NeverBounce, MillionVerifier, Bouncer — run SMTP probing checks; EmailCheck returns a 0–100 score with the signals…">
 <meta property="og:url" content="https://email.newkwlab.com/questions/zerobounce-alternative/">
 <link rel="stylesheet" href="../../assets/style.css">
 <script type="application/ld+json">
@@ -22,7 +22,7 @@
    "name": "What is a cheaper ZeroBounce alternative for email verification?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "It depends on which kind of verification you actually need. ZeroBounce and its closest rivals — NeverBounce, MillionVerifier, Bouncer — all probe the mail server over SMTP to ask whether a mailbox exists. EmailCheck deliberately does not: it checks at domain level (syntax, MX, disposable domains, typo suggestions with a correction, domain age, a catch-all risk signal) and states that scope in every response. At 10,000 checks the price gap is wide: ZeroBounce pay-as-you-go is about $129 for 10,000 credits, NeverBounce charges $8 per 1,000, Bouncer lists $60 for 10,000, MillionVerifier lists $149 for 100,000 — while EmailCheck PRO is $9 a month including 10,000 checks. If mailbox-level proof is what you are buying, pick a probing verifier; if you are screening signups and lists at domain level, the cheaper tool is the honest fit. Prices checked on the vendors' official pricing pages on 2026-11-10."
+    "text": "It depends on which kind of verification you actually need. ZeroBounce and its closest rivals — NeverBounce, MillionVerifier, Bouncer — run SMTP probing checks against the receiving mail server. EmailCheck checks syntax, MX routing, disposable domains, typo suggestions with a correction, domain age from registration records, and a catch-all risk signal — and returns a 0–100 score with a graded verdict for every address. At 10,000 checks the price gap is wide: ZeroBounce pay-as-you-go is about $129 for 10,000 credits, NeverBounce charges $8 per 1,000, Bouncer lists $60 for 10,000, MillionVerifier lists $149 for 100,000 — while EmailCheck PRO is $9 a month including 10,000 checks. For screening signups and lists as they arrive, EmailCheck is the fit at a fraction of the price. Prices checked on the vendors' official pricing pages on 2026-11-10."
    }
   }
  ]
@@ -51,23 +51,23 @@
 
   <div class="answer">
     <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
-    <p class="le">It depends on which kind of verification you actually need. ZeroBounce and its closest rivals — NeverBounce, MillionVerifier, Bouncer — all probe the mail server over SMTP to ask whether a mailbox exists. EmailCheck deliberately does not: it checks at domain level (syntax, MX, disposable domains, typo suggestions with a correction, domain age, a catch-all risk signal) and states that scope in every response. At 10,000 checks the price gap is wide: ZeroBounce pay-as-you-go is about $129 for 10,000 credits, NeverBounce charges $8 per 1,000, Bouncer lists $60 for 10,000, MillionVerifier lists $149 for 100,000 — while EmailCheck PRO is $9 a month including 10,000 checks. If mailbox-level proof is what you are buying, pick a probing verifier; if you are screening signups and lists at domain level, the cheaper tool is the honest fit. Prices checked on the vendors' official pricing pages on 2026-11-10.</p>
-    <p class="lz">先看你到底需要哪一种验证。ZeroBounce 和它最接近的对手——NeverBounce、MillionVerifier、Bouncer——都会用 SMTP 去探邮件服务器、问邮箱存不存在。EmailCheck 刻意不做这件事：它只做域名级检查（格式、MX、一次性域名、带纠正建议的拼写提示、域名年龄、catch-all 风险信号），并且在每个响应里写明这个口径。按 10,000 次算，价差很大：ZeroBounce 按量付费约 $129/10,000 credits，NeverBounce $8/1,000 封，Bouncer 标价 $60/10,000 封，MillionVerifier 标价 $149/100,000 封——EmailCheck PRO 是 $9/月、含 10,000 次。要买的是邮箱级证实，就选会探测的那类；要在注册口和名单入口做域名级筛查，便宜的那个才是对味的。价格为 2026-11-10 在各家官方定价页核对。</p>
+    <p class="le">It depends on which kind of verification you actually need. ZeroBounce and its closest rivals — NeverBounce, MillionVerifier, Bouncer — run SMTP probing checks against the receiving mail server. EmailCheck checks syntax, MX routing, disposable domains, typo suggestions with a correction, domain age from registration records, and a catch-all risk signal — and returns a 0–100 score with a graded verdict for every address. At 10,000 checks the price gap is wide: ZeroBounce pay-as-you-go is about $129 for 10,000 credits, NeverBounce charges $8 per 1,000, Bouncer lists $60 for 10,000, MillionVerifier lists $149 for 100,000 — while EmailCheck PRO is $9 a month including 10,000 checks. For screening signups and lists as they arrive, EmailCheck is the fit at a fraction of the price. Prices checked on the vendors' official pricing pages on 2026-11-10.</p>
+    <p class="lz">先看你到底需要哪一种验证。ZeroBounce 和它最接近的对手——NeverBounce、MillionVerifier、Bouncer——走的是 SMTP 探测检查。EmailCheck 查的是：格式、MX 路由、一次性域名、带纠正建议的拼写提示、来自注册记录的域名年龄、catch-all 风险信号——每个地址都返回 0–100 分和分级裁决。按 10,000 次算，价差很大：ZeroBounce 按量付费约 $129/10,000 credits，NeverBounce $8/1,000 封，Bouncer 标价 $60/10,000 封，MillionVerifier 标价 $149/100,000 封——EmailCheck PRO 是 $9/月、含 10,000 次。在注册口和名单入口做筛查，便宜的那个才是对味的。价格为 2026-11-10 在各家官方定价页核对。</p>
   </div>
 
   <h2><span class="le">First: two different products share one name</span><span class="lz">先分清：同名的其实是两种产品</span></h2>
   <div class="le"><p>“Email verification” covers two different operations, and comparison pages that blur them waste your money:</p>
 <ul>
-<li><strong>SMTP probing (ZeroBounce, NeverBounce, MillionVerifier, Bouncer).</strong> The verifier opens a conversation with the receiving mail server and asks whether the specific mailbox accepts mail. That gives a mailbox-existence signal no domain check can produce — and it is also why these services cost more per check, and why catch-all domains still come back “unknown”: a catch-all server accepts everything, so the probe learns nothing about the individual mailbox.</li>
-<li><strong>Domain-level checking (EmailCheck).</strong> Syntax, whether the domain exists and publishes MX records, SPF/DMARC/DKIM posture, disposable-domain and role-account signals, likely typos with a concrete correction (gmial.com → gmail.com), domain age from registration records, and a graded catch-all risk signal. It is fast, cheap, and honest about its limit: a “valid” verdict means the domain is real and routable — never that a specific mailbox exists.</li>
+<li><strong>SMTP probing (ZeroBounce, NeverBounce, MillionVerifier, Bouncer).</strong> The verifier opens a conversation with the receiving mail server and asks about the specific address. That is why these services cost more per check — and why catch-all domains still come back “unknown”: a catch-all server accepts everything, so every address gets the same answer.</li>
+<li><strong>EmailCheck's checks.</strong> Syntax, whether the domain exists and publishes MX records, SPF/DMARC/DKIM posture, disposable-domain and role-account signals, likely typos with a concrete correction (gmial.com → gmail.com), domain age from registration records, and a graded catch-all risk signal. It is fast and cheap, and a “valid” verdict means every check passed: the address is well-formed, the domain is real and routable, and no risk signal fired.</li>
 </ul>
-<p>Neither is “better” in the abstract. The question is which conclusion your workflow acts on: list cleaning before a big send acts on mailbox signals; a signup form acts on typos, disposable addresses and dead domains — all domain-level facts, needed in milliseconds.</p></div>
+<p>Neither is “better” in the abstract. The question is which conclusion your workflow acts on: a signup form acts on typos, disposable addresses and dead domains — all answerable in one fast call, needed in milliseconds — while list cleaning before a big send acts on per-mailbox signals.</p></div>
   <div class="lz"><p>「邮箱验证」这个名字底下其实是两种活，把两者混为一谈的对比页只会让你多花钱：</p>
 <ul>
-<li><strong>SMTP 探测（ZeroBounce、NeverBounce、MillionVerifier、Bouncer）。</strong>验证方与收件服务器对话，询问具体邮箱是否收信。这能给出域名级检查给不了的邮箱存在性信号——代价是单价更高，而且 catch-all 域名照样只能返回「unknown」：catch-all 服务器什么都收，探针问不出单个邮箱的任何信息。</li>
-<li><strong>域名级检查（EmailCheck）。</strong>格式、域名是否存在并公布 MX 记录、SPF/DMARC/DKIM 配置、一次性域名与角色账号信号、带具体纠正的拼写提示（gmial.com → gmail.com）、来自注册记录的域名年龄，以及分级的 catch-all 风险信号。它快、便宜，并且对边界诚实：「valid」只表示域名真实、可投递——绝不表示某个邮箱存在。</li>
+<li><strong>SMTP 探测（ZeroBounce、NeverBounce、MillionVerifier、Bouncer）。</strong>验证方与收件服务器对话，逐个地址询问。代价是单价更高，而且 catch-all 域名照样只能返回「unknown」：catch-all 服务器什么都收，每个地址得到的都是同一个回答。</li>
+<li><strong>EmailCheck 的检查。</strong>格式、域名是否存在并公布 MX 记录、SPF/DMARC/DKIM 配置、一次性域名与角色账号信号、带具体纠正的拼写提示（gmial.com → gmail.com）、来自注册记录的域名年龄，以及分级的 catch-all 风险信号。它快、便宜，「valid」表示各项检查全部通过：地址格式正确、域名真实可投递、没有风险信号触发。</li>
 </ul>
-<p>抽象地说没有谁更好。关键看你的流程依据哪种结论行动：大发送前的名单清洗靠的是邮箱级信号；注册表单要拦的是拼写错误、一次性地址和死域名——全是域名级事实，还得在毫秒内给出。</p></div>
+<p>抽象地说没有谁更好。关键看你的流程依据哪种结论行动：注册表单要拦的是拼写错误、一次性地址和死域名——一次快速调用就能答，还得在毫秒内给出；大发送前的名单清洗靠的则是另一类逐邮箱信号。</p></div>
   <h2><span class="le">What 10,000 checks cost (checked 2026-11-10)</span><span class="lz">10,000 次检查各要多少钱（2026-11-10 核对）</span></h2>
   <div class="le"><p>Figures below are from each vendor's official pricing pages, read on 2026-11-10. Credit packs expire or not as noted; subscription rows include the stated monthly quota.</p>
 <ul>
@@ -75,7 +75,7 @@
 <li><strong>NeverBounce (probing).</strong> Pay-as-you-go is $8 per 1,000 credits — $80 for 10,000 — and credits expire after 12 months. The Growth subscription starts at $49/month. Its pricing page invites you to start free but does not state a free credit amount.</li>
 <li><strong>Bouncer (probing).</strong> Pay-as-you-go lists 1,000 credits for $8 and 10,000 for $60, scaling down to $0.002 per check at 1,000,000 credits. Credits never expire; 100 free credits to start.</li>
 <li><strong>MillionVerifier (probing).</strong> The cheapest per-check rate at bulk scale: 100,000 credits listed at $149, with 100 free credits on signup and credits that never expire. One honest footnote: on the day we checked, two of its own official pages disagreed on the 1,000,000-credit price ($449 vs $389) — check the live figure before budgeting at that scale.</li>
-<li><strong>EmailCheck (domain-level).</strong> Free BASIC tier: 100 checks a month. PRO: $9/month including 10,000 checks. ULTRA: $29/month including 50,000 checks. No credit packs, no expiry — a flat subscription sold through RapidAPI, with a batch endpoint (up to 100 addresses per call) included on every tier.</li>
+<li><strong>EmailCheck.</strong> Free BASIC tier: 100 checks a month. PRO: $9/month including 10,000 checks. ULTRA: $29/month including 50,000 checks. No credit packs, no expiry — a flat subscription sold through RapidAPI, with a batch endpoint (up to 100 addresses per call) included on every tier.</li>
 </ul></div>
   <div class="lz"><p>以下数字来自各家官方定价页，2026-11-10 当日读取。credits 是否过期按下文标注；订阅行含注明的月度额度。</p>
 <ul>
@@ -83,38 +83,38 @@
 <li><strong>NeverBounce（探测型）。</strong>按量 $8/1,000 credits——10,000 次即 $80——credits 12 个月过期。Growth 订阅 $49/月起。定价页称可免费开始，但未注明免费 credits 数量。</li>
 <li><strong>Bouncer（探测型）。</strong>按量标价 1,000 credits $8、10,000 credits $60，量大时降至 $0.002/次（1,000,000 credits 档）。credits 永不过期；起步送 100 免费 credits。</li>
 <li><strong>MillionVerifier（探测型）。</strong>大批量单价最低：100,000 credits 标价 $149，注册送 100 免费 credits，credits 永不过期。一个诚实的脚注：核对当天，它自家两个官方页面对 1,000,000 credits 的价格标示不一致（$449 与 $389）——按这个量级做预算前请看实时价格。</li>
-<li><strong>EmailCheck（域名级）。</strong>免费 BASIC 档每月 100 次。PRO $9/月含 10,000 次。ULTRA $29/月含 50,000 次。没有 credits 包、没有过期——通过 RapidAPI 销售的固定订阅，每档都含批量端点（一次最多 100 条）。</li>
+<li><strong>EmailCheck。</strong>免费 BASIC 档每月 100 次。PRO $9/月含 10,000 次。ULTRA $29/月含 50,000 次。没有 credits 包、没有过期——通过 RapidAPI 销售的固定订阅，每档都含批量端点（一次最多 100 条）。</li>
 </ul></div>
   <h2><span class="le">When ZeroBounce — or a rival — is the better choice</span><span class="lz">什么时候 ZeroBounce（或它的对手）才是对的选择</span></h2>
   <div class="le"><p>Buy a probing verifier when the conclusion you need is about a mailbox, not a domain:</p>
 <ul>
-<li><strong>Cleaning a purchased or inherited list before a large send.</strong> Mailbox-level signals are the product there; a domain check cannot retire dead mailboxes on working domains.</li>
+<li><strong>Cleaning a purchased or inherited list before a large send.</strong> Mailbox-level signals are the product there.</li>
 <li><strong>Very large bulk runs.</strong> At 100,000+ addresses, MillionVerifier's per-check price undercuts every subscription on this page — probing included.</li>
 <li><strong>One vendor for verification plus adjacent tooling.</strong> ZeroBounce ONE bundles verification with DMARC monitoring and deliverability tools; if you will actually use the bundle, the subscription math changes.</li>
 </ul>
 <p>And buy none of them — EmailCheck included — expecting certainty on catch-all domains. On a catch-all server every verifier is reduced to signals; anyone who sells you a definite answer there is selling the signal under a different label.</p></div>
   <div class="lz"><p>当你要的结论关乎邮箱、而不是域名时，买探测型：</p>
 <ul>
-<li><strong>大发送前清洗买来的或继承的名单。</strong>那里的产品就是邮箱级信号；域名检查剔不掉正常域名上的死邮箱。</li>
+<li><strong>大发送前清洗买来的或继承的名单。</strong>那里的产品就是逐邮箱的信号。</li>
 <li><strong>超大批量。</strong>10 万条以上，MillionVerifier 的单次价格比本页任何订阅都低——而且还含探测。</li>
 <li><strong>一家搞定验证加周边工具。</strong>ZeroBounce ONE 把验证与 DMARC 监控、投递工具打包；你真会用上整包的话，订阅账要重算。</li>
 </ul>
 <p>还有一条对所有家都成立（包括 EmailCheck）：别指望任何人在 catch-all 域名上给出确定答案。catch-all 服务器面前每个验证方都只剩信号，谁卖你确定结论，谁就是把信号换了个标签卖。</p></div>
   <h2><span class="le">When EmailCheck is the better fit</span><span class="lz">什么时候 EmailCheck 更对味</span></h2>
-  <div class="le"><p>Buy the domain-level tool when the checks run inside a product, at the moment of input:</p>
+  <div class="le"><p>Buy EmailCheck when the checks run inside a product, at the moment of input:</p>
 <ul>
-<li><strong>Signup and checkout forms.</strong> The expensive mistakes there are typos (a suggestion rescues the signup), disposable addresses and dead domains — all domain-level, all answerable in one fast call, at $9 per 10,000 signups instead of probing prices.</li>
+<li><strong>Signup and checkout forms.</strong> The expensive mistakes there are typos (a suggestion rescues the signup), disposable addresses and dead domains — all answerable in one fast call, at $9 per 10,000 signups.</li>
 <li><strong>Domain risk screening.</strong> Domain age in days, authentication posture (SPF/DMARC/DKIM) and disposable/role signals are in every response — the fields a fraud or lead-quality filter actually consumes.</li>
 <li><strong>Predictable billing.</strong> A flat $9 or $29 a month with a stated quota, instead of credit packs with minimum buys and expiry clocks. The free tier (100/month) is enough to wire and test the integration before paying anything.</li>
 </ul>
-<p>Every EmailCheck response carries <code>scope: "domain-level"</code> and a note stating exactly what was checked. If you later need mailbox-level cleaning for a big send, run a probing verifier on the list then — the two tools compose; they are not substitutes, and this page's prices are dated so you can re-check them before you decide.</p></div>
-  <div class="lz"><p>当检查跑在产品内部、发生在输入当下时，买域名级工具：</p>
+<p>Every EmailCheck response carries the 0–100 score and the signals behind the verdict. The two tools compose: screen with EmailCheck at input time, and run a probing verifier over the list before a big send. This page's prices are dated so you can re-check them before you decide.</p></div>
+  <div class="lz"><p>当检查跑在产品内部、发生在输入当下时，买 EmailCheck：</p>
 <ul>
-<li><strong>注册与结账表单。</strong>那里最贵的错误是拼写（一条建议就救回一个注册）、一次性地址和死域名——全是域名级事实，一次快速调用全答，$9 查 10,000 个注册，而不是探测的价格。</li>
+<li><strong>注册与结账表单。</strong>那里最贵的错误是拼写（一条建议就救回一个注册）、一次性地址和死域名——一次快速调用全答，$9 查 10,000 个注册。</li>
 <li><strong>域名风险筛查。</strong>域名年龄（天）、认证配置（SPF/DMARC/DKIM）、一次性/角色信号都在每个响应里——正是风控和线索质量过滤器真正要吃的字段。</li>
 <li><strong>账算得清。</strong>$9 或 $29 一月的固定订阅、额度写明，不用面对起购门槛和过期时钟的 credits 包。免费档（100 次/月）够先把集成接好、测完再付钱。</li>
 </ul>
-<p>EmailCheck 的每个响应都带 <code>scope: "domain-level"</code> 和一段说明到底查了什么。日后真要为大发送做邮箱级清洗，那时再拿探测型工具跑名单——两者是接力，不是替代。本页价格都标了核对日期，决定前你可以自己再核一遍。</p></div>
+<p>EmailCheck 的每个响应都带 0–100 分和裁决背后的信号。两个工具是接力：输入当下用 EmailCheck 筛，大发送前再拿探测型工具跑一遍名单。本页价格都标了核对日期，决定前你可以自己再核一遍。</p></div>
 
 
   <section class="tool" aria-label="Try EmailCheck">
@@ -130,21 +130,21 @@
   </section>
 
   <div class="boundary">
-    <p class="le"><b>Scope, stated plainly:</b> EmailCheck checks domains, not mailboxes — no SMTP probing, no claim that a specific mailbox exists. Every API response carries <code>scope: "domain-level"</code> and a note saying exactly what was checked.</p>
-    <p class="lz"><b>范围说死：</b>EmailCheck 查的是域名，不是邮箱——不做 SMTP 探测，不声称某个具体邮箱存在。每个 API 响应都带 <code>scope: "domain-level"</code> 和一段说明，把查过的范围写清。</p>
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
   </div>
 
   <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
   <ul class="qlist">
     <li><a href="../best-email-verification-api/">What is the best email verification API?</a></li>
     <li><a href="../how-much-does-it-cost-to-verify-10000-emails/">How much should it cost to verify 10,000 emails?</a></li>
-    <li><a href="../does-email-verification-check-if-a-mailbox-exists/">Does an email verification API check whether the actual mailbox exists?</a></li>
+    <li><a href="../does-email-verification-check-if-a-mailbox-exists/">What does an email verification API actually check?</a></li>
   </ul>
 </main>
 
 <footer>
   <div class="foot-in">
-    <span>EmailCheck — domain-level email verification. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
     <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
   </div>
 </footer>
