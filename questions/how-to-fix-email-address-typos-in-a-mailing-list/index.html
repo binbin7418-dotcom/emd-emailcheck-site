@@ -1,1 +1,116 @@
-temp
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How do I fix email address typos in a mailing list? — EmailCheck</title>
+<meta name="description" content="Fix the domain, never guess the name. Most typos in a mailing list live in the domain — gmial.com for gmail.com, a missing @, the wrong TLD — and those…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/how-to-fix-email-address-typos-in-a-mailing-list/">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="How do I fix email address typos in a mailing list?">
+<meta property="og:description" content="Fix the domain, never guess the name. Most typos in a mailing list live in the domain — gmial.com for gmail.com, a missing @, the wrong TLD — and those…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/how-to-fix-email-address-typos-in-a-mailing-list/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How do I fix email address typos in a mailing list?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Fix the domain, never guess the name. Most typos in a mailing list live in the domain — gmial.com for gmail.com, a missing @, the wrong TLD — and those have an obvious correction a verifier can suggest. Apply a suggestion only when it is unambiguous, re-verify the corrected address before it rejoins the list, and delete addresses whose local part looks wrong instead of inventing a mailbox for a real person."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How do I fix email address typos in a mailing list?</p>
+  <h1><span class="le">How do I fix email address typos in a mailing list?</span><span class="lz">怎么修复邮件名单里的邮箱拼写错误？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Fix the domain, never guess the name. Most typos in a mailing list live in the domain — gmial.com for gmail.com, a missing @, the wrong TLD — and those have an obvious correction a verifier can suggest. Apply a suggestion only when it is unambiguous, re-verify the corrected address before it rejoins the list, and delete addresses whose local part looks wrong instead of inventing a mailbox for a real person.</p>
+    <p class="lz">修域名，永远不要猜名字。名单里的拼写错误大多出在域名上——gmail 写成 gmial、漏了 @、顶级域名写错——这些都有明确的纠正，验证工具能给出建议。只在建议毫无歧义时才采用，纠正后的地址重新验证过再放回名单；本地部分（@ 前面）看着不对的地址直接删掉，不要替真人编一个邮箱出来。</p>
+  </div>
+
+  <h2><span class="le">The typos that are safe to fix — and the ones that aren't</span><span class="lz">哪些拼写错误能安全修，哪些不能</span></h2>
+  <div class="le"><p><strong>Safe: domain typos with one obvious correction.</strong> Transposed or missing letters in a major provider domain (gmial.com, gmal.com, hotmial.com), a missing @, a wrong TLD (.con for .com), a doubled dot. The intended domain is not in doubt, and the person typed their real local part — you are restoring what they meant to type.</p>
+<p><strong>Unsafe: anything in the local part.</strong> If the name before the @ looks wrong, there is no way to know the right one — jonsmith@ could be johnsmith@, jon.smith@, or a different person entirely. Guessing delivers someone else's mail, or a stranger's, and can put you on the wrong side of consent. Delete those rows, or recover them through a channel where the person confirms the address themselves.</p></div>
+  <div class="lz"><p><strong>能修：纠正唯一明确的域名拼写。</strong>大服务商域名里字母颠倒或漏字（gmial.com、gmal.com、hotmial.com）、漏 @、顶级域名写错（.con 应为 .com）、多打一个点。目标域名没有疑问，而本地部分是本人真实输入的——你只是在还原他想打的字。</p>
+<p><strong>不能修：本地部分的任何猜测。</strong>@ 前面的名字看着不对时，没办法知道对的是哪个——jonsmith@ 可能是 johnsmith@、jon.smith@，也可能完全是另一个人。猜中了是把信发给别人，猜错了是发给陌生人，还可能踩到授权同意的边。这类行删掉，或者走能让本人自己确认地址的渠道去找回。</p></div>
+  <h2><span class="le">A safe fix workflow</span><span class="lz">一套安全的修复流程</span></h2>
+  <div class="le"><ul>
+<li><strong>Check the whole list first.</strong> Run the list through the <a href="../../bulk-email-checker/">bulk email checker</a>. Rows with a likely typo come back flagged, with a suggested correction attached (EmailCheck returns the suggestion and marks the address typo-likely).</li>
+<li><strong>Apply only unambiguous suggestions.</strong> One candidate correction, a real major domain, the local part untouched. Anything else stays unapplied.</li>
+<li><strong>Re-verify every corrected address.</strong> A fixed domain doesn't make the row good — run it again and let it earn its verdict like any other address.</li>
+<li><strong>Keep the audit trail.</strong> Store original → corrected pairs. If a subscriber ever asks why mail arrived at an address they "never gave you", the trail is your answer.</li>
+</ul></div>
+  <div class="lz"><ul>
+<li><strong>先把整个名单查一遍。</strong>用<a href="../../bulk-email-checker/">批量检查器</a>跑一遍。疑似拼写的行会被标出来并附上纠正建议（EmailCheck 返回 suggestion 并标记 typo-likely）。</li>
+<li><strong>只采用毫无歧义的建议。</strong>只有一个候选纠正、是真实的大域名、本地部分不动。其他的都不采用。</li>
+<li><strong>每个纠正后的地址都重新验证。</strong>域名修对了不等于这一行就好了——再跑一遍，让它和其他地址一样挣自己的裁决。</li>
+<li><strong>留好审计记录。</strong>存下「原地址 → 纠正后」对照。哪天订阅者问为什么信发到了一个他「从没给过」的地址，这份记录就是你的回答。</li>
+</ul></div>
+  <h2><span class="le">Stop the next batch of typos at the door</span><span class="lz">让下一批拼写错误进不了门</span></h2>
+  <div class="le"><p>Fixing a list is the expensive way to learn this. The cheap way is to check the address while the person is still on the form: a domain typo can be flagged and confirmed with them on the spot ("did you mean gmail.com?"), which is why <a href="../catch-email-typos-like-gmial-com-at-signup/">catching typos at signup</a> beats cleaning them up quarterly, and why teams <a href="../verify-emails-at-signup-with-an-api/">verify at signup with an API</a> instead of after the first campaign bounces. The list you already have gets the workflow above; the list you're building shouldn't need it.</p></div>
+  <div class="lz"><p>修名单是学到这一课的贵办法。便宜办法是趁人还在表单上就把地址查掉：域名拼写可以当场标出来并和他确认（「你是想填 gmail.com 吗？」），这正是为什么<a href="../catch-email-typos-like-gmial-com-at-signup/">在注册环节抓拼写</a>胜过每季度清理一次，也是为什么团队选择<a href="../verify-emails-at-signup-with-an-api/">在注册时用 API 验证</a>、而不是等第一封群发退信了再说。已有的名单走上面的流程；正在攒的名单不应该再需要它。</p></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="test@gmail.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../catch-email-typos-like-gmial-com-at-signup/">How do I catch email typos like gmial.com at signup?</a></li>
+    <li><a href="../../bulk-email-checker/">Bulk email checker — verify a whole list in one call</a></li>
+    <li><a href="../verify-emails-at-signup-with-an-api/">How do I verify emails at signup with an API?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
