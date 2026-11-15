@@ -1,1 +1,116 @@
-temp
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How accurate is bulk email verification? — EmailCheck</title>
+<meta name="description" content="Per address, exactly as accurate as a single check — the checks are identical. What changes in bulk is the mix: on a real B2B list, roughly 30–40% of…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/how-accurate-is-bulk-email-verification/">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="How accurate is bulk email verification?">
+<meta property="og:description" content="Per address, exactly as accurate as a single check — the checks are identical. What changes in bulk is the mix: on a real B2B list, roughly 30–40% of…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/how-accurate-is-bulk-email-verification/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How accurate is bulk email verification?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Per address, exactly as accurate as a single check — the checks are identical. What changes in bulk is the mix: on a real B2B list, roughly 30–40% of addresses usually sit on catch-all domains, where no verifier can give a definite yes or no. So the honest output of a bulk run is a segmented list — valid, risky and invalid, each row scored — not one accuracy percentage. Measure accuracy on your own list: send to the valid segment first and compare hard bounces band by band."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How accurate is bulk email verification?</p>
+  <h1><span class="le">How accurate is bulk email verification?</span><span class="lz">批量邮箱验证到底有多准？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Per address, exactly as accurate as a single check — the checks are identical. What changes in bulk is the mix: on a real B2B list, roughly 30–40% of addresses usually sit on catch-all domains, where no verifier can give a definite yes or no. So the honest output of a bulk run is a segmented list — valid, risky and invalid, each row scored — not one accuracy percentage. Measure accuracy on your own list: send to the valid segment first and compare hard bounces band by band.</p>
+    <p class="lz">逐个地址看，和单查一样准——跑的检查完全相同。批量时变的只是名单构成：真实 B2B 名单里通常有约 30–40% 的地址在 catch-all 域名上，那部分任何验证工具都给不出确定答案。所以一次批量跑诚实的产出是一份分好段的名单——valid、risky、invalid，每行带分数——而不是一个准确率百分比。准确率要到你自己的名单上量：先发 valid 段，再按分数段对比硬退信。</p>
+  </div>
+
+  <h2><span class="le">Why a bulk run has no single accuracy number</span><span class="lz">为什么批量跑没有单一准确率</span></h2>
+  <div class="le"><p>Single-check benchmarks already cap out lower than the marketing suggests: in Hunter's public benchmark — 3,000 real business emails run through 15 verification services — the best service scored 70%. A bulk run inherits that per-address ceiling and adds a second problem: composition. Two lists run through the same verifier will report different "accuracy" purely because one has more catch-all domains, more role accounts or more typos in it. The verifier didn't change; the list did.</p>
+<p>That is why a single percentage for a bulk job is the wrong unit. The useful output is the distribution: how many rows came back valid, how many risky and why (catch-all risk, disposable domain, a typo suggestion), and how many invalid. Those bands are what you actually act on.</p></div>
+  <div class="lz"><p>单查的基准本来就比营销话术低：在 Hunter 的公开基准里——3,000 封真实商务邮箱、跑 15 家验证服务——最好的一家也只有 70%。批量跑继承这个逐地址天花板，还多一个问题：构成。两份名单跑同一个验证工具，报出来的「准确率」会不同，纯粹因为其中一份 catch-all 域名更多、角色账号更多或拼写错误更多。变的不是工具，是名单。</p>
+<p>所以给一次批量任务报单一百分比是用错了单位。有用的产出是分布：多少行 valid、多少行 risky 以及原因（catch-all 风险、一次性域名、拼写纠正建议）、多少行 invalid。这些分段才是你真正要动手处理的东西。</p></div>
+  <h2><span class="le">How to measure accuracy on your own list</span><span class="lz">怎么在自己的名单上量准确率</span></h2>
+  <div class="le"><ul>
+<li><strong>Seed it first.</strong> Add a few addresses you already know are good and a few you know are dead. If the verifier mislabels the seeds, stop there.</li>
+<li><strong>Keep the bands separate.</strong> Don't merge risky back into valid to make the list look bigger — the bands are the measurement.</li>
+<li><strong>Send in order.</strong> Mail the valid band first, the risky band later and separately, and never mail the invalid band.</li>
+<li><strong>Compare hard bounces per band.</strong> After the send, line the bounce rate up against the score bands. A verifier is accurate *for your list* when the bands predict the bounces: near-zero hard bounces in valid, visibly more in risky.</li>
+</ul></div>
+  <div class="lz"><ul>
+<li><strong>先埋种子。</strong>放几个你已知是好的地址、几个已知是死的。验证工具把种子都标错，就不用往下走了。</li>
+<li><strong>分段别合并。</strong>不要为了让名单看起来大，把 risky 并回 valid——分段本身就是测量。</li>
+<li><strong>按顺序发。</strong>先发 valid 段，risky 段晚些单独发，invalid 段永远不发。</li>
+<li><strong>按段对比硬退信。</strong>发完之后，把退信率和分数段对齐。对你的名单来说准的验证工具，应该是分段能预测退信：valid 段硬退信接近零，risky 段明显更多。</li>
+</ul></div>
+  <h2><span class="le">What EmailCheck returns per row</span><span class="lz">EmailCheck 逐行返回什么</span></h2>
+  <div class="le"><p>Every row gets the same domain-level checks as a single lookup — format, domain and MX health, disposable and role-account signals, a typo suggestion when one is likely, domain age, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict, with the fired signals named. The <a href="../../bulk-email-checker/">bulk email checker</a> runs a whole list in one call (up to 100 addresses per batch request) and returns the rows in order, so the bands survive the trip. Rows whose signals run out — typically catch-all domains — come back scored as risky, not silently passed as valid.</p></div>
+  <div class="lz"><p>每一行跑的域名级检查和单查完全相同——格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写时的纠正建议、域名年龄、catch-all 风险——合成 0–100 分和 valid / risky / invalid 裁决，并写明触发的信号。<a href="../../bulk-email-checker/">批量检查器</a>一次调用跑完整个名单（每批最多 100 个地址），按原顺序逐行返回，分段不会在路上丢掉。信号到头的行——通常是 catch-all 域名——会以 risky 分数返回，而不是悄悄当成 valid 放行。</p></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="test@gmail.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../how-accurate-are-email-verification-apis/">How accurate are email verification APIs, really?</a></li>
+    <li><a href="../../bulk-email-checker/">Bulk email checker — verify a whole list in one call</a></li>
+    <li><a href="../verify-a-list-of-emails-in-bulk/">How do I verify a list of emails in bulk without calling the API one by one?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
