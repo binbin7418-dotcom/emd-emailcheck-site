@@ -35,8 +35,8 @@ api.market: Free Trial 7 days with 100 calls; Pro $9/month; Ultra $29/month;
 overage $0.002 per extra request.
 
 Checkout totals are shown by the platform for the buyer's region and may include
-local taxes. A Zyla listing ("Email List Validation API") has been submitted and
-is under review.
+local taxes. A one-time 3,500-credit pack for the NewKwLab API Bundle (which includes
+EmailCheck) is available on Gumroad; the credits never expire.
 
 ## Pages on this site
 
