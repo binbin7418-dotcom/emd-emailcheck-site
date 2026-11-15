@@ -1,1 +1,116 @@
-temp
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How do you verify a catch-all email address? — EmailCheck</title>
+<meta name="description" content="You can't — not to a definite yes. A catch-all server accepts every address at the door, so whether a specific mailbox exists has no answer without…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/how-to-verify-catch-all-email-addresses/">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="How do you verify a catch-all email address?">
+<meta property="og:description" content="You can't — not to a definite yes. A catch-all server accepts every address at the door, so whether a specific mailbox exists has no answer without…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/how-to-verify-catch-all-email-addresses/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How do you verify a catch-all email address?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "You can't — not to a definite yes. A catch-all server accepts every address at the door, so whether a specific mailbox exists has no answer without sending mail. What you can do is verify everything around the address: the domain is real and healthy, the format is clean, no typo is likely — then score the catch-all risk, keep those addresses in their own segment, and let a careful first send, watched for bounces, finish the job."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How do you verify a catch-all email address?</p>
+  <h1><span class="le">How do you verify a catch-all email address?</span><span class="lz">catch-all 邮箱地址怎么验证？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">You can't — not to a definite yes. A catch-all server accepts every address at the door, so whether a specific mailbox exists has no answer without sending mail. What you can do is verify everything around the address: the domain is real and healthy, the format is clean, no typo is likely — then score the catch-all risk, keep those addresses in their own segment, and let a careful first send, watched for bounces, finish the job.</p>
+    <p class="lz">没法验证到确定的「是」。catch-all 服务器在门口对所有地址都照单全收，所以某个具体邮箱存不存在，不发信就没有答案。你能做的是把地址周围的一切都验掉：域名真实且健康、格式干净、没有疑似拼写错误——然后给 catch-all 风险打分，把这批地址单独分段，用一次小心翼翼的首发送、盯着退信，来完成最后一步。</p>
+  </div>
+
+  <h2><span class="le">Why a catch-all address can't be confirmed</span><span class="lz">为什么 catch-all 地址确认不了</span></h2>
+  <div class="le"><p>On a normal mail server, asking about an address gets you a real answer: the server says whether that mailbox exists. A catch-all server is configured to accept mail for *any* address at the domain — real mailboxes, made-up names, typos, all of it. Every probe gets the same "yes", so the probe tells you nothing about the one address you care about. The mail is accepted first and sorted out (or silently dropped) later, where you can't see it.</p>
+<p>Any tool that returns a confident valid/invalid verdict for a catch-all address is guessing and not telling you. The honest outputs are the ones around the mailbox question — and a risk label on the part nobody can settle.</p></div>
+  <div class="lz"><p>在普通邮件服务器上，问一个地址能得到真答案：服务器会告诉你这个邮箱存不存在。catch-all 服务器的配置是对域名下*任何*地址都收信——真实邮箱、编的名字、拼错的，全收。每次探测都得到同一个「收」，所以探测对你在乎的那个地址什么都没说。信先被收下，之后再分拣（或者悄悄丢掉），而那一步你看不见。</p>
+<p>任何对 catch-all 地址给出自信 valid/invalid 裁决的工具，都是在猜且没告诉你。诚实的产出是邮箱问题周围的那些结论——以及给谁都定不了的那部分贴一个风险标签。</p></div>
+  <h2><span class="le">The working method: score, segment, send in order</span><span class="lz">可行的办法：打分、分段、按顺序发</span></h2>
+  <div class="le"><ul>
+<li><strong>Run the checks that do have answers.</strong> Format, domain and MX health, disposable and role-account signals, typo suggestions, domain age. A catch-all address can still be a typo or sit on a dead domain — catch those first.</li>
+<li><strong>Score the catch-all risk per address.</strong> EmailCheck returns a catch-all risk signal (possible or unknown) with the 0–100 score, so catch-all rows land in the risky band instead of polluting your valid list.</li>
+<li><strong>Segment, don't delete.</strong> On B2B lists, <a href="../why-are-so-many-b2b-addresses-on-catch-all-domains/">a third or more of the addresses can be on catch-all domains</a> — deleting them all deletes real customers. Keep them as their own segment.</li>
+<li><strong>Let sending finish the verification.</strong> Mail your clean valid segment first. Send the catch-all segment separately, in smaller batches, and treat hard bounces as the final verdict for those addresses — then suppress them.</li>
+</ul></div>
+  <div class="lz"><ul>
+<li><strong>先跑有答案的检查。</strong>格式、域名与 MX 健康、一次性与角色账号信号、拼写建议、域名年龄。catch-all 地址照样可能是拼写错误或挂在死域名上——先把这些抓出来。</li>
+<li><strong>逐地址给 catch-all 风险打分。</strong>EmailCheck 会随 0–100 分返回 catch-all 风险信号（possible 或 unknown），catch-all 的行落进 risky 段，而不是污染你的 valid 名单。</li>
+<li><strong>分段，不要删。</strong>B2B 名单里<a href="../why-are-so-many-b2b-addresses-on-catch-all-domains/">三分之一甚至更多的地址可能在 catch-all 域名上</a>——全删掉就是删掉真实客户。把它们留作单独一段。</li>
+<li><strong>让发送完成最后的验证。</strong>先发干净的 valid 段。catch-all 段单独发、批次放小，把硬退信当作这些地址的最终裁决——然后压下去不再发。</li>
+</ul></div>
+  <h2><span class="le">What EmailCheck reports for a catch-all address</span><span class="lz">EmailCheck 对 catch-all 地址返回什么</span></h2>
+  <div class="le"><p>EmailCheck is a domain-level check — it does not probe mailboxes — so for a catch-all address you get the full check list that can be answered (format, domain, MX, disposable, role, typo, domain age), a catch-all risk signal, and a score that lands the address in the risky band rather than calling it valid. Whether the address <a href="../can-a-catch-all-email-address-be-verified/">can be verified at all</a> is covered on its own page; this page is the workflow for living with the answer. For a whole list, the <a href="../../bulk-email-checker/">bulk email checker</a> returns the same per-row signals in one call, so the catch-all segment is already separated when the run finishes.</p></div>
+  <div class="lz"><p>EmailCheck 是域名级检查——不探测邮箱——所以对 catch-all 地址，你拿到的是能回答的完整检查清单（格式、域名、MX、一次性、角色、拼写、域名年龄）、一个 catch-all 风险信号，以及一个把它放进 risky 段而不是称为 valid 的分数。这个地址<a href="../can-a-catch-all-email-address-be-verified/">到底能不能被验证</a>，有专门一页讲；本页讲的是接受这个答案之后的流程。整个名单的话，<a href="../../bulk-email-checker/">批量检查器</a>一次调用返回同样的逐行信号，跑完时 catch-all 段就已经分好了。</p></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="test@gmail.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../can-a-catch-all-email-address-be-verified/">Can a catch-all email address actually be verified?</a></li>
+    <li><a href="../../bulk-email-checker/">Bulk email checker — verify a whole list in one call</a></li>
+    <li><a href="../why-are-so-many-b2b-addresses-on-catch-all-domains/">Why are a third of the addresses on my B2B list on catch-all domains?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
