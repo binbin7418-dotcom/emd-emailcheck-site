@@ -21,6 +21,11 @@
 .bk-dl{display:none}
 .bk-dl.on{display:inline-block}
 .bk-sample{margin-top:26px}
+.bk-sub{font-size:15.5px;color:var(--muted);margin:0 0 4px}
+.bk-console{border:2px solid var(--ink);border-top:5px solid var(--red);box-shadow:8px 8px 0 rgba(34,48,62,.15);margin-top:14px}
+.bk-console textarea{min-height:132px;font-size:15px}
+.bk-console .btn{box-shadow:3px 3px 0 rgba(34,48,62,.25)}
+.bk-trust{margin:12px 0 0;font-size:14.5px;font-weight:600;color:var(--green);position:relative}
 </style>
 <script type="application/ld+json">
 {
@@ -109,18 +114,11 @@
 <main>
   <p class="crumb"><a href="../">EmailCheck</a> / <span class="le">Bulk Email Checker</span><span class="lz">批量邮箱校验</span></p>
   <h1><span class="le">Bulk Email Checker</span><span class="lz">批量邮箱校验</span></h1>
-
-  <div class="answer">
-    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
-    <p class="le">This bulk email checker verifies a whole list at once: paste up to 100 addresses — or upload a CSV/TXT file — and get a verdict, a 0–100 score and the reason for every address, free and with no sign-up. Each address gets the full check: syntax, MX routing, disposable and role-account signals, likely typos and catch-all risk.</p>
-    <p class="lz">这个批量邮箱校验工具一次验一整份名单：粘贴最多 100 个地址——或上传 CSV/TXT 文件——每条都返回裁决、0–100 分和命中原因，免费、不用注册。每个地址都走全套检查：格式、MX 路由、一次性与角色账号信号、疑似拼写错误、catch-all 风险。</p>
-  </div>
+  <p class="bk-sub"><span class="le">Paste up to 100 addresses — or upload a CSV/TXT file — and get a verdict, a 0–100 score and the reason for every address.</span><span class="lz">粘贴最多 100 个地址——或上传 CSV/TXT 文件——每条都返回裁决、0–100 分和命中原因。</span></p>
 
   <!-- ============ TOOL ============ -->
-  <section class="tool" aria-label="Bulk email checker">
+  <section class="tool bk-console" aria-label="Bulk email checker">
     <h2><span class="le">Check a list now</span><span class="lz">现在就验一份名单</span></h2>
-    <p class="small muted le">One address per line, up to 100 per run. This posts to the production <code>POST /validate/batch</code> endpoint — the same check the API sells. No sign-up; the free tier on RapidAPI includes 100 calls a month.</p>
-    <p class="small muted lz">一行一个地址，每轮最多 100 条。直接调生产端点 <code>POST /validate/batch</code>——就是 API 本身在卖的检查。不用注册；RapidAPI 免费档含每月 100 次调用。</p>
     <form id="bk-form">
       <textarea id="bk-input" aria-label="Email addresses, one per line">support@newkwlab.com
 john.doe@gmial.com
@@ -134,8 +132,11 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
         <button class="btn bk-dl" id="bk-download" type="button"><span class="le">Download results (CSV)</span><span class="lz">下载结果（CSV）</span></button>
       </div>
     </form>
+    <p class="bk-trust"><span class="le">✓ Free &nbsp;·&nbsp; ✓ No sign-up &nbsp;·&nbsp; ✓ Results in seconds</span><span class="lz">✓ 免费 &nbsp;·&nbsp; ✓ 不用注册 &nbsp;·&nbsp; ✓ 几秒出结果</span></p>
     <p class="err" id="bk-error" role="alert"></p>
     <div class="result" id="bk-result" aria-live="polite"></div>
+    <p class="small muted le">One address per line, up to 100 per run. This posts to the production <code>POST /validate/batch</code> endpoint — the same check the API sells. No sign-up; the free tier on RapidAPI includes 100 calls a month.</p>
+    <p class="small muted lz">一行一个地址，每轮最多 100 条。直接调生产端点 <code>POST /validate/batch</code>——就是 API 本身在卖的检查。不用注册；RapidAPI 免费档含每月 100 次调用。</p>
 
     <div class="bk-sample">
       <h3><span class="le">A real run, recorded from the production API</span><span class="lz">一次真实运行（取自生产 API 的实际返回）</span></h3>
@@ -154,6 +155,12 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
       <p class="small muted lz">这次运行的汇总：共 6 条——valid 2、risky 1、invalid 3；一次性域名 1、疑似拼错 1。空行会被跳过，格式烂的行只把自己标成 invalid，不连坐整批。</p>
     </div>
   </section>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">This bulk email checker verifies a whole list at once: paste up to 100 addresses — or upload a CSV/TXT file — and get a verdict, a 0–100 score and the reason for every address, free and with no sign-up. Each address gets the full check: syntax, MX routing, disposable and role-account signals, likely typos and catch-all risk.</p>
+    <p class="lz">这个批量邮箱校验工具一次验一整份名单：粘贴最多 100 个地址——或上传 CSV/TXT 文件——每条都返回裁决、0–100 分和命中原因，免费、不用注册。每个地址都走全套检查：格式、MX 路由、一次性与角色账号信号、疑似拼写错误、catch-all 风险。</p>
+  </div>
 
   <!-- ============ CHECKS ============ -->
   <h2><span class="no">01</span><span class="le">What gets checked for every address</span><span class="lz">每个地址都查什么</span></h2>
@@ -315,9 +322,6 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
     <li><a href="../questions/zerobounce-alternative/">What is a cheaper ZeroBounce alternative for email verification?</a></li>
     <li><a href="../questions/how-accurate-are-email-verification-apis/">How accurate are email verification APIs, really?</a></li>
     <li><a href="../questions/catch-email-typos-like-gmial-com-at-signup/">How do I catch email typos like gmial.com at signup?</a></li>
-    <li><a href="../questions/how-accurate-is-bulk-email-verification/">How accurate is bulk email verification?</a></li>
-    <li><a href="../questions/how-to-fix-email-address-typos-in-a-mailing-list/">How do I fix email address typos in a mailing list?</a></li>
-    <li><a href="../questions/how-to-verify-catch-all-email-addresses/">How do you verify a catch-all email address?</a></li>
     <li><a href="../">EmailCheck — check a single email free</a></li>
   </ul>
 </main>
