@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How do I verify an email address? — EmailCheck</title>
+<meta name="description" content="Three ways, in order of effort. Fastest: paste the address into a checker and read the verdict — you get format, domain and MX checks, disposable and…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/how-to-verify-an-email-address/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="How do I verify an email address?">
+<meta property="og:description" content="Three ways, in order of effort. Fastest: paste the address into a checker and read the verdict — you get format, domain and MX checks, disposable and…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/how-to-verify-an-email-address/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How do I verify an email address?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Three ways, in order of effort. Fastest: paste the address into a checker and read the verdict — you get format, domain and MX checks, disposable and role-account flags, a typo suggestion and a catch-all risk signal in one result. By hand: confirm the address is well-formed, then look up the domain's MX records (for example with nslookup or dig) to see whether it accepts mail at all. In code: call a verification API at the moment the address is captured, so typos are caught while the person can still fix them. All three are domain-level: they establish that the address is well-formed and deliverable in principle — none of them proves a specific mailbox exists."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How do I verify an email address?</p>
+  <h1><span class="le">How do I verify an email address?</span><span class="lz">怎么验证一个邮箱地址？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Three ways, in order of effort. Fastest: paste the address into a checker and read the verdict — you get format, domain and MX checks, disposable and role-account flags, a typo suggestion and a catch-all risk signal in one result. By hand: confirm the address is well-formed, then look up the domain's MX records (for example with nslookup or dig) to see whether it accepts mail at all. In code: call a verification API at the moment the address is captured, so typos are caught while the person can still fix them. All three are domain-level: they establish that the address is well-formed and deliverable in principle — none of them proves a specific mailbox exists.</p>
+    <p class="lz">三种办法，按费力程度排。最快：把地址粘进检查器读裁决——格式、域名与 MX 检查、一次性与角色账号标记、拼写建议、catch-all 风险信号，一次全拿到。手工：先确认地址格式正确，再查域名的 MX 记录（比如用 nslookup 或 dig）看它到底收不收信。写代码：在地址被收集的当下调验证 API，让拼写错误在人还能改的时候就被抓住。三种都是域名级：确认的是地址格式正确、原则上可投递——都不证明某个具体邮箱存在。</p>
+  </div>
+
+  <h2><span class="le">The 60-second way: run it through a checker</span><span class="lz">60 秒的办法：丢进检查器</span></h2>
+  <div class="le"><p>The <a href="../../verify-email-address/">verify email address</a> page on this site takes one address and returns the full result live: a verdict (valid / risky / invalid), a 0–100 score, and every check behind it. That is the right tool when you have one address and one question — a signup that looks off, a contact a sales rep is about to mail, an address a customer swears is correct. Read the verdict together with its reasons: a risky verdict caused by a typo suggestion is a fix, a risky verdict caused by a catch-all domain is a judgement call, and an invalid verdict is a delete.</p></div>
+  <div class="lz"><p>本站的<a href="../../verify-email-address/">验证邮箱地址</a>页接收一个地址、实时返回完整结果：裁决（valid / risky / invalid）、0–100 分、以及背后的每一项检查。当你手上是一个地址、一个问题时——一个看着不对劲的注册、销售正要发信的联系人、客户拍胸脯说没错的地址——这就是对的工具。裁决要和原因一起读：由拼写建议引起的 risky 是「修」，由 catch-all 域名引起的 risky 是「自己判断」，invalid 是「删」。</p></div>
+  <h2><span class="le">The manual way: what you can check yourself</span><span class="lz">手工办法：你自己能查什么</span></h2>
+  <div class="le"><p>Two of the layers are checkable by hand. Format: exactly one @, no spaces, a plausible local part and a domain with a dot. Routing: query the domain's MX records — on a command line, <code>nslookup -type=mx gmail.com</code> or <code>dig MX gmail.com</code>; no MX records means the domain cannot receive mail, whatever the address looks like. What you cannot easily do by hand is the signal layer: knowing which of the thousands of disposable providers a domain belongs to, recognising typo patterns against major providers, reading domain age from registration records, or estimating catch-all behaviour. That layer is why checkers exist.</p></div>
+  <div class="lz"><p>有两层可以手工查。格式：恰好一个 @、没有空格、本地部分合理、域名带点。路由：查域名的 MX 记录——命令行里 <code>nslookup -type=mx gmail.com</code> 或 <code>dig MX gmail.com</code>；没有 MX 记录，这个域名就收不了信，地址长得再像也没用。手工做不了的是信号层：认出某个域名属于成千上万个一次性服务商中的哪一家、对照主流服务商识别拼写模式、从注册记录读域名年龄、估计 catch-all 行为。这一层正是检查器存在的理由。</p></div>
+  <h2><span class="le">Verifying in code, at capture</span><span class="lz">在代码里、收集当下验证</span></h2>
+  <div class="le"><p>If addresses arrive through your own form, the highest-value moment to verify is during signup, not in a cleanup run weeks later: a typo suggestion shown to the person typing converts a lost user into a corrected address. That is what the API form of the same check is for — one call per signup, verdict and suggestion returned in the response. The pattern is covered in <a href="../verify-emails-at-signup-with-an-api/">how to verify emails at signup with an API</a>. For a list you already hold, switch to the <a href="../../bulk-email-checker/">bulk email checker</a> instead of looping single checks.</p></div>
+  <div class="lz"><p>如果地址是从你自己的表单进来的，验证价值最高的时刻是注册当下，而不是几周后的清洗轮：给正在输入的人看拼写建议，能把一个要丢掉的用户变成一个被纠正的地址。同一个检查的 API 形态就是干这个的——每次注册调一次，裁决和建议在响应里返回。具体做法见<a href="../verify-emails-at-signup-with-an-api/">怎么在注册时用 API 验证邮箱</a>。手上已经是一份名单的话，换<a href="../../bulk-email-checker/">批量检查器</a>，不要循环单查。</p></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="test@gmail.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../what-makes-an-email-address-valid/">What makes an email address valid?</a></li>
+    <li><a href="../how-to-verify-an-email-address-for-free/">How can I verify an email address for free?</a></li>
+    <li><a href="../can-you-verify-an-email-address-without-sending-an-email/">Can you verify an email address without sending an email?</a></li>
+    <li><a href="../../verify-email-address/">Verify email address — free single-address checker</a></li>
+  </ul>
+  <p class="le">Running this in bulk? The <a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 Credits Pack ($9.99, one-time)</a> runs EmailCheck through the API at 1 credit per check — credits never expire and work across every connected NewKwLab API.</p>
+  <p class="lz">要批量跑？<a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 积分包（$9.99，一次性）</a>通过 API 跑 EmailCheck，每次扣 1 分——积分永不过期，在全部已接入的 NewKwLab API 通用。</p>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
