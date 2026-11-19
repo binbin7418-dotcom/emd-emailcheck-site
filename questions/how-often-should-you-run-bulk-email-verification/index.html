@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How often should you run bulk email verification? — EmailCheck</title>
+<meta name="description" content="Run it on triggers, not just on a calendar. The non-negotiable run is before any significant send to a list that has been sitting: addresses decay as people…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/how-often-should-you-run-bulk-email-verification/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="How often should you run bulk email verification?">
+<meta property="og:description" content="Run it on triggers, not just on a calendar. The non-negotiable run is before any significant send to a list that has been sitting: addresses decay as people…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/how-often-should-you-run-bulk-email-verification/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How often should you run bulk email verification?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Run it on triggers, not just on a calendar. The non-negotiable run is before any significant send to a list that has been sitting: addresses decay as people change jobs, companies fold or rebrand, and domains lapse, so a list that was clean six months ago is not clean now. Beyond that: verify every import before it merges into your main list, re-verify any segment you have not mailed in a few months, and run a full pass after any send whose bounce rate surprised you. Addresses captured through a form should be checked singly, at capture — bulk runs are for the list you already hold."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / How often should you run bulk email verification?</p>
+  <h1><span class="le">How often should you run bulk email verification?</span><span class="lz">应该多久跑一次批量邮箱验证？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Run it on triggers, not just on a calendar. The non-negotiable run is before any significant send to a list that has been sitting: addresses decay as people change jobs, companies fold or rebrand, and domains lapse, so a list that was clean six months ago is not clean now. Beyond that: verify every import before it merges into your main list, re-verify any segment you have not mailed in a few months, and run a full pass after any send whose bounce rate surprised you. Addresses captured through a form should be checked singly, at capture — bulk runs are for the list you already hold.</p>
+    <p class="lz">按触发条件跑，不只看日历。不可省的一轮，是给一份放了一段时间的名单做重要发送之前：人会换工作、公司会倒闭或改名、域名会过期，半年前干净的名单现在不干净。此外：每次导入在并入主名单之前先验；几个月没发过的分段，发送前重验；任何一次退信率出乎意料的发送之后，整份跑一遍找原因。通过表单收集的地址应该在收集当下逐条查——批量跑管的是你已经持有的名单。</p>
+  </div>
+
+  <h2><span class="le">Why lists go stale</span><span class="lz">名单为什么会变质</span></h2>
+  <div class="le"><p>An email address is a claim about a person at a company on a domain, and all three parts move. People change jobs and their work addresses are retired. Companies get acquired, rebrand and let old domains lapse — when the domain goes, every address on it goes. Providers shut down or get absorbed. And capture never stops adding noise: every form submission is a chance for a fresh typo. B2B lists are commonly estimated to decay at roughly a fifth to a third of their addresses per year; your own list's rate depends on how B2B and how old it is, but the direction is guaranteed. Verification does not wear out — the list does.</p></div>
+  <div class="lz"><p>一个邮箱地址，是对「某个人、在某家公司、用某个域名」的断言，而这三部分都会动。人换工作，工作邮箱就被注销；公司被收购、改名，旧域名过期——域名一没，上面所有地址全没；服务商关停或被合并。而收集端从不停地加噪：每次表单提交都可能带来一个新的拼写错误。业内普遍估计 B2B 名单每年约有五分之一到三分之一的地址失效；你自己名单的速率取决于 B2B 程度和年龄，但方向是注定的。过期的不是验证，是名单。</p></div>
+  <h2><span class="le">The triggers that matter</span><span class="lz">真正要紧的触发条件</span></h2>
+  <div class="le"><ul>
+<li><strong>Before a big send to an old list.</strong> The run is cheap; a bounce spike costs sender reputation that takes weeks to earn back.</li>
+<li><strong>At import time.</strong> Verify before the merge, not after — once bad rows are inside your main list, they are indistinguishable from your own data.</li>
+<li><strong>Before re-activating a dormant segment.</strong> A segment untouched for three to six months gets a fresh run, even if it was verified when collected.</li>
+<li><strong>After a bad send.</strong> If hard bounces jumped, verify the list and compare verdict bands against the bounces — that tells you whether the problem is list rot or something upstream.</li>
+</ul></div>
+  <div class="lz"><ul>
+<li><strong>给老名单做大发送之前。</strong>跑一轮很便宜；退信尖峰伤的是发信声誉，那要几周才能养回来。</li>
+<li><strong>导入的那一刻。</strong>在并入之前验，不是之后——坏行一旦进了主名单，就和你自己的数据分不开了。</li>
+<li><strong>重新启用休眠分段之前。</strong>三到六个月没碰过的分段，重新跑一轮，哪怕收集时验过。</li>
+<li><strong>一次坏发送之后。</strong>硬退信跳了，就把名单验一遍、把裁决分段和退信对上——这样能分清是名单腐烂还是上游问题。</li>
+</ul></div>
+  <h2><span class="le">A workable cadence</span><span class="lz">一套能落地的节奏</span></h2>
+  <div class="le"><p>For an actively mailed list: single checks at capture (the API or the form-side check), a bulk run before every major campaign, and a full-list pass roughly quarterly to catch what campaign-by-campaign runs miss. For a list you mail rarely, the calendar matters less than the rule “never send to a segment that has not been verified since it last changed or in the last few months”. Each run also gets cheaper to act on than the last: typo corrections and dead domains you remove stay removed. The <a href="../../bulk-email-checker/">bulk email checker</a> covers the pre-send run free for the first 100 addresses at a time.</p></div>
+  <div class="lz"><p>对一份在持续发送的名单：收集当下逐条查（API 或表单侧检查），每个大活动之前跑一轮批量，每季度左右整份过一遍，补上逐活动跑漏掉的部分。对很少发送的名单，日历不重要，规则重要：「从没在最近变动之后、或最近几个月内验过的分段，不发」。而且每一轮都比上一轮好处理：你删掉的拼写纠正和死域名，不会再回来。<a href="../../bulk-email-checker/">批量检查器</a>免费覆盖发送前这一轮，每次前 100 条。</p></div>
+
+
+  <section class="tool" aria-label="Try the batch endpoint">
+    <h2><span class="le">Try the batch endpoint</span><span class="lz">试一下批量端点</span></h2>
+    <p class="small muted le">One address per line (up to 100). This posts to the production <code>POST /validate/batch</code>.</p>
+    <p class="small muted lz">一行一个地址（最多 100 条）。直接调生产 <code>POST /validate/batch</code>。</p>
+    <form id="ecb-form">
+      <textarea id="ecb-input">alice@gmail.com
+bob@gmial.com
+someone@mailinator.com</textarea>
+      <button class="btn" id="ecb-btn" type="submit"><span class="le">Validate the list</span><span class="lz">验证这批名单</span></button>
+    </form>
+    <p class="err" id="ecb-error" role="alert"></p>
+    <div class="result" id="ecb-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../what-is-bulk-email-verification/">What is bulk email verification?</a></li>
+    <li><a href="../why-do-emails-bounce/">Why do emails bounce, and what can I check before I send?</a></li>
+    <li><a href="../verify-a-list-of-emails-in-bulk/">How do I verify a list of emails in bulk without calling the API one by one?</a></li>
+    <li><a href="../../bulk-email-checker/">Bulk email checker — verify a whole list in one call</a></li>
+  </ul>
+  <p class="le">Running this in bulk? The <a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 Credits Pack ($9.99, one-time)</a> runs EmailCheck through the API at 1 credit per check — credits never expire and work across every connected NewKwLab API.</p>
+  <p class="lz">要批量跑？<a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 积分包（$9.99，一次性）</a>通过 API 跑 EmailCheck，每次扣 1 分——积分永不过期，在全部已接入的 NewKwLab API 通用。</p>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
