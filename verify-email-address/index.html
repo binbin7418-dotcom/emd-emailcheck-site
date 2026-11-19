@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verify Email Address — Free Email Checker | EmailCheck</title>
+<meta name="description" content="Verify an email address free — one address, one live result: verdict, 0–100 score and every check shown. Domain-level checks, no sign-up, no SMTP probing.">
+<link rel="canonical" href="https://email.newkwlab.com/verify-email-address/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="Verify Email Address — Free Email Checker">
+<meta property="og:description" content="Verify one email address free and see every check behind the verdict: format, domain, MX, disposable, typo and catch-all risk — combined into a 0–100 score.">
+<meta property="og:url" content="https://email.newkwlab.com/verify-email-address/">
+<meta property="og:image" content="https://email.newkwlab.com/icon-500.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "EmailCheck — Verify Email Address",
+   "url": "https://email.newkwlab.com/verify-email-address/",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Web",
+   "description": "Verify a single email address: format, domain and MX health, disposable and role-account signals, typo detection, domain age and catch-all risk — a 0–100 score with every check shown. Domain-level only: no SMTP probing, no claim that a specific mailbox exists.",
+   "offers": [
+    {"@type": "Offer", "name": "BASIC", "price": "0", "priceCurrency": "USD", "description": "100 checks per month, free"},
+    {"@type": "Offer", "name": "PRO", "price": "9", "priceCurrency": "USD", "description": "10,000 checks per month"},
+    {"@type": "Offer", "name": "ULTRA", "price": "29", "priceCurrency": "USD", "description": "50,000 checks per month"}
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "EmailCheck", "item": "https://email.newkwlab.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Verify Email Address", "item": "https://email.newkwlab.com/verify-email-address/"}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "How do I verify an email address with this page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Type or paste one address and press Verify. The page calls the production EmailCheck API and shows the verdict (valid / risky / invalid), the 0–100 score and every individual check — format, domain, MX, disposable, role account, free provider, catch-all risk, domain age — plus a corrected address when a typo is likely. It is free and needs no sign-up."}
+    },
+    {
+     "@type": "Question",
+     "name": "Does verifying an email address here prove the mailbox exists?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. EmailCheck verifies the domain, not the mailbox: it checks that the address is well-formed, the domain exists and routes mail, and no risk signal fires. It does not probe mailboxes over SMTP — major providers reject or greylist that, and catch-all domains accept mail for every address, so no tool can honestly guarantee a specific mailbox exists."}
+    },
+    {
+     "@type": "Question",
+     "name": "Should I verify one address at a time or a whole list?",
+     "acceptedAnswer": {"@type": "Answer", "text": "One at a time when the address is arriving now — at signup, at checkout, or when you are checking a single contact. A whole list when you already hold the addresses: the bulk email checker runs up to 100 per call with the same checks, returns every verdict plus summary counts, and lets you segment before you send."}
+    },
+    {
+     "@type": "Question",
+     "name": "What happens to the addresses I verify here?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The address is sent over HTTPS to the EmailCheck API and the result is shown in your browser. Submitted addresses are not added to any mailing list and are never sold or shared. This page checks one address per call; nothing here retains a copy of a list, because no list is uploaded."}
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../">EmailCheck</a> / <span class="le">Verify Email Address</span><span class="lz">验证邮箱地址</span></p>
+
+  <!-- ============ TOOL ============ -->
+  <section class="tool" aria-label="Verify an email address">
+    <h1><span class="le">Verify Email Address</span><span class="lz">验证邮箱地址</span></h1>
+    <p class="sub le">One address, one live result — the verdict, the 0–100 score, and every check that produced it. No sign-up.</p>
+    <p class="sub lz">一个地址，一次实时结果——裁决、0–100 分，以及背后的每一项检查。不用注册。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" placeholder="name@example.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Verify</span><span class="lz">验证</span></button>
+    </form>
+    <p class="chips le">Try:
+      <button type="button" class="chip" data-sample="test@gmail.com">test@gmail.com · clean</button>
+      <button type="button" class="chip" data-sample="test@gmial.com">test@gmial.com · typo</button>
+      <button type="button" class="chip" data-sample="someone@mailinator.com">someone@mailinator.com · disposable</button>
+      <button type="button" class="chip" data-sample="anyone@github.com">anyone@github.com · catch-all risk</button>
+    </p>
+    <p class="chips lz">试试：
+      <button type="button" class="chip" data-sample="test@gmail.com">test@gmail.com · 干净</button>
+      <button type="button" class="chip" data-sample="test@gmial.com">test@gmial.com · 拼错</button>
+      <button type="button" class="chip" data-sample="someone@mailinator.com">someone@mailinator.com · 一次性</button>
+      <button type="button" class="chip" data-sample="anyone@github.com">anyone@github.com · catch-all 风险</button>
+    </p>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+    <p class="small muted le">Free for the first 100 checks each month. No account, no card. Every result is a live call to the production API — the same check the API sells.</p>
+    <p class="small muted lz">每月前 100 次免费。不用账号、不用卡。每个结果都是对生产 API 的实时调用——就是 API 在卖的同一个检查。</p>
+  </section>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">To verify an email address, run it through the checks that decide whether mail can reach it: is it well-formed, does the domain exist and publish MX records, is the domain a disposable provider, is the address a role account, does the domain look like a typo of a major provider, how old is the domain, and how risky is its catch-all behaviour. Those checks combine into a 0–100 score and a valid / risky / invalid verdict. That is what the tool above does, live, for one address at a time. It verifies the domain behind the address — it does not probe mailboxes, and it never claims a specific mailbox exists.</p>
+    <p class="lz">验证一个邮箱地址，就是跑一遍决定邮件能不能到达的检查：格式是否正确、域名是否存在并发布了 MX 记录、域名是不是一次性服务商、地址是不是角色账号、域名像不像主流服务商的拼写错误、域名有多老、它的 catch-all 行为风险多大。这些检查合成 0–100 分和 valid / risky / invalid 裁决。上面的工具就是实时在做这件事，一次一个地址。它验证的是地址背后的域名——不探测邮箱，也从不声称某个具体邮箱存在。</p>
+  </div>
+
+  <!-- ============ 01 WHAT GETS CHECKED ============ -->
+  <div class="sec-head"><span class="sec-no">01</span><h2><span class="le">What gets checked</span><span class="lz">查什么</span></h2></div>
+  <div class="le">
+    <ul>
+      <li><b>Syntax</b> — the address is well-formed: one @, legal characters, a plausible domain.</li>
+      <li><b>Domain &amp; MX</b> — the domain exists and publishes MX records that route mail; no MX means nowhere for mail to go.</li>
+      <li><b>Disposable &amp; role signals</b> — throwaway providers (Mailinator and kin) and role accounts (admin@, support@) are flagged, not hidden.</li>
+      <li><b>Typo detection</b> — gmial.com, hotmial.com, yahooo.com: the likely intended domain is named, with the corrected address.</li>
+      <li><b>Domain age</b> — read from registration records; a domain registered last week scores differently from one registered in 2004.</li>
+      <li><b>Catch-all risk</b> — domains that accept mail for every address get a graded risk signal, labelled as a signal — the only honest output, since such domains cannot be resolved further without sending mail.</li>
+    </ul>
+    <p>Every result shows the checks individually, not just the headline verdict — <a href="../questions/what-makes-an-email-address-valid/">what makes an email address valid</a> walks through the layers in order, and <a href="../questions/how-to-verify-an-email-address/">how to verify an email address</a> covers the manual and in-code routes too.</p>
+  </div>
+  <div class="lz">
+    <ul>
+      <li><b>格式</b>——地址合法：一个 @、字符合法、域名像样。</li>
+      <li><b>域名与 MX</b>——域名存在、且发布了能路由邮件的 MX 记录；没有 MX，信就无处可去。</li>
+      <li><b>一次性与角色信号</b>——临时邮箱服务商（Mailinator 之类）和角色账号（admin@、support@）会被标记，不藏着。</li>
+      <li><b>拼写检测</b>——gmial.com、hotmial.com、yahooo.com：指出大概率想输的域名，并给出纠正后的地址。</li>
+      <li><b>域名年龄</b>——来自注册记录；上周刚注册的域名和 2004 年注册的域名，得分逻辑不同。</li>
+      <li><b>Catch-all 风险</b>——对所有地址都收信的域名，给出分级风险信号并明示它是信号——这是唯一诚实的输出，因为这类域名不发信就无法再确认。</li>
+    </ul>
+    <p>每个结果都逐项展示检查，而不只是一个总裁决——<a href="../questions/what-makes-an-email-address-valid/">什么样的邮箱地址算有效</a>按顺序讲了每一层，<a href="../questions/how-to-verify-an-email-address/">怎么验证一个邮箱地址</a>还讲了手工和代码两种路线。</p>
+  </div>
+
+  <!-- ============ 02 READ THE VERDICT ============ -->
+  <div class="sec-head"><span class="sec-no">02</span><h2><span class="le">How to read the verdict</span><span class="lz">裁决怎么读</span></h2></div>
+  <div class="le">
+    <table>
+      <tr><th>Verdict</th><th>Score</th><th>What to do</th></tr>
+      <tr><td><span class="badge b-valid">VALID</span></td><td>80–100</td><td>Domain exists, MX present, no risk signal fired. Send.</td></tr>
+      <tr><td><span class="badge b-risky">RISKY</span></td><td>50–79</td><td>A signal fired — catch-all risk, disposable domain, or a typo to fix. Read the reason, then decide.</td></tr>
+      <tr><td><span class="badge b-invalid">INVALID</span></td><td>0–49</td><td>Broken syntax, dead domain or no MX. Do not send; delete or correct.</td></tr>
+    </table>
+    <p>Here is a real recorded result — checking <code>test@gmial.com</code> against the production API. Note what it does not do: it never claims the mailbox exists, and the typo is corrected, not just flagged.</p>
+    <pre>{
+  "valid": false,
+  "score": 30,
+  "verdict": "invalid",
+  "checks": {
+    "syntax": true,
+    "domain_exists": true,
+    "has_mx": false,
+    "disposable": false,
+    "role_account": false,
+    "free_provider": false,
+    "catch_all_risk": "unknown",
+    "domain_age_days": 0
+  },
+  "suggestion": "test@gmail.com"
+}</pre>
+    <p>The full reasoning behind the bands is in <a href="../questions/what-does-a-risky-email-verdict-mean/">what a “risky” verdict means</a>, and the honest limits of the whole exercise are in <a href="../questions/can-you-verify-an-email-address-without-sending-an-email/">can you verify an email address without sending an email</a>.</p>
+  </div>
+  <div class="lz">
+    <table>
+      <tr><th>裁决</th><th>分数</th><th>怎么做</th></tr>
+      <tr><td><span class="badge b-valid">VALID</span></td><td>80–100</td><td>域名存在、有 MX、没有风险信号触发。可以发。</td></tr>
+      <tr><td><span class="badge b-risky">RISKY</span></td><td>50–79</td><td>有信号触发——catch-all 风险、一次性域名，或需要纠正的拼写。先看原因，再决定。</td></tr>
+      <tr><td><span class="badge b-invalid">INVALID</span></td><td>0–49</td><td>格式损坏、域名不存在或没有 MX。不要发；删除或纠正。</td></tr>
+    </table>
+    <p>这是一份真实记录的结果——对生产 API 查 <code>test@gmial.com</code>。注意它没做的事：从不声称邮箱存在，而拼写错误是被纠正的，不只是被标记。</p>
+    <pre>{
+  "valid": false,
+  "score": 30,
+  "verdict": "invalid",
+  "checks": {
+    "syntax": true,
+    "domain_exists": true,
+    "has_mx": false,
+    "disposable": false,
+    "role_account": false,
+    "free_provider": false,
+    "catch_all_risk": "unknown",
+    "domain_age_days": 0
+  },
+  "suggestion": "test@gmail.com"
+}</pre>
+    <p>分段背后的完整逻辑在<a href="../questions/what-does-a-risky-email-verdict-mean/">「risky」裁决是什么意思</a>，整件事的诚实边界在<a href="../questions/can-you-verify-an-email-address-without-sending-an-email/">不发邮件能验证邮箱地址吗</a>。</p>
+  </div>
+
+  <!-- ============ 03 ONE OR A LIST ============ -->
+  <div class="sec-head"><span class="sec-no">03</span><h2><span class="le">One address, or a whole list?</span><span class="lz">一个地址，还是一份名单？</span></h2></div>
+  <div class="le">
+    <p>This page is for the single case: one address, checked at the moment it matters — a signup you are reviewing, a contact a colleague is about to mail, an address a customer insists is right. If you already hold the addresses — a CRM export, a subscriber list, an import — looping them one by one through this form is the wrong tool. The <a href="../bulk-email-checker/">bulk email checker</a> runs the same checks on up to 100 addresses per call and returns every verdict plus summary counts, so you can segment the list before a send. The difference between the two modes, and when each one earns its place, is laid out in <a href="../questions/bulk-vs-single-email-verification/">bulk vs single email verification</a>.</p>
+  </div>
+  <div class="lz">
+    <p>本页管单个场景：一个地址，在它要紧的当下查——你在复核的一个注册、同事正要发信的一个联系人、客户坚持没错的一个地址。如果你已经持有一批地址——CRM 导出、订阅者名单、一次导入——把它们逐条塞进这个表单是工具用错了。<a href="../bulk-email-checker/">批量检查器</a>对每次最多 100 条跑同样的检查，返回每条裁决加汇总计数，让你在发送前先分段。两种模式的区别、各自什么时候用，见<a href="../questions/bulk-vs-single-email-verification/">批量与单个邮箱验证的区别</a>。</p>
+  </div>
+
+  <!-- ============ 04 PRICING ============ -->
+  <div class="sec-head" id="pricing"><span class="sec-no">04</span><h2><span class="le">Pricing</span><span class="lz">价格</span></h2></div>
+  <div class="le">
+    <table>
+      <tr><th>Plan</th><th>Checks</th><th>Price</th></tr>
+      <tr><td>BASIC</td><td>100 / month</td><td>$0</td></tr>
+      <tr><td>PRO</td><td>10,000 / month</td><td>$9 / month</td></tr>
+      <tr><td>ULTRA</td><td>50,000 / month</td><td>$29 / month</td></tr>
+    </table>
+    <p>The market consensus for verification is roughly $25–75 per 10,000 checks — the breakdown is in <a href="../questions/how-much-does-it-cost-to-verify-10000-emails/">how much it should cost to verify 10,000 emails</a>. Subscriptions run through <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>; the total at checkout is whatever the platform shows for your region. Verifying addresses one at a time on this page stays inside the free BASIC allowance.</p>
+  </div>
+  <div class="lz">
+    <table>
+      <tr><th>档位</th><th>次数</th><th>价格</th></tr>
+      <tr><td>BASIC</td><td>100 / 月</td><td>$0</td></tr>
+      <tr><td>PRO</td><td>10,000 / 月</td><td>$9 / 月</td></tr>
+      <tr><td>ULTRA</td><td>50,000 / 月</td><td>$29 / 月</td></tr>
+    </table>
+    <p>验证的市场共识价约为 $25–75/10,000 次——拆解见<a href="../questions/how-much-does-it-cost-to-verify-10000-emails/">验证 10,000 个邮箱应该花多少钱</a>。订阅通过 <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> 完成；结账总价以平台按你所在地区显示的为准。在本页逐条验证，走的是免费 BASIC 额度。</p>
+  </div>
+
+  <!-- ============ 05 FAQ ============ -->
+  <div class="sec-head"><span class="sec-no">05</span><h2><span class="le">FAQ</span><span class="lz">常见问题</span></h2></div>
+  <details>
+    <summary><span class="le">How do I verify an email address with this page?</span><span class="lz">用本页怎么验证一个邮箱地址？</span></summary>
+    <p class="le">Type or paste one address and press Verify. The page calls the production EmailCheck API and shows the verdict (valid / risky / invalid), the 0–100 score and every individual check — format, domain, MX, disposable, role account, free provider, catch-all risk, domain age — plus a corrected address when a typo is likely. It is free and needs no sign-up. The longer guide is <a href="../questions/how-to-verify-an-email-address/">how do I verify an email address</a>.</p>
+    <p class="lz">输入或粘贴一个地址，点「验证」。本页调用生产 EmailCheck API，展示裁决（valid / risky / invalid）、0–100 分和每一项检查——格式、域名、MX、一次性、角色账号、免费服务商、catch-all 风险、域名年龄——疑似拼写时还会给出纠正后的地址。免费、不用注册。长版指南见<a href="../questions/how-to-verify-an-email-address/">怎么验证一个邮箱地址</a>。</p>
+  </details>
+  <details>
+    <summary><span class="le">Does verifying an email address here prove the mailbox exists?</span><span class="lz">在这里验证，能证明邮箱存在吗？</span></summary>
+    <p class="le">No. EmailCheck verifies the domain, not the mailbox: it checks that the address is well-formed, the domain exists and routes mail, and no risk signal fires. It does not probe mailboxes over SMTP — major providers reject or greylist that, and catch-all domains accept mail for every address, so no tool can honestly guarantee a specific mailbox exists. What you get instead is every domain-level fact, shown individually.</p>
+    <p class="lz">不能。EmailCheck 验证的是域名，不是邮箱：它检查地址格式是否正确、域名是否存在并能路由邮件、以及有没有风险信号触发。它不走 SMTP 探测邮箱——主流服务商会拒绝或灰名单这种探测，而 catch-all 域名对任何地址都收信，所以没有工具能诚实地保证某个具体邮箱存在。你拿到的替代品是全部域名级事实，逐项展示。</p>
+  </details>
+  <details>
+    <summary><span class="le">Can I verify an email address for free?</span><span class="lz">能免费验证邮箱地址吗？</span></summary>
+    <p class="le">Yes — this page is the free route: 100 checks a month on the BASIC plan, no account and no card, and the check itself is the same one the paid plans run. Free options and their limits are compared in <a href="../questions/how-to-verify-an-email-address-for-free/">how to verify an email address for free</a>.</p>
+    <p class="lz">能——本页就是免费路线：BASIC 档每月 100 次、不用账号不用卡，而且检查本身和付费档跑的是同一个。免费选项与各自的限制在<a href="../questions/how-to-verify-an-email-address-for-free/">怎么免费验证邮箱地址</a>里有对比。</p>
+  </details>
+  <details>
+    <summary><span class="le">What happens to the addresses I verify here?</span><span class="lz">我在这里验证的地址会怎样？</span></summary>
+    <p class="le">The address is sent over HTTPS to the EmailCheck API and the result is shown in your browser. Submitted addresses are not added to any mailing list and are never sold or shared. This page checks one address per call; nothing here retains a copy of a list, because no list is uploaded.</p>
+    <p class="lz">地址经 HTTPS 发到 EmailCheck API，结果显示在你的浏览器里。提交的地址不会被加进任何邮寄名单，也永不出售或分享。本页每次调用只查一个地址；这里不会保留任何名单副本，因为根本没有名单被上传。</p>
+  </details>
+
+  <!-- ============ 06 RELATED ============ -->
+  <div class="sec-head"><span class="sec-no">06</span><h2><span class="le">Related</span><span class="lz">相关</span></h2></div>
+  <ul class="qlist">
+    <li><a href="../questions/how-to-verify-an-email-address/"><span class="le">How do I verify an email address?</span><span class="lz">怎么验证一个邮箱地址？</span></a></li>
+    <li><a href="../questions/how-to-verify-an-email-address-for-free/"><span class="le">How can I verify an email address for free?</span><span class="lz">怎么免费验证一个邮箱地址？</span></a></li>
+    <li><a href="../questions/can-you-verify-an-email-address-without-sending-an-email/"><span class="le">Can you verify an email address without sending an email?</span><span class="lz">不发邮件，能验证一个邮箱地址吗？</span></a></li>
+    <li><a href="../questions/what-makes-an-email-address-valid/"><span class="le">What makes an email address valid?</span><span class="lz">什么样的邮箱地址算有效？</span></a></li>
+    <li><a href="../bulk-email-checker/"><span class="le">Bulk email checker — verify a whole list in one call</span><span class="lz">批量邮箱检查——一次调用验证一整份名单</span></a></li>
+    <li><a href="../"><span class="le">EmailCheck — check a single email free</span><span class="lz">EmailCheck——免费检查单个邮箱</span></a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>
