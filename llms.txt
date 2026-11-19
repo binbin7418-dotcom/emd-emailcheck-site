@@ -41,6 +41,8 @@ EmailCheck) is available on Gumroad; the credits never expire.
 ## Pages on this site
 
 - / — free single-check tool, endpoint docs, pricing, FAQ
+- /bulk-email-checker/ — free bulk checker tool (up to 100 addresses per run)
+- /verify-email-address/ — free single-address verification tool
 - /questions/best-email-verification-api/
 - /questions/why-do-verifiers-charge-full-price-for-unknown-results/
 - /questions/can-a-catch-all-email-address-be-verified/
@@ -54,5 +56,13 @@ EmailCheck) is available on Gumroad; the credits never expire.
 - /questions/why-do-emails-bounce/
 - /questions/verify-emails-at-signup-with-an-api/
 - /questions/zerobounce-alternative/
+- /questions/what-is-bulk-email-verification/
+- /questions/how-does-bulk-email-verification-work/
+- /questions/how-often-should-you-run-bulk-email-verification/
+- /questions/bulk-vs-single-email-verification/
+- /questions/how-to-verify-an-email-address/
+- /questions/how-to-verify-an-email-address-for-free/
+- /questions/can-you-verify-an-email-address-without-sending-an-email/
+- /questions/what-makes-an-email-address-valid/
 
 Contact: binbin7418@gmail.com
