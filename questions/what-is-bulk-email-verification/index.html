@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is bulk email verification? — EmailCheck</title>
+<meta name="description" content="Bulk email verification is checking a whole list of email addresses in one run — tens, hundreds or thousands at a time — instead of looking them up one by…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/what-is-bulk-email-verification/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="What is bulk email verification?">
+<meta property="og:description" content="Bulk email verification is checking a whole list of email addresses in one run — tens, hundreds or thousands at a time — instead of looking them up one by…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/what-is-bulk-email-verification/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is bulk email verification?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Bulk email verification is checking a whole list of email addresses in one run — tens, hundreds or thousands at a time — instead of looking them up one by one. Every address gets the same checks a single lookup gets: format, domain and MX health, disposable and role-account signals, likely typos and catch-all risk. What comes back is a scored, segmented list — valid, risky and invalid, with the reason for each row — that you can act on before a send. It is a domain-level check: it establishes that an address is well-formed and its domain is set up to receive mail. It does not prove an individual mailbox exists."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / What is bulk email verification?</p>
+  <h1><span class="le">What is bulk email verification?</span><span class="lz">什么是批量邮箱验证？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Bulk email verification is checking a whole list of email addresses in one run — tens, hundreds or thousands at a time — instead of looking them up one by one. Every address gets the same checks a single lookup gets: format, domain and MX health, disposable and role-account signals, likely typos and catch-all risk. What comes back is a scored, segmented list — valid, risky and invalid, with the reason for each row — that you can act on before a send. It is a domain-level check: it establishes that an address is well-formed and its domain is set up to receive mail. It does not prove an individual mailbox exists.</p>
+    <p class="lz">批量邮箱验证，就是把一整份名单一次性跑完——一次几十、几百甚至几千条——而不是逐条去查。每个地址跑的检查和单查完全一样：格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写、catch-all 风险。返回的是一份带分数、分好段的名单——valid、risky、invalid，每行附原因——让你在发送之前就能动手处理。这是域名级检查：它确认的是地址格式正确、域名具备收信条件，不证明某个具体邮箱存在。</p>
+  </div>
+
+  <h2><span class="le">How it differs from checking one address</span><span class="lz">它和逐条查的区别在哪</span></h2>
+  <div class="le"><p>The checks are identical; the unit of work is not. A single check answers one question about one address, at the moment someone types it. Bulk email verification takes a list as its input and a segmented list as its output: every row scored, the risky rows carrying the signal that fired (a disposable domain, a catch-all risk, a likely typo with a correction), and summary counts across the whole run. That shape matters because the decisions are different — you are not asking “is this address OK?”, you are asking “which parts of this list are safe to send to, which need fixing, and which get deleted?”</p></div>
+  <div class="lz"><p>检查完全相同，工作单位不同。单查回答的是某个人输入某个地址那一刻的一个问题；批量邮箱验证的输入是一份名单、输出是一份分好段的名单：每行带分数，risky 行写明触发的信号（一次性域名、catch-all 风险、疑似拼写及纠正），外加整轮的汇总计数。这个形态重要，因为要做的决策不同——你问的不是「这个地址行不行」，而是「这份名单里哪部分能安全发送、哪部分要修、哪部分该删」。</p></div>
+  <h2><span class="le">What a bulk run actually checks</span><span class="lz">一次批量跑到底查什么</span></h2>
+  <div class="le"><p>Per address: whether the address is well-formed; whether the domain exists and publishes MX records that route mail; whether the domain is a disposable (throwaway) provider; whether the address is a role account such as admin@ or support@; whether the domain looks like a typo of a major provider, with the correction suggested; how old the domain is, from registration records; and a catch-all risk signal for domains that accept mail for every address. The signals combine into a 0–100 score and a valid / risky / invalid verdict. Nothing is sent to the addresses, and no mailbox is probed — the <a href="../../bulk-email-checker/">bulk email checker</a> on this site runs exactly this against the production API.</p></div>
+  <div class="lz"><p>逐条查：地址格式是否合法；域名是否存在、是否发布了能路由邮件的 MX 记录；域名是不是一次性（临时）邮箱服务商；地址是不是 admin@、support@ 这类角色账号；域名像不像主流服务商的拼写错误、并给出纠正建议；域名年龄（来自注册记录）；以及对「所有地址都收」的域名给出 catch-all 风险信号。这些信号合成 0–100 分和 valid / risky / invalid 裁决。不会给这些地址发任何信，也不探测邮箱——本站的<a href="../../bulk-email-checker/">批量检查器</a>跑的就是这套、对着生产 API。</p></div>
+  <h2><span class="le">When you need it</span><span class="lz">什么时候需要它</span></h2>
+  <div class="le"><p>Three moments cover most cases: before a significant send to a list you did not just collect (the pre-send hygiene run); when a list changes hands or systems — a CRM import, an acquired list, an export from a form tool — because imports are where typos and dead domains pile up; and when a send bounces more than expected, to find out which segment caused it. If you only ever check one address at a time, you meet the same problems one send too late. <a href="../how-does-bulk-email-verification-work/">How bulk email verification works</a> walks through the run step by step.</p></div>
+  <div class="lz"><p>三个时刻覆盖大多数场景：给一份不是刚收集的名单做重要发送之前（发送前清洗）；名单换手或换系统时——CRM 导入、买来的名单、从表单工具导出——因为导入环节正是拼写错误和死域名堆积的地方；以及某次发送退信超预期时，用它定位是哪一段出的事。只靠逐条查，你总会晚一次发送才碰到这些问题。<a href="../how-does-bulk-email-verification-work/">批量邮箱验证的运行方式</a>一步步讲了整轮流程。</p></div>
+
+
+  <section class="tool" aria-label="Try the batch endpoint">
+    <h2><span class="le">Try the batch endpoint</span><span class="lz">试一下批量端点</span></h2>
+    <p class="small muted le">One address per line (up to 100). This posts to the production <code>POST /validate/batch</code>.</p>
+    <p class="small muted lz">一行一个地址（最多 100 条）。直接调生产 <code>POST /validate/batch</code>。</p>
+    <form id="ecb-form">
+      <textarea id="ecb-input">alice@gmail.com
+bob@gmial.com
+someone@mailinator.com</textarea>
+      <button class="btn" id="ecb-btn" type="submit"><span class="le">Validate the list</span><span class="lz">验证这批名单</span></button>
+    </form>
+    <p class="err" id="ecb-error" role="alert"></p>
+    <div class="result" id="ecb-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../how-does-bulk-email-verification-work/">How does bulk email verification work?</a></li>
+    <li><a href="../bulk-vs-single-email-verification/">What is the difference between bulk and single email verification?</a></li>
+    <li><a href="../how-accurate-is-bulk-email-verification/">How accurate is bulk email verification?</a></li>
+    <li><a href="../../bulk-email-checker/">Bulk email checker — verify a whole list in one call</a></li>
+    <li><a href="../verify-a-list-of-emails-in-bulk/">How do I verify a list of emails in bulk without calling the API one by one?</a></li>
+  </ul>
+  <p class="le">Running this in bulk? The <a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 Credits Pack ($9.99, one-time)</a> runs EmailCheck through the API at 1 credit per check — credits never expire and work across every connected NewKwLab API.</p>
+  <p class="lz">要批量跑？<a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 积分包（$9.99，一次性）</a>通过 API 跑 EmailCheck，每次扣 1 分——积分永不过期，在全部已接入的 NewKwLab API 通用。</p>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
