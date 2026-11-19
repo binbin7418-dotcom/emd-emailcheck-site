@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can you verify an email address without sending an email? — EmailCheck</title>
+<meta name="description" content="Yes — almost everything about an address can be verified without sending anything: that it is well-formed, that the domain exists and accepts mail, that it…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/can-you-verify-an-email-address-without-sending-an-email/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="Can you verify an email address without sending an email?">
+<meta property="og:description" content="Yes — almost everything about an address can be verified without sending anything: that it is well-formed, that the domain exists and accepts mail, that it…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/can-you-verify-an-email-address-without-sending-an-email/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Can you verify an email address without sending an email?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — almost everything about an address can be verified without sending anything: that it is well-formed, that the domain exists and accepts mail, that it is not a disposable or role address, that the domain is not a typo of a major provider, and how risky the domain's catch-all behaviour makes it. The one thing that cannot be established without sending is that a specific mailbox exists and is read — and even sending only half-proves that, because catch-all domains accept mail for addresses that do not exist. Verification without sending is not a lesser substitute; for list hygiene it is the correct tool, because sending test mail to a cold list damages the sender reputation you were trying to protect."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / Can you verify an email address without sending an email?</p>
+  <h1><span class="le">Can you verify an email address without sending an email?</span><span class="lz">不发邮件，能验证一个邮箱地址吗？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Yes — almost everything about an address can be verified without sending anything: that it is well-formed, that the domain exists and accepts mail, that it is not a disposable or role address, that the domain is not a typo of a major provider, and how risky the domain's catch-all behaviour makes it. The one thing that cannot be established without sending is that a specific mailbox exists and is read — and even sending only half-proves that, because catch-all domains accept mail for addresses that do not exist. Verification without sending is not a lesser substitute; for list hygiene it is the correct tool, because sending test mail to a cold list damages the sender reputation you were trying to protect.</p>
+    <p class="lz">能——关于一个地址的几乎一切，都不用发信就能验证：格式是否正确、域名是否存在并收信、是不是一次性或角色地址、域名是不是主流服务商的拼写错误、以及域名的 catch-all 行为带来多大风险。唯一不发信无法确立的是：某个具体邮箱存在并且有人读——而且就算发了也只证明一半，因为 catch-all 域名会替不存在的地址收信。不发信的验证不是将就的替代品；对名单清洗来说它才是对的工具，因为给冷名单发测试信，伤的正是你想保护的发信声誉。</p>
+  </div>
+
+  <h2><span class="le">Everything that works without sending</span><span class="lz">不发信就能做的一切</span></h2>
+  <div class="le"><p>The full domain-level stack runs on lookups, not messages. Format validation is local. Domain existence and MX routing are DNS queries — the same records a mail server would consult to deliver your message. Disposable and role-account detection is pattern and list matching. Typo detection compares the domain against major providers. Domain age comes from registration records. Catch-all risk is inferred from MX and provider patterns and returned as a labelled signal. Put together — as the <a href="../../verify-email-address/">verify email address</a> checker does — that is enough to sort addresses into valid, risky and invalid with the evidence shown, which is the decision list hygiene actually needs.</p></div>
+  <div class="lz"><p>整套域名级检查跑的是查询，不是发信。格式校验在本地完成；域名存在与 MX 路由是 DNS 查询——正是邮件服务器投递前要查的同一批记录；一次性与角色账号检测是模式与名单匹配；拼写检测是把域名和主流服务商比对；域名年龄来自注册记录；catch-all 风险由 MX 与服务商模式推断、并以信号形式明示返回。合在一起——就像<a href="../../verify-email-address/">验证邮箱地址</a>检查器做的——足够把地址分成 valid、risky、invalid 并附证据，而这正是名单清洗需要的决策。</p></div>
+  <h2><span class="le">The one thing that does not work</span><span class="lz">唯一做不到的那件事</span></h2>
+  <div class="le"><p>Confirming an individual mailbox. The protocol route — connecting over SMTP and asking the server whether it would accept mail for that user — is rejected or greylisted by major providers precisely because verifiers abused it, and on catch-all domains the server answers “yes” for every name anyway. So mailbox confirmation is not a feature honest tools sell. What they can sell is everything around it: if the domain is real, routes mail, is not disposable, and the address is well-formed, the remaining uncertainty is narrow and known. The detailed version of this boundary is in <a href="../does-email-verification-check-if-a-mailbox-exists/">does email verification check if a mailbox exists</a>.</p></div>
+  <div class="lz"><p>确认某个具体邮箱。协议路线——走 SMTP 连上去问服务器接不接这个用户的信——会被主流服务商拒绝或灰名单处理，原因正是验证工具滥用过它；而且在 catch-all 域名上，服务器对任何名字都答「收」。所以「确认邮箱」不是诚实工具会卖的功能。能卖的是它周围的一切：域名是真的、能路由邮件、不是一次性的、地址格式正确——剩下的不确定性就既窄又已知了。这个边界的详细版在<a href="../does-email-verification-check-if-a-mailbox-exists/">邮箱验证到底查不查邮箱存在</a>。</p></div>
+  <h2><span class="le">Why not just send a test email?</span><span class="lz">为什么不干脆发一封测试信？</span></h2>
+  <div class="le"><p>Three reasons. It does not prove what you want: on a catch-all domain the test mail is accepted for a nonexistent address, and a real mailbox that ignores you looks identical to a dead one — silence is not data. It costs the thing you are protecting: hard bounces from a test send count against your sender reputation exactly like bounces from a real send, because to the receiving provider they are the same event. And it spends the contact: a “just testing” message to a customer or lead is a real impression you cannot take back. Verify first, without sending; then let the real send — to the verified segment, in order — be the only mail those addresses ever get from you.</p></div>
+  <div class="lz"><p>三个原因。它证明不了你想证明的：catch-all 域名会替不存在的地址收下测试信，而一个不理你的真邮箱和死邮箱看起来一模一样——沉默不是数据。它消耗的正是你在保护的东西：测试发送的硬退信和真实发送的退信，在接收方眼里是同一件事、同样记在你的发信声誉上。它还会花掉这次触达：给客户或线索发的「只是测试」是一次收不回的真实曝光。先验证、不发信；然后让真正的那封信——发给验过的分段、按顺序发——成为这些地址从你这儿收到的唯一邮件。</p></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="anyone@github.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../does-email-verification-check-if-a-mailbox-exists/">Does an email verification API check whether the actual mailbox exists?</a></li>
+    <li><a href="../what-makes-an-email-address-valid/">What makes an email address valid?</a></li>
+    <li><a href="../how-to-verify-an-email-address/">How do I verify an email address?</a></li>
+    <li><a href="../../verify-email-address/">Verify email address — free single-address checker</a></li>
+  </ul>
+  <p class="le">Running this in bulk? The <a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 Credits Pack ($9.99, one-time)</a> runs EmailCheck through the API at 1 credit per check — credits never expire and work across every connected NewKwLab API.</p>
+  <p class="lz">要批量跑？<a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 积分包（$9.99，一次性）</a>通过 API 跑 EmailCheck，每次扣 1 分——积分永不过期，在全部已接入的 NewKwLab API 通用。</p>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
