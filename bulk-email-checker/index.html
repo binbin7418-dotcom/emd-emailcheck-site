@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bulk Email Checker — Verify Email Lists Free | EmailCheck</title>
+<title>Bulk Email Verification — Free Bulk Email Checker | EmailCheck</title>
 <meta name="description" content="Bulk email checker — verify up to 100 addresses per run, free, no sign-up. A verdict, 0–100 score and reason for each.">
 <link rel="canonical" href="https://email.newkwlab.com/bulk-email-checker/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EmailCheck">
-<meta property="og:title" content="Bulk Email Checker — Verify Email Lists Free | EmailCheck">
+<meta property="og:title" content="Bulk Email Verification — Free Bulk Email Checker">
 <meta property="og:description" content="Bulk email checker — verify up to 100 addresses per run, free, no sign-up. A verdict, 0–100 score and reason for each.">
 <meta property="og:url" content="https://email.newkwlab.com/bulk-email-checker/">
 <link rel="stylesheet" href="../assets/style.css">
@@ -113,7 +113,7 @@
 
 <main>
   <p class="crumb"><a href="../">EmailCheck</a> / <span class="le">Bulk Email Checker</span><span class="lz">批量邮箱校验</span></p>
-  <h1><span class="le">Bulk Email Checker</span><span class="lz">批量邮箱校验</span></h1>
+  <h1><span class="le">Bulk Email Verification</span><span class="lz">批量邮箱验证</span></h1>
   <p class="bk-sub"><span class="le">Paste up to 100 addresses — or upload a CSV/TXT file — and get a verdict, a 0–100 score and the reason for every address.</span><span class="lz">粘贴最多 100 个地址——或上传 CSV/TXT 文件——每条都返回裁决、0–100 分和命中原因。</span></p>
 
   <!-- ============ TOOL ============ -->
@@ -222,8 +222,8 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
     <tr><td><span class="le">Output</span><span class="lz">输出</span></td><td><span class="le">Per-address rows, summary counts, CSV download</span><span class="lz">逐条结果行、汇总计数、CSV 下载</span></td><td><span class="le">One verdict card with every check shown</span><span class="lz">一张裁决卡，逐项检查全展示</span></td></tr>
     <tr><td><span class="le">Best for</span><span class="lz">适用场景</span></td><td><span class="le">CRM imports, pre-send list hygiene, scheduled cleaning</span><span class="lz">CRM 导入、发送前名单清洗、定时卫生任务</span></td><td><span class="le">Signup forms and checkout — the moment an address is typed</span><span class="lz">注册表单与结账——地址正被输入的那一刻</span></td></tr>
   </table>
-  <p class="le">Checking one address right now? Use the <a href="../">check a single email</a> tool on the homepage — same engine, one address, every check displayed.</p>
-  <p class="lz">只想验一个地址？用首页的<a href="../">单个邮箱检查</a>工具——同一个引擎，一次一个，逐项检查全展示。</p>
+  <p class="le">Checking one address right now? Use the <a href="../verify-email-address/">verify email address</a> tool — same engine, one address, every check displayed.</p>
+  <p class="lz">只想验一个地址？用<a href="../verify-email-address/">验证邮箱地址</a>工具——同一个引擎，一次一个，逐项检查全展示。</p>
 
   <!-- ============ PRICING ============ -->
   <h2 id="pricing"><span class="no">04</span><span class="le">Pricing</span><span class="lz">价格</span></h2>
@@ -314,9 +314,24 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
     <p class="lz">是——本页调的就是生产端点 POST /validate/batch，和 API 订阅者用的是同一个。区别在量和自动化：订阅者有月度调用额度和给自己管线用的密钥，单查与批量两个端点都包含。</p>
   </details>
 
+  <!-- ============ 08 CLUSTER ============ -->
+  <h2><span class="no">08</span><span class="le">Bulk email verification, in depth</span><span class="lz">批量邮箱验证，深一层</span></h2>
+  <div class="le">
+    <p>Bulk email verification is the discipline this page practices: checking a whole list in one run, with every address scored and the risky rows explained, instead of sampling a few addresses and hoping the rest behave. <a href="../questions/what-is-bulk-email-verification/">What bulk email verification is</a> starts from the definition — a domain-level check of format, MX routing, disposable and role-account signals, typo patterns, domain age and catch-all risk, applied to a list rather than a single address. <a href="../questions/how-does-bulk-email-verification-work/">How it works</a> then walks the run itself: list in, the same per-address pipeline a single check uses, scored rows out, and the segmentation decisions the summary counts exist to support.</p>
+    <p>Two judgement calls decide whether a bulk run actually protects a send. The first is timing: lists decay as people change jobs and domains lapse, so <a href="../questions/how-often-should-you-run-bulk-email-verification/">how often to run bulk verification</a> is a triggers question — before a significant send, at import, before re-activating a dormant segment — not a calendar entry. The second is honesty about the ceiling: on a real B2B list roughly a third of addresses sit on catch-all domains, where no verifier can resolve an individual mailbox without sending mail. <a href="../questions/how-accurate-is-bulk-email-verification/">How accurate bulk email verification is</a> covers what the verdict bands can promise under that constraint — and why a segmented list, not an accuracy percentage, is the output worth paying for. And if the list in front of you is actually one address at a time, <a href="../questions/bulk-vs-single-email-verification/">bulk vs single verification</a> explains where each mode belongs.</p>
+  </div>
+  <div class="lz">
+    <p>批量邮箱验证就是本页在做的事：把一整份名单一次跑完，每个地址带分数、risky 行带原因，而不是抽查几个地址、指望其余的都规矩。<a href="../questions/what-is-bulk-email-verification/">批量邮箱验证是什么</a>从定义讲起——对一份名单（而不是单个地址）做的域名级检查：格式、MX 路由、一次性与角色账号信号、拼写模式、域名年龄、catch-all 风险。<a href="../questions/how-does-bulk-email-verification-work/">它是怎么工作的</a>接着走完一轮运行本身：名单进来、每个地址跑和单查相同的流水线、带分数的结果出去，以及汇总计数要支撑的分段决策。</p>
+    <p>一轮批量跑到底能不能护住一次发送，取决于两个判断。第一是时机：人换工作、域名过期，名单会衰减，所以<a href="../questions/how-often-should-you-run-bulk-email-verification/">多久跑一次</a>是触发条件问题——重要发送之前、导入之时、重新启用休眠分段之前——不是日历条目。第二是对天花板诚实：真实 B2B 名单里约三分之一地址在 catch-all 域名上，任何验证工具不发信都确认不了那里的单个邮箱。<a href="../questions/how-accurate-is-bulk-email-verification/">批量邮箱验证到底有多准</a>讲了这个约束下裁决分段能承诺什么——以及为什么值得付钱的产出是分段名单、不是一个准确率百分比。如果你面前的其实是逐条查的活，<a href="../questions/bulk-vs-single-email-verification/">批量与单个的区别</a>讲了两种模式各自的位置。</p>
+  </div>
+
   <!-- ============ RELATED ============ -->
-  <h2><span class="no">08</span><span class="le">Related</span><span class="lz">相关</span></h2>
+  <h2><span class="no">09</span><span class="le">Related</span><span class="lz">相关</span></h2>
   <ul class="qlist">
+    <li><a href="../questions/what-is-bulk-email-verification/">What is bulk email verification?</a></li>
+    <li><a href="../questions/how-does-bulk-email-verification-work/">How does bulk email verification work?</a></li>
+    <li><a href="../questions/how-often-should-you-run-bulk-email-verification/">How often should you run bulk email verification?</a></li>
+    <li><a href="../questions/bulk-vs-single-email-verification/">What is the difference between bulk and single email verification?</a></li>
     <li><a href="../questions/verify-a-list-of-emails-in-bulk/">How do I verify a list of emails in bulk without calling the API one by one?</a></li>
     <li><a href="../questions/best-email-verification-api/">What is the best email verification API?</a></li>
     <li><a href="../questions/zerobounce-alternative/">What is a cheaper ZeroBounce alternative for email verification?</a></li>
