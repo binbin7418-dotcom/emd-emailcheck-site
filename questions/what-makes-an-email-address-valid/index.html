@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What makes an email address valid? — EmailCheck</title>
+<meta name="description" content="Validity is layered. An address is well-formed (one @, legal characters, a real-looking domain). Its domain exists and publishes MX records that route mail.…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/what-makes-an-email-address-valid/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="What makes an email address valid?">
+<meta property="og:description" content="Validity is layered. An address is well-formed (one @, legal characters, a real-looking domain). Its domain exists and publishes MX records that route mail.…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/what-makes-an-email-address-valid/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What makes an email address valid?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Validity is layered. An address is well-formed (one @, legal characters, a real-looking domain). Its domain exists and publishes MX records that route mail. And no disqualifying signal fires: the domain is not a disposable provider, and the address is not undermined by a likely typo. On top of that sit graded risks rather than failures — role accounts, free-provider domains and catch-all behaviour. EmailCheck folds the layers into a 0–100 score: valid means 80 or above with MX present and no risk signal fired. Valid is a statement about deliverability evidence, not a promise that a specific person will read the message — mailbox existence is a separate question no domain-level check can settle."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / What makes an email address valid?</p>
+  <h1><span class="le">What makes an email address valid?</span><span class="lz">什么样的邮箱地址算有效？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">Validity is layered. An address is well-formed (one @, legal characters, a real-looking domain). Its domain exists and publishes MX records that route mail. And no disqualifying signal fires: the domain is not a disposable provider, and the address is not undermined by a likely typo. On top of that sit graded risks rather than failures — role accounts, free-provider domains and catch-all behaviour. EmailCheck folds the layers into a 0–100 score: valid means 80 or above with MX present and no risk signal fired. Valid is a statement about deliverability evidence, not a promise that a specific person will read the message — mailbox existence is a separate question no domain-level check can settle.</p>
+    <p class="lz">有效性是分层的。地址本身格式正确（一个 @、字符合法、域名像样）；域名存在、且发布了能路由邮件的 MX 记录；没有触发否决性信号：域名不是一次性服务商、地址没有疑似拼写问题。在这之上是分级风险而非失败——角色账号、免费服务商域名、catch-all 行为。EmailCheck 把这些层合成 0–100 分：valid 指 80 分以上、有 MX、且没有风险信号触发。Valid 说的是投递证据，不是「某个具体的人会读这封信」的承诺——邮箱存在是另一个问题，域名级检查解决不了。</p>
+  </div>
+
+  <h2><span class="le">The layers, in order</span><span class="lz">按顺序看这几层</span></h2>
+  <div class="le"><p><strong>Syntax.</strong> The address must parse: exactly one @ separating local part and domain, no spaces or illegal characters, a domain that contains a dot and a real top-level domain. This layer alone rejects a surprising share of form submissions. <strong>Domain.</strong> The domain must exist in DNS — a registered, resolvable name, not a string someone invented. <strong>Routing.</strong> The domain must publish MX records; without them there is nowhere for mail to go, however perfect the address looks. <strong>Signals.</strong> Only then do the graded checks apply: disposable provider, role account, free provider, typo pattern, domain age, catch-all risk. An address is “valid” when it clears the first three layers and none of the signals is disqualifying.</p></div>
+  <div class="lz"><p><strong>格式。</strong>地址必须能解析：恰好一个 @ 分隔本地部分和域名、没有空格或非法字符、域名带点且顶级域名真实。光这一层就能拒掉相当比例的表单提交。<strong>域名。</strong>域名必须在 DNS 里存在——是注册过、能解析的名字，不是谁编的字符串。<strong>路由。</strong>域名必须发布 MX 记录；没有 MX，信无处可去，地址长得再完美也没用。<strong>信号。</strong>到这一步才轮到分级检查：一次性服务商、角色账号、免费服务商、拼写模式、域名年龄、catch-all 风险。一个地址「有效」，是它过了前三层、且没有任何信号构成否决。</p></div>
+  <h2><span class="le">Valid, risky, invalid: where the lines are</span><span class="lz">Valid、risky、invalid：线画在哪</span></h2>
+  <div class="le"><p>The bands turn the layers into decisions. <strong>Valid (80–100):</strong> every layer passed, no risk signal fired — send. <strong>Risky (50–79):</strong> the domain routes mail but something needs a decision — a catch-all risk you cannot resolve further, a disposable domain you may still choose to mail once, a typo you should correct first. <strong>Invalid (below 50):</strong> a hard failure — broken format, nonexistent domain, no MX, or a likely typo with no working MX behind it. The risky band is the honest middle that binary valid/invalid tools hide: on real lists it is a large share of addresses, and what you do with it (see <a href="../what-does-a-risky-email-verdict-mean/">what a risky verdict means</a>) is most of list hygiene.</p></div>
+  <div class="lz"><p>分段把这几层变成决策。<strong>Valid（80–100）：</strong>每层都过、没有风险信号触发——发。<strong>Risky（50–79）：</strong>域名能收信，但有需要你拿主意的东西——无法再确认的 catch-all 风险、你可能仍选择发一次的一次性域名、应该先纠正的拼写。<strong>Invalid（50 以下）：</strong>硬失败——格式坏了、域名不存在、没有 MX、或疑似拼错且背后没有可用 MX。Risky 段是二元 valid/invalid 工具藏起来的诚实中间地带：在真实名单里它占很大比例，怎么处置它（见<a href="../what-does-a-risky-email-verdict-mean/">risky 裁决是什么意思</a>）就是名单清洗的大部分工作。</p></div>
+  <h2><span class="le">What valid does not promise</span><span class="lz">Valid 不承诺什么</span></h2>
+  <div class="le"><p>A valid verdict does not say the mailbox exists — a domain can route mail perfectly while the individual account was deleted last week, and on catch-all domains every name is “accepted” by design. It does not say the person wants your mail; consent and engagement are your list's history, not a property of the address. And it does not freeze time: domains lapse and accounts close, which is why a list verified once still needs re-verification before later sends. What valid does say is narrower and, for sending decisions, sufficient: the address is real in every way that can be checked without sending, and nothing about it predicts a bounce. Run any address through the <a href="../../verify-email-address/">verify email address</a> checker to see its layers individually.</p></div>
+  <div class="lz"><p>Valid 裁决不表示邮箱存在——域名可以完美地路由邮件，而具体账号上周刚被删掉；在 catch-all 域名上，每个名字按设计都会被「接受」。它也不表示对方想收你的信；同意和互动是你名单的历史，不是地址的属性。它更不冻结时间：域名会过期、账号会关闭，所以验过一次的名单在后续发送前仍要重验。Valid 真正说的更窄，但对发送决策已经足够：这个地址在一切「不发信可查」的意义上都是真的，没有任何一点预示退信。把任何地址丢进<a href="../../verify-email-address/">验证邮箱地址</a>检查器，就能逐层看它自己的结果。</p></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="test@gmial.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../how-to-verify-an-email-address/">How do I verify an email address?</a></li>
+    <li><a href="../can-you-verify-an-email-address-without-sending-an-email/">Can you verify an email address without sending an email?</a></li>
+    <li><a href="../what-does-a-risky-email-verdict-mean/">What does a “risky” verdict mean — should I still send to risky addresses?</a></li>
+    <li><a href="../../verify-email-address/">Verify email address — free single-address checker</a></li>
+  </ul>
+  <p class="le">Running this in bulk? The <a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 Credits Pack ($9.99, one-time)</a> runs EmailCheck through the API at 1 credit per check — credits never expire and work across every connected NewKwLab API.</p>
+  <p class="lz">要批量跑？<a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 积分包（$9.99，一次性）</a>通过 API 跑 EmailCheck，每次扣 1 分——积分永不过期，在全部已接入的 NewKwLab API 通用。</p>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
