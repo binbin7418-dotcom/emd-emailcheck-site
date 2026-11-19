@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is the difference between bulk and single email verification? — EmailCheck</title>
+<meta name="description" content="The checks are the same; the moment and the unit differ. Single verification checks one address at the moment it is captured — typed into a signup or…">
+<link rel="canonical" href="https://email.newkwlab.com/questions/bulk-vs-single-email-verification/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="What is the difference between bulk and single email verification?">
+<meta property="og:description" content="The checks are the same; the moment and the unit differ. Single verification checks one address at the moment it is captured — typed into a signup or…">
+<meta property="og:url" content="https://email.newkwlab.com/questions/bulk-vs-single-email-verification/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is the difference between bulk and single email verification?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The checks are the same; the moment and the unit differ. Single verification checks one address at the moment it is captured — typed into a signup or checkout form — and shows the full result for that address. Bulk verification checks a list you already hold, usually before a send, and returns per-address verdicts plus summary counts, because the job is segmenting the list, not judging one address. Neither proves a specific mailbox exists: both are domain-level checks of format, MX routing and risk signals. Most teams end up using both, at different points in the address's life."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+      <button class="langbtn" data-setlang type="button">中文 / EN</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="../../">EmailCheck</a> / <span class="le">Questions</span><span class="lz">问题页</span> / What is the difference between bulk and single email verification?</p>
+  <h1><span class="le">What is the difference between bulk and single email verification?</span><span class="lz">批量邮箱验证和单个邮箱验证有什么区别？</span></h1>
+
+  <div class="answer">
+    <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
+    <p class="le">The checks are the same; the moment and the unit differ. Single verification checks one address at the moment it is captured — typed into a signup or checkout form — and shows the full result for that address. Bulk verification checks a list you already hold, usually before a send, and returns per-address verdicts plus summary counts, because the job is segmenting the list, not judging one address. Neither proves a specific mailbox exists: both are domain-level checks of format, MX routing and risk signals. Most teams end up using both, at different points in the address's life.</p>
+    <p class="lz">检查相同，时刻和单位不同。单个验证查的是收集当下的一个地址——刚被输进注册或结账表单的那个——并展示这个地址的完整结果。批量验证查的是你已经持有的一份名单，通常在发送之前，返回逐条裁决加汇总计数，因为要干的活是给名单分段，不是评判某一个地址。两者都不证明某个具体邮箱存在：都是域名级的格式、MX 路由和风险信号检查。大多数团队最后两个都在用，只是用在地址生命周期的不同节点。</p>
+  </div>
+
+  <h2><span class="le">Same engine, two moments</span><span class="lz">同一个引擎，两个时刻</span></h2>
+  <div class="le"><p>A single check happens at capture. Someone types an address into a form, and the check runs before the account exists: it catches the typo (gmial.com instead of gmail.com) while the person is still there to fix it, flags the disposable domain before it becomes an account, and rejects the address whose domain does not exist. A bulk check happens later, to addresses already in a database — collected weeks or years ago, imported from another system, or merged from several sources. The list has decayed since capture, and the question has changed from “is this address well-formed?” to “which of these 5,000 rows should I actually send to?”</p></div>
+  <div class="lz"><p>单查发生在收集当下。有人往表单里输地址，检查在账号建立之前就跑：它能在人还在场时抓住拼写错误（gmial.com 而不是 gmail.com），能在一次性域名变成账号之前标记它，能拒掉域名不存在的地址。批量查发生在之后，对已经在数据库里的地址——几周或几年前收集的、从别的系统导入的、几个来源合并的。名单从收集那天起就在衰减，问题也从「这个地址格式对不对」变成了「这 5,000 行里我到底该往哪些发」。</p></div>
+  <h2><span class="le">What changes in the output</span><span class="lz">输出变了什么</span></h2>
+  <div class="le"><p>A single result is a full card: verdict, 0–100 score, and every check shown individually — syntax, domain, MX, disposable, role account, free provider, catch-all risk, domain age, and a correction when a typo is likely. A bulk result is that same record repeated per row, plus the part a single check never needs: summary counts and percentages per verdict, disposable and typo totals across the run. The summary is not decoration — it is how you notice that 30% of an imported list is catch-all-risky before you send, rather than after the bounces arrive.</p></div>
+  <div class="lz"><p>单个结果是一张完整的卡：裁决、0–100 分、逐项检查全展示——格式、域名、MX、一次性、角色账号、免费服务商、catch-all 风险、域名年龄，疑似拼写时还有纠正。批量结果是同样的记录逐行重复，外加单查永远用不到的部分：各裁决的汇总计数与百分比、整轮的一次性域名与疑似拼写总数。汇总不是装饰——它是让你在发送之前、而不是退信回来之后，发现一份导入名单里有 30% 是 catch-all 风险的办法。</p></div>
+  <h2><span class="le">Which one you need</span><span class="lz">你需要哪个</span></h2>
+  <div class="le"><p>If addresses enter through a form, start with single checks at capture — they prevent bad data instead of cleaning it up later, and a typo suggestion at signup is worth more than the same discovery in a pre-send report. If you hold a list — a CRM export, an event list, a legacy database — start with a bulk run. In practice the two compose: single checks keep new data clean, bulk runs re-clean the backlog as it decays. Try the single check on the <a href="../../verify-email-address/">verify email address</a> page and the list run on the <a href="../../bulk-email-checker/">bulk email checker</a>; both call the same production API.</p></div>
+  <div class="lz"><p>如果地址是从表单进来的，先上收集当下的单查——它预防坏数据、而不是事后清洗，而且注册当下的拼写建议比发送前报告里发现同一个错误值钱得多。如果你手里是一份名单——CRM 导出、活动名单、老数据库——先跑批量。实际用起来两者是接力：单查保持新数据干净，批量查把存量随衰减反复清洗。单查在<a href="../../verify-email-address/">验证邮箱地址</a>页试，名单跑在<a href="../../bulk-email-checker/">批量检查器</a>试；两者调的是同一个生产 API。</p></div>
+
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="test@gmail.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../what-is-bulk-email-verification/">What is bulk email verification?</a></li>
+    <li><a href="../how-does-bulk-email-verification-work/">How does bulk email verification work?</a></li>
+    <li><a href="../how-to-verify-an-email-address/">How do I verify an email address?</a></li>
+    <li><a href="../../verify-email-address/">Verify email address — free single-address checker</a></li>
+    <li><a href="../../bulk-email-checker/">Bulk email checker — verify a whole list in one call</a></li>
+  </ul>
+  <p class="le">Running this in bulk? The <a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 Credits Pack ($9.99, one-time)</a> runs EmailCheck through the API at 1 credit per check — credits never expire and work across every connected NewKwLab API.</p>
+  <p class="lz">要批量跑？<a href="https://binbinster.gumroad.com/l/newkwlab-credits-3500" rel="noopener">3,500 积分包（$9.99，一次性）</a>通过 API 跑 EmailCheck，每次扣 1 分——积分永不过期，在全部已接入的 NewKwLab API 通用。</p>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · binbin7418@gmail.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
