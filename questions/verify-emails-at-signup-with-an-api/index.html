@@ -54,7 +54,7 @@
   <div class="answer">
     <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
     <p class="le">Call a validation endpoint once, when the form is submitted, and act on the verdict in three bands. Block the hard-invalid: bad syntax, dead domains, no MX records — those accounts can never receive a confirmation email anyway. Warn, don't block, on the fixable: a likely typo (the API returns a suggestion like gmail.com for gmial.com) and disposable addresses, where your policy decides. Let everything else through, including catch-all domains, flagged with the risk signal for later segmentation. With EmailCheck that is one GET or POST to /validate per signup; the free tier covers 100 checks a month for wiring and testing.</p>
-    <p class="lz">在表单提交时调一次验证接口，按三档处理裁决。硬无效直接拦：格式错误、死域名、没有 MX——这类账号本来也收不到确认邮件。可修的只警告、不拦截：大概率拼写错误（接口会返回建议，如 gmial.com → gmail.com）和一次性地址，后者拦不拦由你的产品政策定。其余全部放行，包括 catch-all 域名，只带上风险信号供事后分区。用 EmailCheck 就是每次注册对 /validate 发一个 GET 或 POST；免费档每月 100 次，够接线和测试。</p>
+    <p class="lz">在表单提交时调一次验证接口，按三档处理裁决。硬无效直接拦：格式错误、死域名、没有 MX——这类账号本来也收不到确认邮件。可修的只警告、不拦截：大概率拼写错误（接口会返回建议，如 gmial.com → gmail.com）和一次性地址，后者拦不拦由你的产品政策定。其余全部放行，包括 catch-all 域名，只带上风险信号供事后分区。用 EmailCheck 就是每次注册对 /validate 发一个 GET 或 POST；免费档每月 1,000 次，够接线和测试。</p>
   </div>
 
   <h2><span class="le">The three bands: block, warn, allow</span><span class="lz">三档处理：拦、警告、放行</span></h2>
@@ -78,7 +78,7 @@
   <h2><span class="le">Wiring it with EmailCheck</span><span class="lz">用 EmailCheck 接线</span></h2>
   <div class="le"><p>The single-check endpoint is <code>GET /validate?email=…</code> (POST works too) on the EmailCheck API, listed on RapidAPI with a free BASIC tier of 100 checks a month — enough to wire the integration and test every band. Each response carries the fields the three-band logic needs: <code>valid</code> and <code>verdict</code>, per-check flags (syntax, domain, MX, disposable, role account), a <code>suggestion</code> when a typo looks likely, the graded score, and <code>catchAllRisk</code> for the allow-with-flag band. Every response carries the same field set, so what you are deciding on is never ambiguous.</p>
 <p>Try the box on this page with <code>newuser@gmial.com</code>: the live API flags the typo and suggests gmail.com — the warn band, working end to end. When your existing user base needs the same treatment in bulk, the batch endpoint takes up to 100 addresses per call (see the linked bulk page).</p></div>
-  <div class="lz"><p>单查端点是 EmailCheck API 的 <code>GET /validate?email=…</code>（POST 也可以），在 RapidAPI 上架，免费 BASIC 档每月 100 次——够把集成接完、三档都测一遍。每个响应都带三档逻辑需要的字段：<code>valid</code> 与 <code>verdict</code>、逐项标记（格式、域名、MX、一次性、角色账号）、拼写大概率出错时的 <code>suggestion</code>、分级分数，以及给「放行带标记」档用的 <code>catchAllRisk</code>。每个响应的字段都一致，你依据什么做决定永远不含糊。</p>
+  <div class="lz"><p>单查端点是 EmailCheck API 的 <code>GET /validate?email=…</code>（POST 也可以），在 RapidAPI 上架，免费 BASIC 档每月 1,000 次——够把集成接完、三档都测一遍。每个响应都带三档逻辑需要的字段：<code>valid</code> 与 <code>verdict</code>、逐项标记（格式、域名、MX、一次性、角色账号）、拼写大概率出错时的 <code>suggestion</code>、分级分数，以及给「放行带标记」档用的 <code>catchAllRisk</code>。每个响应的字段都一致，你依据什么做决定永远不含糊。</p>
 <p>用本页的框试 <code>newuser@gmial.com</code>：生产 API 会标出拼写错误并建议 gmail.com——警告档，端到端跑通。你现有的存量用户需要同样处理时，批量端点一次可查 100 条（见链接的批量页）。</p></div>
 
 
