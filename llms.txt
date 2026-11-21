@@ -27,7 +27,7 @@ Base URL: https://emailcheck-api.pages.dev
 ## Pricing (subscriptions run on the marketplaces)
 
 RapidAPI (https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api):
-- BASIC: free, 100 calls per month
+- BASIC: free, 1,000 calls per month
 - PRO: $9/month, 10,000 calls per month
 - ULTRA: $29/month, 50,000 calls per month
 
