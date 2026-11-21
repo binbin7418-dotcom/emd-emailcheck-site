@@ -18,16 +18,30 @@
  "@graph": [
   {
    "@type": "Organization",
-   "name": "EmailCheck",
+   "@id": "https://newkwlab.com/#organization",
+   "name": "NewKwLab",
+   "url": "https://newkwlab.com/",
+   "email": "support@newkwlab.com",
+   "sameAs": [
+    "https://github.com/binbin7418-dotcom",
+    "https://dev.to/visionwei",
+    "https://binbinster.gumroad.com",
+    "https://rapidapi.com/user/binbin7418"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://email.newkwlab.com/#website",
    "url": "https://email.newkwlab.com/",
-   "email": "binbin7418@gmail.com"
+   "name": "EmailCheck",
+   "publisher": { "@id": "https://newkwlab.com/#organization" }
   },
   {
    "@type": "Product",
    "name": "EmailCheck — Email Verification API",
    "image": "https://email.newkwlab.com/icon-500.png",
    "description": "Email validation API: per-address verdict, 0-100 quality score, typo suggestions, disposable-domain detection and catch-all risk, for single addresses or batches of up to 100.",
-   "brand": { "@type": "Brand", "name": "Vision (binbinster)" },
+   "brand": { "@id": "https://newkwlab.com/#organization" },
    "offers": {
     "@type": "AggregateOffer",
     "lowPrice": 0,
