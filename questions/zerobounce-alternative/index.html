@@ -76,7 +76,7 @@
 <li><strong>NeverBounce (probing).</strong> Pay-as-you-go is $8 per 1,000 credits — $80 for 10,000 — and credits expire after 12 months. The Growth subscription starts at $49/month. Its pricing page invites you to start free but does not state a free credit amount.</li>
 <li><strong>Bouncer (probing).</strong> Pay-as-you-go lists 1,000 credits for $8 and 10,000 for $60, scaling down to $0.002 per check at 1,000,000 credits. Credits never expire; 100 free credits to start.</li>
 <li><strong>MillionVerifier (probing).</strong> The cheapest per-check rate at bulk scale: 100,000 credits listed at $149, with 100 free credits on signup and credits that never expire. One honest footnote: on the day we checked, two of its own official pages disagreed on the 1,000,000-credit price ($449 vs $389) — check the live figure before budgeting at that scale.</li>
-<li><strong>EmailCheck.</strong> Free BASIC tier: 100 checks a month. PRO: $9/month including 10,000 checks. ULTRA: $29/month including 50,000 checks. No credit packs, no expiry — a flat subscription sold through RapidAPI, with a batch endpoint (up to 100 addresses per call) included on every tier.</li>
+<li><strong>EmailCheck.</strong> Free BASIC tier: 1,000 checks a month. PRO: $9/month including 10,000 checks. ULTRA: $29/month including 50,000 checks. No credit packs, no expiry — a flat subscription sold through RapidAPI, with a batch endpoint (up to 100 addresses per call) included on every tier.</li>
 </ul></div>
   <div class="lz"><p>以下数字来自各家官方定价页，2026-11-10 当日读取。credits 是否过期按下文标注；订阅行含注明的月度额度。</p>
 <ul>
@@ -96,9 +96,9 @@
 <p>And buy none of them — EmailCheck included — expecting certainty on catch-all domains. On a catch-all server every verifier is reduced to signals; anyone who sells you a definite answer there is selling the signal under a different label.</p></div>
   <div class="lz"><p>当你要的结论关乎邮箱、而不是域名时，买探测型：</p>
 <ul>
-<li><strong>大发送前清洗买来的或继承的名单。</strong>那里的产品就是逐邮箱的信号。</li>
-<li><strong>超大批量。</strong>10 万条以上，MillionVerifier 的单次价格比本页任何订阅都低——而且还含探测。</li>
-<li><strong>一家搞定验证加周边工具。</strong>ZeroBounce ONE 把验证与 DMARC 监控、投递工具打包；你真会用上整包的话，订阅账要重算。</li>
+<li><strong>Cleaning a purchased or inherited list before a large send.</strong> Mailbox-level signals are the product there.</li>
+<li><strong>Very large bulk runs.</strong> At 100,000+ addresses, MillionVerifier's per-check price undercuts every subscription on this page — probing included.</li>
+<li><strong>One vendor for verification plus adjacent tooling.</strong> ZeroBounce ONE bundles verification with DMARC monitoring and deliverability tools; if you will actually use the bundle, the subscription math changes.</li>
 </ul>
 <p>还有一条对所有家都成立（包括 EmailCheck）：别指望任何人在 catch-all 域名上给出确定答案。catch-all 服务器面前每个验证方都只剩信号，谁卖你确定结论，谁就是把信号换了个标签卖。</p></div>
   <h2><span class="le">When EmailCheck is the better fit</span><span class="lz">什么时候 EmailCheck 更对味</span></h2>
@@ -106,7 +106,7 @@
 <ul>
 <li><strong>Signup and checkout forms.</strong> The expensive mistakes there are typos (a suggestion rescues the signup), disposable addresses and dead domains — all answerable in one fast call, at $9 per 10,000 signups.</li>
 <li><strong>Domain risk screening.</strong> Domain age in days, authentication posture (SPF/DMARC/DKIM) and disposable/role signals are in every response — the fields a fraud or lead-quality filter actually consumes.</li>
-<li><strong>Predictable billing.</strong> A flat $9 or $29 a month with a stated quota, instead of credit packs with minimum buys and expiry clocks. The free tier (100/month) is enough to wire and test the integration before paying anything.</li>
+<li><strong>Predictable billing.</strong> A flat $9 or $29 a month with a stated quota, instead of credit packs with minimum buys and expiry clocks. The free tier (1,000/month) is enough to wire and test the integration before paying anything.</li>
 </ul>
 <p>Every EmailCheck response carries the 0–100 score and the signals behind the verdict. The two tools compose: screen with EmailCheck at input time, and run a probing verifier over the list before a big send. This page's prices are dated so you can re-check them before you decide.</p></div>
   <div class="lz"><p>当检查跑在产品内部、发生在输入当下时，买 EmailCheck：</p>
