@@ -57,7 +57,7 @@
     {
      "@type": "Question",
      "name": "What does a valid verdict mean?",
-     "acceptedAnswer": { "@type": "Answer", "text": "A valid verdict means every check passed: the address is well-formed, the domain exists and accepts mail, and no risk signal fired — no disposable or role-account flags, no typo pattern, no catch-all risk. Risky and invalid verdicts come with the reason attached, so you can segment instead of guessing." }
+     "acceptedAnswer": { "@type": "Answer", "text": "A valid verdict means the address is well-formed and the domain exists and accepts mail. Minor signals lower the score without changing the verdict — a role account such as support@ or admin@ scores 90, for example. Risky and invalid verdicts come with the reason attached, so you can segment instead of guessing." }
     },
     {
      "@type": "Question",
@@ -137,6 +137,10 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
     <div class="result" id="bk-result" aria-live="polite"></div>
     <p class="small muted le">One address per line, up to 100 per run. This posts to the production <code>POST /validate/batch</code> endpoint — the same check the API sells. No sign-up; the free tier on RapidAPI includes 1,000 calls a month.</p>
     <p class="small muted lz">一行一个地址，每轮最多 100 条。直接调生产端点 <code>POST /validate/batch</code>——就是 API 本身在卖的检查。不用注册；RapidAPI 免费档含每月 1,000 次调用。</p>
+    <p class="small muted le">Privacy: addresses are checked in real time and never stored — closing this tab clears your list.</p>
+    <p class="small muted lz">隐私：地址实时校验、从不存储——关掉本页，名单即清。</p>
+    <p class="small muted le">Have more than 100? Run free chunks of 100 here as often as you like — or run the whole list through the API in one go with the 3,500 Credits Pack ($9.99 one-time, never expires, 1 credit per address; the same key also works on PhoneCheck and CardCheck).</p>
+    <p class="small muted lz">超过 100 条？在本页免费分片跑多少轮都行——或用 3,500 积分包（$9.99 一次性、永不过期、每条 1 分）通过 API 一次跑完整份名单；同一把钥匙在 PhoneCheck、CardCheck 上也能用。</p>
 
     <div class="bk-sample">
       <h3><span class="le">A real run, recorded from the production API</span><span class="lz">一次真实运行（取自生产 API 的实际返回）</span></h3>
@@ -160,6 +164,8 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
     <span class="tag"><span class="le">SHORT ANSWER</span><span class="lz">短答</span></span>
     <p class="le">This bulk email checker verifies a whole list at once: paste up to 100 addresses — or upload a CSV/TXT file — and get a verdict, a 0–100 score and the reason for every address, free and with no sign-up. Each address gets the full check: syntax, MX routing, disposable and role-account signals, likely typos and catch-all risk.</p>
     <p class="lz">这个批量邮箱校验工具一次验一整份名单：粘贴最多 100 个地址——或上传 CSV/TXT 文件——每条都返回裁决、0–100 分和命中原因，免费、不用注册。每个地址都走全套检查：格式、MX 路由、一次性与角色账号信号、疑似拼写错误、catch-all 风险。</p>
+  <p class="le">EmailCheck is a domain-level check by design: it never probes individual mailboxes over SMTP. That keeps it fast and inexpensive, and it cannot harm any sender's reputation — mailbox-level uncertainty is reported as honest signals (catch-all risk, role account) instead of fake certainty.</p>
+  <p class="lz">EmailCheck 按设计只做域名级检查：从不通过 SMTP 探测单个邮箱。这样速度快、价格低，也不会伤任何发信方的信誉——邮箱层面的不确定性以诚实信号（catch-all 风险、角色账号）呈现，而不是假装确定。</p>
   </div>
 
   <!-- ============ CHECKS ============ -->
@@ -196,7 +202,7 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
     <tr><th><span class="le">Verdict</span><span class="lz">裁决</span></th><th><span class="le">What it means</span><span class="lz">是什么意思</span></th><th><span class="le">What to do</span><span class="lz">怎么处置</span></th></tr>
     <tr>
       <td><b>valid</b> <span class="muted">(80–100)</span></td>
-      <td><span class="le">Domain exists, MX routes mail, no risk signal fired.</span><span class="lz">域名存在、MX 收信、没有风险信号触发。</span></td>
+      <td><span class="le">Domain exists, MX routes mail; minor signals (e.g. a role account) can lower the score inside this band.</span><span class="lz">域名存在、MX 收信；轻微信号（如角色账号）会在本档内扣分。</span></td>
       <td><span class="le">Send.</span><span class="lz">发。</span></td>
     </tr>
     <tr>
@@ -231,7 +237,7 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
   <p class="lz">本页的校验工具免费。管线和更大用量走 RapidAPI 订阅——结账、密钥与计费都在平台侧，结账总价以平台按你所在地区显示的为准：</p>
   <table>
     <tr><th><span class="le">Plan</span><span class="lz">档位</span></th><th><span class="le">Price</span><span class="lz">价格</span></th><th><span class="le">Included</span><span class="lz">含调用量</span></th><th><span class="le">What it's for</span><span class="lz">适合谁</span></th></tr>
-    <tr><td>BASIC</td><td><span class="le">Free</span><span class="lz">免费</span></td><td>100 <span class="le">calls/month</span><span class="lz">次/月</span></td><td><span class="le">Trying the API, small lists</span><span class="lz">试用 API、小名单</span></td></tr>
+    <tr><td>BASIC</td><td><span class="le">Free</span><span class="lz">免费</span></td><td>1,000 <span class="le">calls/month</span><span class="lz">次/月</span></td><td><span class="le">Trying the API, small lists</span><span class="lz">试用 API、小名单</span></td></tr>
     <tr><td>PRO</td><td>$9<span class="le">/month</span><span class="lz">/月</span></td><td>10,000 <span class="le">calls/month</span><span class="lz">次/月</span></td><td><span class="le">Regular list hygiene in a pipeline</span><span class="lz">管线里的常规名单清洗</span></td></tr>
     <tr><td>ULTRA</td><td>$29<span class="le">/month</span><span class="lz">/月</span></td><td>50,000 <span class="le">calls/month</span><span class="lz">次/月</span></td><td><span class="le">High-volume senders and agencies</span><span class="lz">大发送量用户与代理商</span></td></tr>
   </table>
@@ -280,8 +286,8 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
   <h2><span class="no">07</span><span class="le">FAQ</span><span class="lz">常见问题</span></h2>
   <details>
     <summary><span class="le">What does a valid verdict mean?</span><span class="lz">valid 裁决是什么意思？</span></summary>
-    <p class="le">A valid verdict means every check passed: the address is well-formed, the domain exists and accepts mail, and no risk signal fired — no disposable or role-account flags, no typo pattern, no catch-all risk. Risky and invalid verdicts come with the reason attached, so you can segment instead of guessing.</p>
-    <p class="lz">valid 裁决表示各项检查全部通过：地址格式正确、域名存在且能收信、没有触发任何风险信号——没有一次性或角色账号标记、没有拼写错误模式、没有 catch-all 风险。risky 与 invalid 裁决都附原因，方便你分层处理而不是靠猜。</p>
+    <p class="le">A valid verdict means the address is well-formed and the domain exists and accepts mail. Minor signals lower the score without changing the verdict — a role account such as support@ or admin@ scores 90, for example. Risky and invalid verdicts come with the reason attached, so you can segment instead of guessing.</p>
+    <p class="lz">valid 裁决表示地址格式正确、域名存在且能收信。轻微信号只扣分、不改裁决——比如角色账号（support@、admin@）得 90 分。risky 与 invalid 裁决都附原因，方便你分层处理而不是靠猜。</p>
   </details>
   <details>
     <summary><span class="le">How many emails can I check at once?</span><span class="lz">一次能验多少个？</span></summary>
