@@ -1,1 +1,223 @@
-placeholder
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EmailCheck vs Disify — Email Verification APIs Compared (Price, Checks, Bulk)</title>
+<meta name="description" content="EmailCheck vs Disify, side by side: Disify's free account includes 30,000 validations a month and paid plans are unlimited ($9 Starter, $19 Pro). EmailCheck includes 1,000 free checks a month, PRO is $9/month for 10,000 checks, ULTRA is $29/month for 50,000 — with a 0–100 score, a verdict, catch-all risk and domain age in every response. Prices checked 2026-11-24.">
+<link rel="canonical" href="https://email.newkwlab.com/compare/emailcheck-vs-disify/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="EmailCheck">
+<meta property="og:title" content="EmailCheck vs Disify — email verification APIs compared">
+<meta property="og:description" content="Price, free tiers, bulk limits and per-check output, side by side — plus both APIs run on the same addresses. Checked 2026-11-24.">
+<meta property="og:url" content="https://email.newkwlab.com/compare/emailcheck-vs-disify/">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "EmailCheck vs Disify — email verification APIs compared",
+ "datePublished": "2026-11-24",
+ "dateModified": "2026-11-24",
+ "author": { "@type": "Organization", "name": "EmailCheck" },
+ "publisher": { "@type": "Organization", "name": "EmailCheck" },
+ "mainEntityOfPage": "https://email.newkwlab.com/compare/emailcheck-vs-disify/"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Is Disify free?",
+   "acceptedAnswer": { "@type": "Answer", "text": "Yes. Disify works without an account at 30 requests per minute and 1,000 validations a day for core checks. A free account raises that to 30,000 validations a month, 10,000 a day and 60 requests per minute. Paid plans (Starter $9/month, Pro $19/month) remove the monthly cap entirely. Prices checked on disify.com on 2026-11-24." }
+  },
+  {
+   "@type": "Question",
+   "name": "How much does EmailCheck cost?",
+   "acceptedAnswer": { "@type": "Answer", "text": "EmailCheck's free tier on RapidAPI includes 1,000 checks a month. PRO costs $9 per month and includes 10,000 checks. ULTRA costs $29 per month and includes 50,000 checks. Every tier includes the batch endpoint and the same response fields: a 0–100 score, a valid / risky / invalid verdict, catch-all risk and domain age. Prices checked on 2026-11-24." }
+  },
+  {
+   "@type": "Question",
+   "name": "Does either API check whether a mailbox exists?",
+   "acceptedAnswer": { "@type": "Answer", "text": "No. Neither EmailCheck nor Disify probes the receiving mail server over SMTP, so neither confirms that a specific mailbox exists. Both validate the address and its domain: format, DNS and MX records, disposable and role-account signals, and typo suggestions. On catch-all domains no domain-level check can give a definite per-mailbox answer." }
+  },
+  {
+   "@type": "Question",
+   "name": "Which is better for bulk verification, EmailCheck or Disify?",
+   "acceptedAnswer": { "@type": "Answer", "text": "For raw bulk volume, Disify: a single bulk call takes 12,000 addresses on the free account and 100,000 on Pro, and paid plans have no monthly cap. EmailCheck's batch endpoint takes up to 100 addresses per call but returns the full per-address result — score, verdict and signals — in the same response, where Disify's bulk call returns summary counts and a session ID for retrieving the valid list (sessions expire after 15 minutes)." }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../">
+      <span class="stampmark">✉</span>
+      <span><b>EmailCheck</b><small>EMAIL VERIFICATION API</small></span>
+    </a>
+    <nav>
+      <a href="../../#pricing"><span class="le">Pricing</span><span class="lz">价格</span></a>
+      <a href="../../"><span class="le">Free check</span><span class="lz">免费检查</span></a>
+      <a href="../../bulk-email-checker/"><span class="le">Bulk checker</span><span class="lz">批量检查</span></a>
+      <a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <p class="kicker"><span class="le">Comparison · checked 2026-11-24</span><span class="lz">对比 · 2026-11-24 核对</span></p>
+  <h1><span class="le">EmailCheck vs Disify</span><span class="lz">EmailCheck 对比 Disify</span></h1>
+
+  <div class="answer">
+    <p class="le">Both APIs validate an email address at domain level — format, DNS/MX, disposable and role signals, typo suggestions — and neither one probes mailboxes over SMTP. They differ in shape. Disify gives you far more free volume (30,000 validations a month on a free account) and paid plans with no monthly cap at all. EmailCheck gives you a decision in every response: a 0–100 score, a valid / risky / invalid verdict, a catch-all risk signal and the domain's age — fields Disify either doesn't return or reserves for its Pro plan. If you verify at signup and act on a verdict, that output is the product. If you verify in bulk and read raw signals, Disify's volume is hard to beat.</p>
+    <p class="lz">两家都是域名级验证——格式、DNS/MX、一次性与角色信号、拼写建议——都不做 SMTP 邮箱探测。差别在形态。Disify 免费量大得多（免费账户每月 30,000 次），付费档干脆不限月量。EmailCheck 给的是每个响应里都有一个可直接用的结论：0–100 分、valid / risky / invalid 裁决、catch-all 风险信号和域名年龄——这些字段 Disify 要么不返回、要么只在 Pro 档给。在注册口验证、按裁决行动，买的就是这个输出；大批量验证、自己读原始信号，Disify 的量很难被超过。</p>
+  </div>
+
+  <h2><span class="le">The prices, in plain sentences</span><span class="lz">价格，写成明白话</span></h2>
+  <div class="le">
+    <p>Disify's free account includes 30,000 validations per month. Disify Starter costs $9 per month with unlimited requests. Disify Pro costs $19 per month with unlimited requests, plus SPF/DKIM/DMARC checks, domain age, a deliverability score and spam-trap detection.</p>
+    <p>EmailCheck's free tier includes 1,000 checks per month. EmailCheck PRO costs $9 per month and includes 10,000 checks. EmailCheck ULTRA costs $29 per month and includes 50,000 checks.</p>
+    <p class="small muted">From each vendor's official pricing page, read on 2026-11-24. Disify's paid "unlimited" is bounded by per-minute rate limits (120/min Starter, 500/min Pro), not by a monthly quota.</p>
+  </div>
+  <div class="lz">
+    <p>Disify 免费账户每月含 30,000 次验证。Disify Starter $9/月、请求不限量。Disify Pro $19/月、请求不限量，另含 SPF/DKIM/DMARC 检查、域名年龄、投递分和 spam trap 检测。</p>
+    <p>EmailCheck 免费档每月含 1,000 次检查。EmailCheck PRO $9/月、含 10,000 次。EmailCheck ULTRA $29/月、含 50,000 次。</p>
+    <p class="small muted">来自各家官方定价页，2026-11-24 读取。Disify 付费档的「不限量」受每分钟速率限制约束（Starter 120/分钟、Pro 500/分钟），不受月额度约束。</p>
+  </div>
+
+  <h2><span class="le">Side by side</span><span class="lz">逐项对照</span></h2>
+  <div class="le">
+  <table>
+    <tr><th></th><th>Disify</th><th>EmailCheck</th></tr>
+    <tr><td>Start without an account</td><td>Yes — 30 req/min, 1,000/day, core checks</td><td>No — free RapidAPI key, 1,000 checks/month</td></tr>
+    <tr><td>Free tier volume</td><td>30,000 / month (free account)</td><td>1,000 / month</td></tr>
+    <tr><td>Cheapest paid plan</td><td>Starter $9/month, unlimited requests</td><td>PRO $9/month, includes 10,000 checks</td></tr>
+    <tr><td>Top plan</td><td>Pro $19/month, unlimited requests</td><td>ULTRA $29/month, includes 50,000 checks</td></tr>
+    <tr><td>Bulk per call</td><td>12,000 free · 25,000 Starter · 100,000 Pro</td><td>100 per call</td></tr>
+    <tr><td>Bulk output</td><td>Summary counts + a session ID to retrieve the valid list; sessions expire after 15 minutes</td><td>Full per-address results in the same response</td></tr>
+    <tr><td>Verdict per address</td><td>Signal fields (format, dns, disposable, role, free) + a confidence field</td><td>valid / risky / invalid + a 0–100 score</td></tr>
+    <tr><td>Catch-all risk signal</td><td>Not listed</td><td>Yes — in every response</td></tr>
+    <tr><td>Domain age</td><td>Pro plan only</td><td>Every response, from registration records (RDAP)</td></tr>
+    <tr><td>Typo correction</td><td>Yes — suggests the corrected domain</td><td>Yes — returns the corrected full address</td></tr>
+    <tr><td>Disposable detection</td><td>Yes — 66,000+ domains</td><td>Yes</td></tr>
+    <tr><td>Role / free-provider flags</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>SPF / DKIM / DMARC checks</td><td>Pro plan</td><td>No</td></tr>
+    <tr><td>Deliverability score, spam traps</td><td>Pro plan</td><td>No</td></tr>
+    <tr><td>Privacy-relay detection</td><td>Starter and up</td><td>No</td></tr>
+    <tr><td>SMTP mailbox probing</td><td>No</td><td>No</td></tr>
+    <tr><td>Response time, same address, median of 3 calls (measured 2026-11-24)</td><td>≈1.5 s</td><td>≈1.1 s</td></tr>
+  </table>
+  </div>
+  <div class="lz">
+  <table>
+    <tr><th></th><th>Disify</th><th>EmailCheck</th></tr>
+    <tr><td>免注册开始用</td><td>可以——30 次/分钟、1,000 次/天、核心检查</td><td>不行——需 RapidAPI 免费 Key，每月 1,000 次</td></tr>
+    <tr><td>免费档量</td><td>30,000 次/月（免费账户）</td><td>1,000 次/月</td></tr>
+    <tr><td>最便宜付费档</td><td>Starter $9/月，请求不限量</td><td>PRO $9/月，含 10,000 次</td></tr>
+    <tr><td>最高档</td><td>Pro $19/月，请求不限量</td><td>ULTRA $29/月，含 50,000 次</td></tr>
+    <tr><td>单次批量上限</td><td>免费 12,000 · Starter 25,000 · Pro 100,000</td><td>100 条/次</td></tr>
+    <tr><td>批量输出</td><td>汇总计数＋一个 session ID 取有效名单；session 15 分钟过期</td><td>同一响应里返回每条的完整结果</td></tr>
+    <tr><td>逐条裁决</td><td>信号字段（format、dns、disposable、role、free）＋confidence 字段</td><td>valid / risky / invalid＋0–100 分</td></tr>
+    <tr><td>catch-all 风险信号</td><td>未列出</td><td>有——每个响应都带</td></tr>
+    <tr><td>域名年龄</td><td>仅 Pro 档</td><td>每个响应都带，来自注册记录（RDAP）</td></tr>
+    <tr><td>拼写纠正</td><td>有——给出纠正后的域名</td><td>有——返回纠正后的完整地址</td></tr>
+    <tr><td>一次性域名检测</td><td>有——66,000+ 域名库</td><td>有</td></tr>
+    <tr><td>角色/免费邮箱标记</td><td>有</td><td>有</td></tr>
+    <tr><td>SPF / DKIM / DMARC 检查</td><td>Pro 档</td><td>无</td></tr>
+    <tr><td>投递分、spam trap</td><td>Pro 档</td><td>无</td></tr>
+    <tr><td>隐私中继检测</td><td>Starter 起</td><td>无</td></tr>
+    <tr><td>SMTP 邮箱探测</td><td>不做</td><td>不做</td></tr>
+    <tr><td>响应时间，同一地址 3 次中位数（2026-11-24 实测）</td><td>≈1.5 秒</td><td>≈1.1 秒</td></tr>
+  </table>
+  </div>
+
+  <h2><span class="le">Same input, both APIs (measured 2026-11-24)</span><span class="lz">同一输入，两家实测（2026-11-24）</span></h2>
+  <div class="le">
+    <p>We called both APIs with the same three addresses on 2026-11-24 — Disify anonymously, EmailCheck on its production endpoint — three times each for the typo address. The verdicts agreed every time; the shape of the answers did not.</p>
+    <ul>
+      <li><strong>test@gmial.com (a typo of gmail.com).</strong> Both caught it and both suggested gmail.com. Disify also flags gmial.com itself as disposable (it sits on their blacklist) and returned <code>confidence: 100</code>. EmailCheck returned verdict <code>invalid</code>, score 40, the corrected full address <code>test@gmail.com</code>, the domain's age (8,596 days) and catch-all risk <code>unknown</code>.</li>
+      <li><strong>someone@gmail.com.</strong> EmailCheck: score 100, verdict <code>valid</code>, catch-all risk <code>low</code>. Disify: all flags clean (dns true, disposable false, free true) — and its confidence field read 0 for this address, against 100 for both bad ones above and below.</li>
+      <li><strong>user@mailinator.com (disposable).</strong> Both flagged it as disposable. EmailCheck: verdict <code>risky</code>, score 50, catch-all risk <code>possible</code>. Disify: <code>disposable: true</code> with blacklist signals.</li>
+    </ul>
+    <p>One honest note in EmailCheck's favour and one against. In its favour: the score and verdict are computed for you, on every tier. Against it: on mailinator it still says <code>valid: true</code> at the top level alongside the risky verdict — read the verdict and the score, not the boolean.</p>
+  </div>
+  <div class="lz">
+    <p>2026-11-24 我们用同三个地址调了两家 API——Disify 匿名调、EmailCheck 调生产端点——拼写地址各跑了 3 次。每次裁决都一致；答案的形态不一致。</p>
+    <ul>
+      <li><strong>test@gmial.com（gmail.com 的拼写错误）。</strong>两家都抓住了、都建议 gmail.com。Disify 还把 gmial.com 本身标为一次性域名（在它的黑名单里），返回 <code>confidence: 100</code>。EmailCheck 返回裁决 <code>invalid</code>、40 分、纠正后的完整地址 <code>test@gmail.com</code>、域名年龄（8,596 天）和 catch-all 风险 <code>unknown</code>。</li>
+      <li><strong>someone@gmail.com。</strong>EmailCheck：100 分、裁决 <code>valid</code>、catch-all 风险 <code>low</code>。Disify：各标记都干净（dns true、disposable false、free true）——但它的 confidence 字段对这个地址是 0，对上下两个坏地址都是 100。</li>
+      <li><strong>user@mailinator.com（一次性域名）。</strong>两家都标了一次性。EmailCheck：裁决 <code>risky</code>、50 分、catch-all 风险 <code>possible</code>。Disify：<code>disposable: true</code> 并带黑名单信号。</li>
+    </ul>
+    <p>一句对 EmailCheck 有利、一句不利，都照实说。有利：分数和裁决每档都替你算好。不利：对 mailinator 它顶层仍返回 <code>valid: true</code>、同时给 risky 裁决——要读裁决和分数，别读那个布尔值。</p>
+  </div>
+
+  <h2><span class="le">Where Disify is stronger</span><span class="lz">Disify 更强的地方</span></h2>
+  <div class="le"><ul>
+    <li><strong>Volume economics.</strong> 30,000 free validations a month is thirty times EmailCheck's free tier, and paid plans remove the cap entirely — at $19/month, high-volume verification is simply cheaper there.</li>
+    <li><strong>Zero-friction start.</strong> No account, no key: the API answers anonymous calls immediately.</li>
+    <li><strong>Bulk shape.</strong> 12,000–100,000 addresses per call is a different class from 100 per call.</li>
+    <li><strong>Deeper domain checks on Pro.</strong> SPF/DKIM/DMARC posture, deliverability score, spam-trap detection and privacy-relay detection are real features EmailCheck does not have.</li>
+  </ul></div>
+  <div class="lz"><ul>
+    <li><strong>量的账。</strong>每月 30,000 次免费是 EmailCheck 免费档的 30 倍，付费档直接不限量——$19/月，大批量验证在它那边就是更便宜。</li>
+    <li><strong>零摩擦开始。</strong>不用注册、不用 Key，匿名调用立刻有答。</li>
+    <li><strong>批量形态。</strong>单次 12,000–100,000 条，和 100 条/次不是一个量级。</li>
+    <li><strong>Pro 档的深度检查。</strong>SPF/DKIM/DMARC 配置、投递分、spam trap、隐私中继检测，都是真功能，EmailCheck 没有。</li>
+  </ul></div>
+
+  <h2><span class="le">Where EmailCheck is stronger</span><span class="lz">EmailCheck 更强的地方</span></h2>
+  <div class="le"><ul>
+    <li><strong>A decision, not just signals.</strong> Every response — free tier included — carries a 0–100 score and a valid / risky / invalid verdict your code can branch on immediately.</li>
+    <li><strong>Catch-all risk and domain age in the base price.</strong> Disify doesn't list a catch-all signal and puts domain age behind Pro; EmailCheck returns both on every call.</li>
+    <li><strong>Batch results in one response.</strong> Up to 100 addresses with full per-address output — no session to babysit, nothing expiring in 15 minutes.</li>
+    <li><strong>A corrected address, not just a domain.</strong> The typo flow returns the full corrected address, ready to offer back to the user at signup.</li>
+  </ul>
+  <p>Neither API confirms a mailbox exists — for that you need an SMTP-probing verifier (ZeroBounce, NeverBounce and their peers), at probing prices. The honest stack is: screen at input time with a domain-level API, probe before a big send if the list justifies it.</p></div>
+  <div class="lz"><ul>
+    <li><strong>给结论，不只给信号。</strong>每个响应——免费档也一样——带 0–100 分和 valid / risky / invalid 裁决，代码可以直接按裁决分支。</li>
+    <li><strong>catch-all 风险和域名年龄含在基础价里。</strong>Disify 没列 catch-all 信号、域名年龄放在 Pro 档；EmailCheck 每次调用都返回这两项。</li>
+    <li><strong>批量结果一个响应拿齐。</strong>一次最多 100 条、每条完整输出——不用守着 session，也没有 15 分钟过期。</li>
+    <li><strong>返回纠正后的完整地址。</strong>拼写流程返回完整纠正地址，注册口可以直接递回给用户确认。</li>
+  </ul>
+  <p>两家都不确认邮箱是否存在——那需要 SMTP 探测型工具（ZeroBounce、NeverBounce 那一类），价格也是探测型的价格。诚实的组合是：输入当下用域名级 API 筛，名单值得的话、大发送前再探测一遍。</p></div>
+
+  <section class="tool" aria-label="Try EmailCheck">
+    <h2><span class="le">Try it on a real address</span><span class="lz">拿真实地址试一下</span></h2>
+    <p class="small muted le">Live call to the production API — the same check described on this page.</p>
+    <p class="small muted lz">实时调生产 API——就是本页说的这个检查。</p>
+    <form id="ec-form">
+      <input type="email" id="ec-email" value="newuser@gmial.com" autocomplete="off" required>
+      <button class="btn" id="ec-btn" type="submit"><span class="le">Check this address</span><span class="lz">检查这个地址</span></button>
+    </form>
+    <p class="err" id="ec-error" role="alert"></p>
+    <div class="result" id="ec-result" aria-live="polite"></div>
+  </section>
+
+  <div class="boundary">
+    <p class="le"><b>What gets checked:</b> address format, domain and MX health, disposable and role-account signals, likely typos with a correction, domain age from registration records, and catch-all risk — combined into a 0–100 score and a valid / risky / invalid verdict.</p>
+    <p class="lz"><b>查什么：</b>地址格式、域名与 MX 健康、一次性与角色账号信号、疑似拼写错误及纠正建议、来自注册记录的域名年龄、catch-all 风险——合成 0–100 分与 valid / risky / invalid 裁决。</p>
+  </div>
+
+  <h2><span class="le">Related questions</span><span class="lz">相关问题</span></h2>
+  <ul class="qlist">
+    <li><a href="../../questions/zerobounce-alternative/">What is a cheaper ZeroBounce alternative for email verification?</a></li>
+    <li><a href="../../questions/best-email-verification-api/">What is the best email verification API?</a></li>
+    <li><a href="../../questions/how-much-does-it-cost-to-verify-10000-emails/">How much should it cost to verify 10,000 emails?</a></li>
+    <li><a href="../../questions/does-email-verification-check-if-a-mailbox-exists/">What does an email verification API actually check?</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>EmailCheck — email verification with a 0–100 risk score. <span class="le">What the response says is what was actually checked.</span><span class="lz">响应里写的，就是实际查过的。</span></span>
+    <span><a href="https://rapidapi.com/binbin7418/api/emailcheck-email-validation-api" rel="noopener">RapidAPI</a> · <a href="../../llms.txt">llms.txt</a> · support@newkwlab.com</span>
+  </div>
+</footer>
+<script src="../../assets/app.js"></script>
+</body>
+</html>
