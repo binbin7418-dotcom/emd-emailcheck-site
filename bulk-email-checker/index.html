@@ -248,7 +248,8 @@ ceo@this-domain-does-not-exist-zzz123.com</textarea>
   <h2><span class="no">05</span><span class="le">For developers: the batch API</span><span class="lz">给开发者：批量 API</span></h2>
   <p class="le">This page is a front-end to one endpoint. <code>POST /validate/batch</code> takes up to 100 addresses and returns the same full result shape per address as the single check, plus summary counts and percentages — so parsing code written for one endpoint works for the other.</p>
   <p class="lz">本页就是一个端点的前端。<code>POST /validate/batch</code> 一次最多 100 条，每条返回与单查完全相同的完整结果，另附汇总计数与百分比——为一个端点写的解析代码，另一个也能用。</p>
-  <pre><code>curl -X POST "https://emailcheck-api.pages.dev/validate/batch" \
+  <pre><code>curl -X POST "https://emailcheck-email-validation-api.p.rapidapi.com/validate/batch" \
+  -H "X-RapidAPI-Key: YOUR_RAPIDAPI_KEY" \
   -H "Content-Type: application/json" \
   -d '{"emails": ["support@newkwlab.com", "john.doe@gmial.com"]}'
 
