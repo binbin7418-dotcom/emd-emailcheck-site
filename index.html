@@ -169,7 +169,8 @@
     <li>读裁决、分数和它背后的逐项检查——不是只有一个 true/false。</li>
     <li>整批名单用 <code>POST /validate/batch</code>，一次最多 100 条，返回逐条结果加 summary 计数与百分比。坏条目只标自己，不连坐整批。</li>
   </ol>
-  <pre><code>curl "https://emailcheck-api.pages.dev/validate?email=test@gmial.com"
+  <pre><code>curl "https://emailcheck-email-validation-api.p.rapidapi.com/validate?email=test@gmial.com" \
+  -H "X-RapidAPI-Key: YOUR_RAPIDAPI_KEY"
 
 {
   "email": "test@gmial.com", "valid": false, "score": 40, "verdict": "invalid",
