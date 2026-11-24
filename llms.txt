@@ -56,6 +56,7 @@ EmailCheck) is available on Gumroad; the credits never expire.
 - /questions/why-do-emails-bounce/
 - /questions/verify-emails-at-signup-with-an-api/
 - /questions/zerobounce-alternative/
+- /compare/emailcheck-vs-disify/ — EmailCheck vs Disify compared: prices in plain sentences, a parameter table (free tiers, bulk limits, per-address verdicts, catch-all and domain-age fields), and both APIs run on the same three addresses (checked 2026-11-24)
 - /questions/what-is-bulk-email-verification/
 - /questions/how-does-bulk-email-verification-work/
 - /questions/how-often-should-you-run-bulk-email-verification/
